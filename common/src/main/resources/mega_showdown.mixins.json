@@ -5,7 +5,6 @@
   "minVersion": "0.8",
   "client": [
     "MoveSlotWidgetMixin",
-    "PokemonRendererMixin",
     "battle.BattleMoveSelectionMixin",
     "client.ItemRendererMixin",
     "client.ModeBakeryMixin",

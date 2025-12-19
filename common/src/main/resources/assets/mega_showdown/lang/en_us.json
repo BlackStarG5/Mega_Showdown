@@ -630,5 +630,8 @@
 
   "cobblemon.ui.stats.dynamax_level": "Dynamax Level",
 
-  "menu.tera_pouch": "Tera Pouch"
+  "menu.tera_pouch": "Tera Pouch",
+
+  "item.mega_showdown.tera_pouch": "Tera Pouch",
+  "tooltip.mega_showdown.tera_pouch.tooltip": "A pouch to store all your tera shards at one place"
 }
