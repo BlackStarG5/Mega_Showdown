@@ -1,4 +1,4 @@
-package com.github.yajatkaul.mega_showdown.mixin;
+package com.github.yajatkaul.mega_showdown.mixin.client;
 
 import com.cobblemon.mod.common.client.entity.PokemonClientDelegate;
 import com.cobblemon.mod.common.client.render.MatrixWrapper;

@@ -168,7 +168,7 @@ public class CobbleEvents {
     private static void pokemonSent(PokemonSentEvent.Post event) {
         PokemonEntity pokemon = event.getPokemonEntity();
 
-        if (pokemon.getPokemon().getPersistentData().getBoolean("is_tera")) {
+        if (pokemon.getPokemon().getPersistentData().getBoolean("is_tera") && MegaShowdownConfig.legacyTeraEffect) {
             GlowHandler.applyTeraGlow(pokemon);
         }
     }
@@ -276,7 +276,9 @@ public class CobbleEvents {
         AdvancementHelper.grantAdvancement(pokemon.getOwnerPlayer(), "tera/terastallized");
 
         pokemon.getPersistentData().putBoolean("is_tera", true);
-        GlowHandler.applyTeraGlow(pokemonEntity);
+        if (MegaShowdownConfig.legacyTeraEffect) {
+            GlowHandler.applyTeraGlow(pokemonEntity);
+        }
 
         ServerPlayer player = pokemon.getOwnerPlayer();
         if (!PlayerUtils.hasPokemon(player, "Terapagos")) {
