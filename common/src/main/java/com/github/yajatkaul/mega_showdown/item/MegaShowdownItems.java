@@ -878,7 +878,7 @@ public class MegaShowdownItems {
 
     private static RegistrySupplier<Item> registerTeraPouch(String name) {
         return registerItem(name, () -> new TeraPouch(
-                new Item.Properties().stacksTo(1).arch$tab(MegaShowdownTabs.KEY_TAB)
+                new Item.Properties().stacksTo(1).arch$tab(MegaShowdownTabs.TERA_TAB)
         ));
     }
 

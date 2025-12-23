@@ -1,15 +1,2 @@
-# 1.5+1.7.1-release
-- Fixed form change moveset issues
-- Added tera pouches for tera shards
-- Fixed custom mega's like x,y being bugged thanks to people at navas
-- Fixed outside mega's glitch allowing outside mega
-- Fixed the type changing not working with z crystals
-- Added miradon koriadon with riding
-- Fixed multiple mega glitch
-- Fixed Gmax Gengar scaling
-- Added new Meloetta
-- More seat locator's on Rayquaza so more people can sit on it now
-- Implemented Koraidon/Miraidon
-- Fixed Scaling with Zygarde/Greninja particles
-- Updated Zygarde's Particles
-- New Mega Evolution Particles (commissioned by @xiaoxiao5464)
+# 1.5.1+1.7.1-release
+- Fixed tera pouch lang
