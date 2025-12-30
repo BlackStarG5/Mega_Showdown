@@ -1,0 +1,12 @@
+{
+  "maxScale": 0.7,
+  "yTranslation": 0,
+  "poses": {
+    "idle": {
+      "allPoseTypes": true,
+      "animations": [
+        "q.bedrock('dmax_clouds', 'idle')"
+      ]
+    }
+  }
+}

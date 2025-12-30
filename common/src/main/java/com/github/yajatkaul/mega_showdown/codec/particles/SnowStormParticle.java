@@ -55,6 +55,11 @@ public record SnowStormParticle(
         processTransformation(context, aspects, other, battlePokemon, true);
     }
 
+    public void revertBattle(PokemonEntity context, List<String> aspects, PokemonEntity other, BattlePokemon battlePokemon, float battle_pause) {
+        battlePokemon.actor.getBattle().dispatchWaitingToFront(battle_pause, () -> Unit.INSTANCE);
+        processTransformation(context, aspects, other, battlePokemon, false);
+    }
+
     private void processTransformation(PokemonEntity context, List<String> aspects, PokemonEntity other,
                                        BattlePokemon battlePokemon, boolean isApply) {
         context.setNoAi(true);

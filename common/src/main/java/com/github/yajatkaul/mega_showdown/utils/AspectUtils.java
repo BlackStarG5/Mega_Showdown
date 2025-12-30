@@ -174,7 +174,12 @@ public class AspectUtils {
 
         if (pokemon.getPersistentData().getBoolean("is_max")) {
             pokemon.getPersistentData().remove("is_max");
-            Effect.getEffect("mega_showdown:dynamax_end").applyEffects(pokemon, List.of("dynamax_form=none"), null);
+            if (pokemon.getAspects().contains("gmax")) {
+                Effect.getEffect("mega_showdown:dynamax").revertEffects(pokemon, List.of("dynamax_form=none"), null);
+            } else {
+                UnaspectPropertyType.INSTANCE.fromString("msd:dmax").apply(pokemon);
+                Effect.getEffect("mega_showdown:dynamax").revertEffects(pokemon, List.of(), null);
+            }
             if (pokemon.getEntity() != null) {
                 MaxGimmick.startGradualScalingDown(pokemon.getEntity());
             }

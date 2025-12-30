@@ -1,6 +1,7 @@
 package com.github.yajatkaul.mega_showdown.gimmick.codec;
 
 import com.cobblemon.mod.common.pokemon.Pokemon;
+import com.github.yajatkaul.mega_showdown.MegaShowdown;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
@@ -32,16 +33,16 @@ public record AspectSetCodec(
     ).apply(instance, AspectSetCodec::new));
 
     public boolean validate_apply(Pokemon pokemon) {
-        if (this.blacklist_aspects_apply.stream().flatMap(List::stream).anyMatch(pokemon.getAspects()::contains)) return false;
-        if (this.blacklisted_forms_apply.contains(pokemon.getForm().getName())) return false;
-        if (!this.required_forms_apply.contains(pokemon.getForm().getName())) return false;
-        return this.required_aspects_apply.stream().flatMap(List::stream).allMatch(pokemon.getAspects()::contains);
+        if (!blacklist_aspects_apply.isEmpty() && blacklist_aspects_apply.stream().anyMatch(group -> pokemon.getAspects().containsAll(group))) return false;
+        if (!blacklisted_forms_apply.isEmpty() && blacklisted_forms_apply.contains(pokemon.getForm().getName())) return false;
+        if (!required_forms_apply.isEmpty() && !required_forms_apply.contains(pokemon.getForm().getName())) return false;
+        return required_aspects_apply.isEmpty() || required_aspects_apply.stream().noneMatch(group -> pokemon.getAspects().containsAll(group));
     }
 
     public boolean validate_revert(Pokemon pokemon) {
-        if (this.blacklist_aspects_revert.stream().flatMap(List::stream).anyMatch(pokemon.getAspects()::contains)) return false;
-        if (this.blacklisted_forms_revert.contains(pokemon.getForm().getName())) return false;
-        if (!this.required_forms_revert.contains(pokemon.getForm().getName())) return false;
-        return this.required_aspects_revert.stream().flatMap(List::stream).allMatch(pokemon.getAspects()::contains);
+        if (!blacklist_aspects_revert.isEmpty() && blacklist_aspects_revert.stream().anyMatch(group -> pokemon.getAspects().containsAll(group))) return false;
+        if (!blacklisted_forms_revert.isEmpty() && blacklisted_forms_revert.contains(pokemon.getForm().getName())) return false;
+        if (!required_forms_apply.isEmpty() && !required_forms_revert.contains(pokemon.getForm().getName())) return false;
+        return required_aspects_revert.isEmpty() || required_aspects_revert.stream().noneMatch(group -> pokemon.getAspects().containsAll(group));
     }
 }

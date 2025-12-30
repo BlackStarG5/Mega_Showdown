@@ -25,7 +25,7 @@ public record MaxGimmick(
             Codec.STRING.fieldOf("gmax_move").forGetter(MaxGimmick::gmaxMove),
             AspectSetCodec.CODEC.fieldOf("aspect_conditions").forGetter(MaxGimmick::aspectSetCodec)
     ).apply(instance, MaxGimmick::new));
-    private static final Map<LivingEntity, ScalingData> ACTIVE_SCALING_ANIMATIONS = new HashMap<>();
+    private static final Map<PokemonEntity, ScalingData> ACTIVE_SCALING_ANIMATIONS = new HashMap<>();
     private static final int DEFAULT_SCALING_DURATION = 60;
 
     public static void startGradualScaling(PokemonEntity entity, float targetScale) {
@@ -33,10 +33,7 @@ public record MaxGimmick(
 
         GlowHandler.applyDynamaxGlow(entity);
 
-        AttributeInstance scaleAttr = entity.getAttribute(Attributes.SCALE);
-        if (scaleAttr == null) return;
-
-        float startScale = (float) scaleAttr.getBaseValue();
+        float startScale = entity.getPokemon().getScaleModifier();
         ScalingData scalingData = new ScalingData(startScale, targetScale, DEFAULT_SCALING_DURATION);
 
         ACTIVE_SCALING_ANIMATIONS.put(entity, scalingData);
@@ -47,10 +44,7 @@ public record MaxGimmick(
 
         entity.removeEffect(MobEffects.GLOWING);
 
-        AttributeInstance scaleAttr = entity.getAttribute(Attributes.SCALE);
-        if (scaleAttr == null) return;
-
-        float startScale = (float) scaleAttr.getBaseValue();
+        float startScale = entity.getPokemon().getScaleModifier();
         ScalingData scalingData = new ScalingData(startScale, 1, DEFAULT_SCALING_DURATION);
 
         ACTIVE_SCALING_ANIMATIONS.put(entity, scalingData);
@@ -59,11 +53,11 @@ public record MaxGimmick(
     public static void updateScalingAnimations(MinecraftServer server) {
         if (server == null) return;
 
-        Iterator<Map.Entry<LivingEntity, ScalingData>> iterator = ACTIVE_SCALING_ANIMATIONS.entrySet().iterator();
+        Iterator<Map.Entry<PokemonEntity, ScalingData>> iterator = ACTIVE_SCALING_ANIMATIONS.entrySet().iterator();
 
         while (iterator.hasNext()) {
-            Map.Entry<LivingEntity, ScalingData> entry = iterator.next();
-            LivingEntity entity = entry.getKey();
+            Map.Entry<PokemonEntity, ScalingData> entry = iterator.next();
+            PokemonEntity entity = entry.getKey();
             ScalingData data = entry.getValue();
             data.currentTick++;
 
@@ -72,12 +66,10 @@ public record MaxGimmick(
                 continue;
             }
 
-            AttributeInstance scaleAttr = entity.getAttribute(Attributes.SCALE);
-            if (scaleAttr != null) {
-                float progress = Math.min(1.0f, (float) data.currentTick / data.durationTicks);
-                float newScale = data.startScale + (data.targetScale - data.startScale) * progress;
-                scaleAttr.setBaseValue(newScale);
-            }
+            float progress = Math.min(1.0f, (float) data.currentTick / data.durationTicks);
+            float newScale = data.startScale + (data.targetScale - data.startScale) * progress;
+
+            entity.getPokemon().setScaleModifier(newScale);
 
             if (data.currentTick >= data.durationTicks) {
                 iterator.remove();
