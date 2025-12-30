@@ -25,8 +25,6 @@ public class UltraGimmick {
     }
 
     private static void ultraBurst(Pokemon pokemon) {
-        ServerPlayer player = pokemon.getOwnerPlayer();
-
         if (pokemon.getAspects().contains("dawn-fusion")) {
             pokemon.getPersistentData().putString("necrozma_form", "prism_fusion=dawn");
             AspectUtils.appendRevertDataPokemon(
@@ -36,10 +34,10 @@ public class UltraGimmick {
                     "revert_aspects"
             );
         } else {
-            pokemon.getPersistentData().putString("necrozma_form", "prism_fusion=dawn");
+            pokemon.getPersistentData().putString("necrozma_form", "prism_fusion=dusk");
             AspectUtils.appendRevertDataPokemon(
                     Effect.getEffect("mega_showdown:ultra_burst"),
-                    List.of("prism_fusion=dawn"),
+                    List.of("prism_fusion=dusk"),
                     pokemon,
                     "revert_aspects"
             );

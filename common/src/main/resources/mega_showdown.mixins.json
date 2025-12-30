@@ -13,7 +13,7 @@
     "client.ui.PCGUIMixin",
     "client.ui.SummaryCompanionMixin",
     "client.ui.SummaryMixin",
-    "minecraft.ItemInHandRendererMixin",
+    "minecraft.ItemInHandRendererMixin"
   ],
   "mixins": [
     "GraalShowdownUnbundlerMixin",
@@ -21,8 +21,6 @@
     "PokemonAccessor",
     "PokemonClientDelegateMixin",
     "PokemonEntityMixin",
-    "PokemonMixin",
-    "PokemonP1Mixin",
     "PokemonSpeciesMixin",
     "battle.BattleGimmickButtonCompanionMixin",
     "battle.BattleGimmickButtonMixin",
