@@ -36,13 +36,13 @@ public record AspectSetCodec(
         if (!blacklist_aspects_apply.isEmpty() && blacklist_aspects_apply.stream().anyMatch(group -> pokemon.getAspects().containsAll(group))) return false;
         if (!blacklisted_forms_apply.isEmpty() && blacklisted_forms_apply.contains(pokemon.getForm().getName())) return false;
         if (!required_forms_apply.isEmpty() && !required_forms_apply.contains(pokemon.getForm().getName())) return false;
-        return required_aspects_apply.isEmpty() || required_aspects_apply.stream().noneMatch(group -> pokemon.getAspects().containsAll(group));
+        return required_aspects_apply.isEmpty() || required_aspects_apply.stream().anyMatch(group -> pokemon.getAspects().containsAll(group));
     }
 
     public boolean validate_revert(Pokemon pokemon) {
         if (!blacklist_aspects_revert.isEmpty() && blacklist_aspects_revert.stream().anyMatch(group -> pokemon.getAspects().containsAll(group))) return false;
         if (!blacklisted_forms_revert.isEmpty() && blacklisted_forms_revert.contains(pokemon.getForm().getName())) return false;
         if (!required_forms_apply.isEmpty() && !required_forms_revert.contains(pokemon.getForm().getName())) return false;
-        return required_aspects_revert.isEmpty() || required_aspects_revert.stream().noneMatch(group -> pokemon.getAspects().containsAll(group));
+        return required_aspects_revert.isEmpty() || required_aspects_revert.stream().anyMatch(group -> pokemon.getAspects().containsAll(group));
     }
 }

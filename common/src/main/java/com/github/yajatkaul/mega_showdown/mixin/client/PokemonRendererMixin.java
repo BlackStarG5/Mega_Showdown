@@ -46,7 +46,7 @@ public class PokemonRendererMixin {
     @Unique
     private final ResourceLocation mega_showdown$dmaxPoserId = ResourceLocation.fromNamespaceAndPath("cobblemon", "dmax_clouds");
     @Unique
-    private final DmaxHatState mega_showdown$dmaxHatState = new DmaxHatState();
+    public final DmaxHatState mega_showdown$dmaxHatState = new DmaxHatState();
     @Unique
     private final Set<String> mega_showdown$dmaxAspects = new HashSet<>();
 
@@ -71,41 +71,28 @@ public class PokemonRendererMixin {
         }
 
 //        dmax_aspect.ifPresent((daspect) -> {
-//            mega_showdown$renderDmaxClouds(daspect, pokemon, clientDelegate, partialTicks, poseStack, buffer, packedLight);
+//            mega_showdown$renderDmaxClouds(pokemon, clientDelegate, partialTicks, poseStack, buffer, packedLight);
 //        });
     }
 
     @Unique
-    private void mega_showdown$renderDmaxClouds(String daspect, Pokemon pokemon, PokemonClientDelegate clientDelegate, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
-        Map<String, MatrixWrapper> locatorStates = clientDelegate.getLocatorStates();
-        MatrixWrapper headLocator = locatorStates.get("head");
-        if (headLocator == null) return;
-
-        poseStack.pushPose();
-
-        Optional<HatCodec> hatCodec = MegaShowdownDatapackRegister.HAT_CONFIG_REGISTRY.getOptional(ResourceLocation.fromNamespaceAndPath(MegaShowdown.MOD_ID, pokemon.getSpecies().getName().toLowerCase(Locale.ROOT)));
-
-        poseStack.mulPose(headLocator.getMatrix());
-        poseStack.mulPose(Axis.XP.rotationDegrees(180));
-        poseStack.mulPose(Axis.YP.rotationDegrees(180));
-        poseStack.translate(0.08, 0.0, 0.0);
-
-        hatCodec.ifPresent((hat) -> {
-            List<Float> scale = HatCodec.getScaleForHat(pokemon, daspect, hat);
-            poseStack.scale(scale.get(0), scale.get(1), scale.get(2));
-        });
-
-        // Update state BEFORE getting model
-        mega_showdown$dmaxAspects.clear(); // Clear and re-add
-        mega_showdown$dmaxAspects.add(daspect);
+    private void mega_showdown$renderDmaxClouds(Pokemon pokemon, PokemonClientDelegate clientDelegate, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         mega_showdown$dmaxHatState.setCurrentAspects(mega_showdown$dmaxAspects);
         mega_showdown$dmaxHatState.updatePartialTicks(partialTicks);
 
+        Map<String, MatrixWrapper> locatorStates = clientDelegate.getLocatorStates();
+        MatrixWrapper headLocator = locatorStates.get("head");
+
+        if (headLocator == null) return;
+
+        Optional<HatCodec> hatCodec = MegaShowdownDatapackRegister.HAT_CONFIG_REGISTRY.getOptional(ResourceLocation.fromNamespaceAndPath(MegaShowdown.MOD_ID, pokemon.getSpecies().getName().toLowerCase(Locale.ROOT)));
+
         // Get model and texture
         PosableModel model = VaryingModelRepository.INSTANCE.getPoser(mega_showdown$dmaxPoserId, mega_showdown$dmaxHatState);
-        ResourceLocation texture = VaryingModelRepository.INSTANCE.getTexture(mega_showdown$dmaxPoserId, mega_showdown$dmaxHatState);
-
         model.context = mega_showdown$context;
+        ResourceLocation texture = VaryingModelRepository.INSTANCE.getTexture(mega_showdown$dmaxPoserId, mega_showdown$dmaxHatState);
+        VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.entityCutout(texture));
+
         model.setBufferProvider(buffer);
         mega_showdown$dmaxHatState.setCurrentModel(model);
 
@@ -115,25 +102,27 @@ public class PokemonRendererMixin {
         mega_showdown$context.put(RenderContext.Companion.getSPECIES(), mega_showdown$dmaxPoserId);
         mega_showdown$context.put(RenderContext.Companion.getPOSABLE_STATE(), mega_showdown$dmaxHatState);
 
+        poseStack.pushPose();
+
+        poseStack.mulPose(headLocator.getMatrix());
+        poseStack.mulPose(Axis.XP.rotationDegrees(180));
+        poseStack.mulPose(Axis.YP.rotationDegrees(180));
+        poseStack.translate(0.08, 0.0, 0.0);
+
+        hatCodec.ifPresent((hat) -> {
+            List<Float> scale = HatCodec.getScaleForHat(pokemon, "msd:dmax", hat);
+            poseStack.scale(scale.get(0), scale.get(1), scale.get(2));
+        });
+
         // Apply animations
         model.applyAnimations(
                 null,
                 mega_showdown$dmaxHatState,
-                0F,
-                0F,
-                0F,
-                0F,
+                0F, 0F, 0F, 0F,
                 mega_showdown$dmaxHatState.getAnimationSeconds() * 20
         );
 
         // Render
-        VertexConsumer vertexConsumer;
-        if (MegaShowdownConfig.legacyTeraEffect) {
-            vertexConsumer = buffer.getBuffer(RenderType.entityCutout(texture));
-        } else {
-            vertexConsumer = buffer.getBuffer(MSDRenderTypes.pokemonShader(texture));
-        }
-
         model.render(mega_showdown$context, poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, -0x1);
 
         model.withLayerContext(
@@ -146,7 +135,6 @@ public class PokemonRendererMixin {
                 }
         );
         model.setDefault();
-
         poseStack.popPose();
     }
 

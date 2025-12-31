@@ -1,0 +1,18 @@
+{
+  "maxScale": 0.7,
+  "yTranslation": 0,
+  "poses": {
+    "standing": {
+      "poseTypes": [
+        "STAND",
+        "NONE",
+        "PORTRAIT",
+        "PROFILE"
+      ],
+      "isBattle": false,
+      "animations": [
+        "q.bedrock('dmax_clouds', 'idle')"
+      ]
+    }
+  }
+}
