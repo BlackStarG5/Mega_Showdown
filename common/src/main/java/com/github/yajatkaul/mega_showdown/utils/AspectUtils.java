@@ -181,7 +181,7 @@ public class AspectUtils {
                 Effect.getEffect("mega_showdown:dynamax").revertEffects(pokemon, List.of(), null);
             }
             if (pokemon.getEntity() != null) {
-                MaxGimmick.startGradualScalingDown(pokemon.getEntity());
+                MaxGimmick.startGradualScalingDown(pokemon);
             }
         }
 

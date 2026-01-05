@@ -12,11 +12,14 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.scores.PlayerTeam;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Locale;
 
 public class GlowHandler {
-    public static void applyDynamaxGlow(PokemonEntity pokemonEntity) {
+    public static void applyDynamaxGlow(@Nullable PokemonEntity pokemonEntity) {
+        if (pokemonEntity == null) return;
+
         if (pokemonEntity.level() instanceof ServerLevel serverLevel) {
             pokemonEntity.addEffect(new MobEffectInstance(MobEffects.GLOWING, Integer.MAX_VALUE, 0, false, false));
             ServerScoreboard scoreboard = serverLevel.getScoreboard();

@@ -21,6 +21,5 @@ public class DatapackRegistry {
         DynamicRegistries.registerSynced(BATTLE_FORM_CHANGE_REGISTRY_KEY, BattleFormChange.CODEC);
         DynamicRegistries.registerSynced(SHOWDOWN_ITEM_REGISTRY_KEY, ShowdownItem.CODEC);
         DynamicRegistries.registerSynced(Z_CRYSTAL_ITEM_REGISTRY_KEY, ZCrystal.CODEC);
-        DynamicRegistries.registerSynced(HAT_CONFIG_REGISTRY_KEY, HatCodec.CODEC);
     }
 }

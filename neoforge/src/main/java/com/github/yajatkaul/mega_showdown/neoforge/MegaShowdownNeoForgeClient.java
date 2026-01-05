@@ -4,6 +4,7 @@ import com.github.yajatkaul.mega_showdown.MegaShowdown;
 import com.github.yajatkaul.mega_showdown.MegaShowdownClient;
 import com.github.yajatkaul.mega_showdown.block.MegaShowdownBlockEntities;
 import com.github.yajatkaul.mega_showdown.block.block_entity.renderer.PedestalBlockEntityRenderer;
+import com.github.yajatkaul.mega_showdown.render.HatsDataLoader;
 import com.github.yajatkaul.mega_showdown.render.ItemRenderingLoader;
 import com.github.yajatkaul.mega_showdown.render.RegisterShaderEvent;
 import com.github.yajatkaul.mega_showdown.render.renderTypes.IrisIgnoreShader;
@@ -58,6 +59,8 @@ public class MegaShowdownNeoForgeClient {
     @SubscribeEvent
     public static void onAddPackFinders(AddPackFindersEvent event) {
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, new ItemRenderingLoader());
+        ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, new HatsDataLoader());
+
         if (event.getPackType() != PackType.CLIENT_RESOURCES)
             return;
 

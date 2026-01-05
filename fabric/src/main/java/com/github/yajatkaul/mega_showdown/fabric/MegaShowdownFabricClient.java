@@ -5,6 +5,7 @@ import com.github.yajatkaul.mega_showdown.MegaShowdownClient;
 import com.github.yajatkaul.mega_showdown.block.MegaShowdownBlockEntities;
 import com.github.yajatkaul.mega_showdown.block.MegaShowdownBlocks;
 import com.github.yajatkaul.mega_showdown.block.block_entity.renderer.PedestalBlockEntityRenderer;
+import com.github.yajatkaul.mega_showdown.render.HatsDataLoader;
 import com.github.yajatkaul.mega_showdown.render.ItemRenderingLoader;
 import com.github.yajatkaul.mega_showdown.render.RegisterShaderEvent;
 import com.github.yajatkaul.mega_showdown.render.renderTypes.IrisIgnoreShader;
@@ -31,6 +32,8 @@ public final class MegaShowdownFabricClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, new ItemRenderingLoader());
+        ReloadListenerRegistry.register(PackType.CLIENT_RESOURCES, new HatsDataLoader());
+
         MenuScreens.register(MegaShowdownMenuTypes.ZYGARDE_CUBE_MENU.get(), ZygardeCubeScreen::new);
         MenuScreens.register(MegaShowdownMenuTypes.TERA_POUCH_MENU.get(), TeraPouchScreen::new);
 

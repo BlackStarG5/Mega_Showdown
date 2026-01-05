@@ -14,6 +14,7 @@ import com.github.yajatkaul.mega_showdown.block.block_entity.renderer.state.Tera
 import com.github.yajatkaul.mega_showdown.codec.teraHat.HatCodec;
 import com.github.yajatkaul.mega_showdown.config.MegaShowdownConfig;
 import com.github.yajatkaul.mega_showdown.datapack.MegaShowdownDatapackRegister;
+import com.github.yajatkaul.mega_showdown.render.HatsDataLoader;
 import com.github.yajatkaul.mega_showdown.render.renderTypes.MSDRenderTypes;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -85,7 +86,7 @@ public class PokemonRendererMixin {
 
         if (headLocator == null) return;
 
-        Optional<HatCodec> hatCodec = MegaShowdownDatapackRegister.HAT_CONFIG_REGISTRY.getOptional(ResourceLocation.fromNamespaceAndPath(MegaShowdown.MOD_ID, pokemon.getSpecies().getName().toLowerCase(Locale.ROOT)));
+        HatCodec dynamaxHatCodec = HatsDataLoader.REGISTRY.get(ResourceLocation.fromNamespaceAndPath(MegaShowdown.MOD_ID, pokemon.getSpecies().getName().toLowerCase(Locale.ROOT)));
 
         // Get model and texture
         PosableModel model = VaryingModelRepository.INSTANCE.getPoser(mega_showdown$dmaxPoserId, mega_showdown$dmaxHatState);
@@ -109,10 +110,10 @@ public class PokemonRendererMixin {
         poseStack.mulPose(Axis.YP.rotationDegrees(180));
         poseStack.translate(0.08, 0.0, 0.0);
 
-        hatCodec.ifPresent((hat) -> {
-            List<Float> scale = HatCodec.getScaleForHat(pokemon, "msd:dmax", hat);
+        if (dynamaxHatCodec != null) {
+            List<Float> scale = HatCodec.getScaleForHat(pokemon, "msd:dmax", dynamaxHatCodec);
             poseStack.scale(scale.get(0), scale.get(1), scale.get(2));
-        });
+        }
 
         // Apply animations
         model.applyAnimations(
@@ -148,17 +149,17 @@ public class PokemonRendererMixin {
 
         poseStack.pushPose();
 
-        Optional<HatCodec> teraHatCodec = MegaShowdownDatapackRegister.HAT_CONFIG_REGISTRY.getOptional(ResourceLocation.fromNamespaceAndPath(MegaShowdown.MOD_ID, pokemon.getSpecies().getName().toLowerCase(Locale.ROOT)));
+        HatCodec teraHatCodec = HatsDataLoader.REGISTRY.get(ResourceLocation.fromNamespaceAndPath(MegaShowdown.MOD_ID, pokemon.getSpecies().getName().toLowerCase(Locale.ROOT)));
 
         poseStack.mulPose(headLocator.getMatrix());
         poseStack.mulPose(Axis.XP.rotationDegrees(180));
         poseStack.mulPose(Axis.YP.rotationDegrees(180));
         poseStack.translate(0.08, 0.0, 0.0);
 
-        teraHatCodec.ifPresent((teraHat) -> {
-            List<Float> scale = HatCodec.getScaleForHat(pokemon, aspect, teraHat);
+        if (teraHatCodec != null) {
+            List<Float> scale = HatCodec.getScaleForHat(pokemon, aspect, teraHatCodec);
             poseStack.scale(scale.get(0), scale.get(1), scale.get(2));
-        });
+        }
 
         // Update state BEFORE getting model
         mega_showdown$teraAspects.clear(); // Clear and re-add

@@ -21,6 +21,5 @@ public class DatapackRegistry {
         event.dataPackRegistry(SHOWDOWN_ITEM_REGISTRY_KEY, ShowdownItem.CODEC, ShowdownItem.CODEC);
         event.dataPackRegistry(BATTLE_FORM_CHANGE_REGISTRY_KEY, BattleFormChange.CODEC, BattleFormChange.CODEC);
         event.dataPackRegistry(Z_CRYSTAL_ITEM_REGISTRY_KEY, ZCrystal.CODEC, ZCrystal.CODEC);
-        event.dataPackRegistry(HAT_CONFIG_REGISTRY_KEY, HatCodec.CODEC, HatCodec.CODEC);
     }
 }

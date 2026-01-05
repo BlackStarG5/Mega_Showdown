@@ -5,7 +5,7 @@
       "loop": true,
       "animation_length": 14.0417,
       "bones": {
-        "root": {
+        "dmax_clouds": {
           "rotation": {
             "0.0": [0, 0, 0],
             "14.0417": [0, -360, 0]
