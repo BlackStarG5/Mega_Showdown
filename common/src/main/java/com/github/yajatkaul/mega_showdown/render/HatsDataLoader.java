@@ -22,7 +22,7 @@ import java.util.concurrent.Executor;
 
 public class HatsDataLoader implements ResourceManagerReloadListener {
     public static final HashMap<ResourceLocation ,HatCodec> REGISTRY = new HashMap<>();
-    private static final String DIRECTORY = "hats";
+    private static final String DIRECTORY = "msd_sizer";
 
     public static void load() {
         ResourceManager rm = Minecraft.getInstance().getResourceManager();

@@ -164,6 +164,7 @@ public class AspectUtils {
             pokemon.getAspects().stream().filter(a -> a.startsWith("msd:tera_")).forEach(name -> {
                 UnaspectPropertyType.INSTANCE.fromString(name).apply(pokemon);
             });
+            UnaspectPropertyType.INSTANCE.fromString("play_tera").apply(pokemon);
             if (pokemon.getEntity() != null) {
                 if (MegaShowdownConfig.legacyTeraEffect) {
                     pokemon.getEntity().removeEffect(MobEffects.GLOWING);

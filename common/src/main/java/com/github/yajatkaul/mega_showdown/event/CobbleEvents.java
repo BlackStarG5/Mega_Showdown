@@ -23,6 +23,8 @@ import com.cobblemon.mod.common.api.storage.party.PlayerPartyStore;
 import com.cobblemon.mod.common.api.types.tera.TeraTypes;
 import com.cobblemon.mod.common.battles.dispatch.UntilDispatch;
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon;
+import com.cobblemon.mod.common.client.render.models.blockbench.bedrock.animation.BedrockActiveAnimation;
+import com.cobblemon.mod.common.client.render.models.blockbench.bedrock.animation.BedrockAnimationRepository;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.pokemon.properties.AspectPropertyType;
@@ -297,6 +299,13 @@ public class CobbleEvents {
         AspectPropertyType.INSTANCE.fromString("msd:tera_" + pokemon.getTeraType().showdownId()).apply(pokemon);
         AdvancementHelper.grantAdvancement(pokemon.getOwnerPlayer(), "tera/terastallized");
 
+        AspectPropertyType.INSTANCE.fromString("play_tera").apply(pokemon);
+
+        pokemonEntity.after(3f, () -> {
+            UnaspectPropertyType.INSTANCE.fromString("play_tera").apply(pokemon);
+            return Unit.INSTANCE;
+        });
+
         pokemon.getPersistentData().putBoolean("is_tera", true);
         if (MegaShowdownConfig.legacyTeraEffect) {
             GlowHandler.applyTeraGlow(pokemonEntity);
@@ -310,7 +319,7 @@ public class CobbleEvents {
             }
         }
 
-        event.getBattle().dispatchWaitingToFront(2f, () -> {
+        event.getBattle().dispatchWaitingToFront(3.5f, () -> {
             PokemonBehaviourHelper.Companion.playAnimation(pokemonEntity, Set.of("cry"), List.of());
             return Unit.INSTANCE;
         });

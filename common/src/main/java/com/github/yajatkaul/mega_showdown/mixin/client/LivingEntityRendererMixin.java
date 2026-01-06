@@ -45,6 +45,7 @@ public class LivingEntityRendererMixin<T extends LivingEntity, M extends EntityM
 
         Optional<String> aspect = pokemon.getAspects().stream()
                 .filter(a -> a.startsWith("msd:tera_")).findFirst();
+
         if (aspect.isEmpty()) {
             return originalCall.call(buffer, original);
         }

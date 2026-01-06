@@ -3,6 +3,8 @@ package com.github.yajatkaul.mega_showdown.mixin.client;
 import com.cobblemon.mod.common.client.entity.PokemonClientDelegate;
 import com.cobblemon.mod.common.client.render.MatrixWrapper;
 import com.cobblemon.mod.common.client.render.models.blockbench.PosableModel;
+import com.cobblemon.mod.common.client.render.models.blockbench.bedrock.animation.BedrockActiveAnimation;
+import com.cobblemon.mod.common.client.render.models.blockbench.bedrock.animation.BedrockAnimationRepository;
 import com.cobblemon.mod.common.client.render.models.blockbench.repository.RenderContext;
 import com.cobblemon.mod.common.client.render.models.blockbench.repository.VaryingModelRepository;
 import com.cobblemon.mod.common.client.render.pokemon.PokemonRenderer;
@@ -10,10 +12,10 @@ import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.github.yajatkaul.mega_showdown.MegaShowdown;
 import com.github.yajatkaul.mega_showdown.block.block_entity.renderer.state.DmaxHatState;
+import com.github.yajatkaul.mega_showdown.block.block_entity.renderer.state.TeraCrystalState;
 import com.github.yajatkaul.mega_showdown.block.block_entity.renderer.state.TeraHatState;
 import com.github.yajatkaul.mega_showdown.codec.teraHat.HatCodec;
 import com.github.yajatkaul.mega_showdown.config.MegaShowdownConfig;
-import com.github.yajatkaul.mega_showdown.datapack.MegaShowdownDatapackRegister;
 import com.github.yajatkaul.mega_showdown.render.HatsDataLoader;
 import com.github.yajatkaul.mega_showdown.render.renderTypes.MSDRenderTypes;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -51,29 +53,136 @@ public class PokemonRendererMixin {
     @Unique
     private final Set<String> mega_showdown$dmaxAspects = new HashSet<>();
 
+    @Unique
+    private final ResourceLocation mega_showdown$teraCrystalPoserId = ResourceLocation.fromNamespaceAndPath("cobblemon", "terastal_transformation");
+    @Unique
+    public final TeraCrystalState mega_showdown$teraCrystalState = new TeraCrystalState();
+    @Unique
+    private final Set<String> mega_showdown$teraCrystalAspects = new HashSet<>();
+
+    @Unique
+    private float mega_showdown$teraCrystalTime = 0f;
+    @Unique
+    private boolean mega_showdown$teraCrystalPlayed = false;
+
     @Inject(method = "<init>", at = @At(value = "RETURN"))
     public void init(EntityRendererProvider.Context context, CallbackInfo ci) {
         this.mega_showdown$context.put(RenderContext.Companion.getRENDER_STATE(), RenderContext.RenderState.WORLD);
         this.mega_showdown$context.put(RenderContext.Companion.getDO_QUIRKS(), true);
     }
 
-    @Inject(method = "render*", at = @At(value = "TAIL"))
+    @Inject(method = "render*", at = @At(value = "TAIL"), cancellable = true)
     public void render(PokemonEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight, CallbackInfo ci) {
         PokemonClientDelegate clientDelegate = (PokemonClientDelegate) entity.getDelegate();
 
         Pokemon pokemon = entity.getPokemon();
+        boolean tera_play = pokemon.getAspects().contains("play_tera");
+
+        if (tera_play && !mega_showdown$teraCrystalPlayed) {
+            mega_showdown$renderTeraCrystals(
+                    entity,
+                    pokemon,
+                    clientDelegate,
+                    partialTicks,
+                    poseStack,
+                    buffer,
+                    packedLight
+            );
+            ci.cancel();
+            return;
+        }
+
         Optional<String> aspect = pokemon.getAspects().stream()
                 .filter(a -> a.startsWith("msd:tera_")).findFirst();
-        Optional<String> dmax_aspect = pokemon.getAspects().stream()
-                .filter(a -> a.startsWith("msd:dmax")).findFirst();
+        boolean dmax_aspect = pokemon.getAspects().contains("msd:dmax");
 
         if (aspect.isPresent() && MegaShowdownConfig.teraHats) {
             mega_showdown$renderTeraHats(aspect.get(), pokemon, clientDelegate, partialTicks, poseStack, buffer, packedLight);
         }
 
-        dmax_aspect.ifPresent((daspect) -> {
+        if (dmax_aspect) {
             mega_showdown$renderDmaxClouds(pokemon, clientDelegate, partialTicks, poseStack, buffer, packedLight);
-        });
+        }
+    }
+
+    @Unique
+    private void mega_showdown$renderTeraCrystals(PokemonEntity entity, Pokemon pokemon, PokemonClientDelegate clientDelegate, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+        float mega_showdown$teraCrystalDuration = new BedrockActiveAnimation(
+                BedrockAnimationRepository.INSTANCE.getAnimation("terastal_transformation", "animation.terastal_transformation.transform")
+        ).getDuration();
+
+        if (mega_showdown$teraCrystalTime >= mega_showdown$teraCrystalDuration) {
+            mega_showdown$teraCrystalTime = 0f;
+            mega_showdown$teraCrystalPlayed = true;
+            entity.after(3f, () -> {
+                mega_showdown$teraCrystalPlayed = false;
+                return Unit.INSTANCE;
+            });
+            return;
+        }
+
+        mega_showdown$teraCrystalState.setCurrentAspects(mega_showdown$teraCrystalAspects);
+        mega_showdown$teraCrystalTime += partialTicks / 20f;
+        mega_showdown$teraCrystalState.updatePartialTicks(partialTicks);
+
+        Map<String, MatrixWrapper> locatorStates = clientDelegate.getLocatorStates();
+        MatrixWrapper rootLocator = locatorStates.get("root");
+
+        if (rootLocator == null) return;
+
+        HatCodec crystalSize = HatsDataLoader.REGISTRY.get(ResourceLocation.fromNamespaceAndPath(MegaShowdown.MOD_ID, pokemon.getSpecies().getName().toLowerCase(Locale.ROOT)));
+
+        // Get model and texture
+        PosableModel model = VaryingModelRepository.INSTANCE.getPoser(mega_showdown$teraCrystalPoserId, mega_showdown$teraCrystalState);
+        model.context = mega_showdown$context;
+        ResourceLocation texture = VaryingModelRepository.INSTANCE.getTexture(mega_showdown$teraCrystalPoserId, mega_showdown$teraCrystalState);
+        VertexConsumer vertexConsumer = buffer.getBuffer(RenderType.entityCutout(texture));
+
+        model.setBufferProvider(buffer);
+        mega_showdown$teraCrystalState.setCurrentModel(model);
+
+        // Setup context
+        mega_showdown$context.put(RenderContext.Companion.getASPECTS(), mega_showdown$teraCrystalAspects);
+        mega_showdown$context.put(RenderContext.Companion.getTEXTURE(), texture);
+        mega_showdown$context.put(RenderContext.Companion.getSPECIES(), mega_showdown$teraCrystalPoserId);
+        mega_showdown$context.put(RenderContext.Companion.getPOSABLE_STATE(), mega_showdown$teraCrystalState);
+
+        poseStack.pushPose();
+
+        poseStack.mulPose(rootLocator.getMatrix());
+        poseStack.mulPose(Axis.XP.rotationDegrees(180));
+        poseStack.mulPose(Axis.YP.rotationDegrees(180));
+        poseStack.translate(0.08, 0.0, 0.0);
+
+        poseStack.scale(1.5f, 1.5f, 1.5f);
+
+        if (crystalSize != null) {
+            List<Float> scale = HatCodec.getScaleForHat(pokemon, "msd:tera_crystal", crystalSize);
+            poseStack.scale(scale.get(0), scale.get(1), scale.get(2));
+        }
+
+        // Apply animations
+        model.applyAnimations(
+                null,
+                mega_showdown$teraCrystalState,
+                0F, 0F, 0F, 0F,
+                mega_showdown$teraCrystalTime * 20
+        );
+
+        // Render
+        model.render(mega_showdown$context, poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, -0x1);
+
+        model.withLayerContext(
+                buffer,
+                mega_showdown$teraCrystalState,
+                VaryingModelRepository.INSTANCE.getLayers(mega_showdown$teraCrystalPoserId, mega_showdown$teraCrystalState),
+                () -> {
+                    model.render(mega_showdown$context, poseStack, vertexConsumer, packedLight, OverlayTexture.NO_OVERLAY, -0x1);
+                    return Unit.INSTANCE;
+                }
+        );
+        model.setDefault();
+        poseStack.popPose();
     }
 
     @Unique
