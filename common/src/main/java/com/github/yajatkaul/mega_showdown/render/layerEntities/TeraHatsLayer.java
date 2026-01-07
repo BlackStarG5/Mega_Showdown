@@ -3,13 +3,11 @@ package com.github.yajatkaul.mega_showdown.render.layerEntities;
 import com.cobblemon.mod.common.client.entity.PokemonClientDelegate;
 import com.cobblemon.mod.common.client.render.MatrixWrapper;
 import com.cobblemon.mod.common.client.render.models.blockbench.PosableModel;
-import com.cobblemon.mod.common.client.render.models.blockbench.PosableState;
 import com.cobblemon.mod.common.client.render.models.blockbench.repository.RenderContext;
 import com.cobblemon.mod.common.client.render.models.blockbench.repository.VaryingModelRepository;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.github.yajatkaul.mega_showdown.MegaShowdown;
-import com.github.yajatkaul.mega_showdown.render.layerEntities.states.DmaxHatState;
 import com.github.yajatkaul.mega_showdown.codec.teraHat.LayerCodec;
 import com.github.yajatkaul.mega_showdown.config.MegaShowdownConfig;
 import com.github.yajatkaul.mega_showdown.render.LayerDataLoader;
@@ -19,7 +17,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import kotlin.Unit;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
@@ -40,14 +37,6 @@ public class TeraHatsLayer extends LayerEntity {
         if (pokemon.getSpecies().getName().equals("Terapagos")) return;
 
         super.render(context, clientDelegate, entity, pokemon, entityYaw, poseStack, buffer, packedLight);
-
-        float ticks = (float) (animSeconds * 20f);
-
-        int age = (int) ticks;
-        float pt = ticks - age;
-
-        state.updateAge(age);
-        state.updatePartialTicks(pt);
 
         Map<String, MatrixWrapper> locatorStates = clientDelegate.getLocatorStates();
         MatrixWrapper headLocator = locatorStates.get("head");
