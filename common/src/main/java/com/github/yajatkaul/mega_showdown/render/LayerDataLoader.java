@@ -18,7 +18,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Executor;
 
 public class LayerDataLoader implements ResourceManagerReloadListener {
-    public static final HashMap<ResourceLocation , LayerCodec> REGISTRY = new HashMap<>();
+    public static final HashMap<ResourceLocation, LayerCodec> REGISTRY = new HashMap<>();
     private static final String DIRECTORY = "msd_sizer";
 
     public static void load() {

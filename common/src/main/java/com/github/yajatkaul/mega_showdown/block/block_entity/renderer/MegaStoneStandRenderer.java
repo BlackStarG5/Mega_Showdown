@@ -1,18 +1,11 @@
 package com.github.yajatkaul.mega_showdown.block.block_entity.renderer;
 
-import com.cobblemon.mod.common.client.render.MatrixWrapper;
 import com.cobblemon.mod.common.client.render.models.blockbench.PosableModel;
-import com.cobblemon.mod.common.client.render.models.blockbench.bedrock.animation.BedrockActiveAnimation;
-import com.cobblemon.mod.common.client.render.models.blockbench.bedrock.animation.BedrockAnimationRepository;
-import com.cobblemon.mod.common.client.render.models.blockbench.blockentity.BlockEntityModel;
 import com.cobblemon.mod.common.client.render.models.blockbench.repository.RenderContext;
 import com.cobblemon.mod.common.client.render.models.blockbench.repository.VaryingModelRepository;
 import com.github.yajatkaul.mega_showdown.MegaShowdown;
 import com.github.yajatkaul.mega_showdown.block.block_entity.MegaStoneStandEntity;
 import com.github.yajatkaul.mega_showdown.block.block_entity.renderer.state.MegaStoneStandState;
-import com.github.yajatkaul.mega_showdown.codec.teraHat.LayerCodec;
-import com.github.yajatkaul.mega_showdown.render.LayerDataLoader;
-import com.github.yajatkaul.mega_showdown.render.layerEntities.states.TeraHatState;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import kotlin.Unit;

@@ -99,7 +99,7 @@ public class PokemonRendererMixin {
 
         if (aspect.isPresent()) {
             if (MegaShowdownConfig.teraHats) {
-               mega_showdown$teraHatsLayer.render(aspect.get(), mega_showdown$context, clientDelegate, entity, pokemon, entityYaw, partialTicks, poseStack, buffer, packedLight);
+                mega_showdown$teraHatsLayer.render(aspect.get(), mega_showdown$context, clientDelegate, entity, pokemon, entityYaw, partialTicks, poseStack, buffer, packedLight);
             }
         }
 
