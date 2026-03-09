@@ -2,9 +2,12 @@ package com.github.yajatkaul.mega_showdown.utils;
 
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.github.yajatkaul.mega_showdown.api.codec.ZCrystal;
+import kotlin.Unit;
 import net.minecraft.ChatFormatting;
+import net.minecraft.network.protocol.game.ClientboundSetPlayerTeamPacket;
 import net.minecraft.server.ServerScoreboard;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.scores.PlayerTeam;
@@ -37,7 +40,7 @@ public class GlowHandler {
         if (pokemonEntity == null) return;
 
         if (pokemonEntity.level() instanceof ServerLevel serverLevel) {
-            pokemonEntity.addEffect(new MobEffectInstance(MobEffects.GLOWING, Integer.MAX_VALUE, 0, false, false));
+            pokemonEntity.setGlowingTag(true);
             ServerScoreboard scoreboard = serverLevel.getScoreboard();
 
             String teamName;
@@ -55,15 +58,24 @@ public class GlowHandler {
                 team = scoreboard.addPlayerTeam(teamName);
                 team.setColor(teamColour);
             }
+
             scoreboard.addPlayerToTeam(pokemonEntity.getScoreboardName(), team);
+
+            ServerPlayer owner = serverLevel.getServer()
+                    .getPlayerList()
+                    .getPlayer(pokemonEntity.getPokemon().getOwnerUUID());
+
+            if (owner != null) {
+                scoreboard.addPlayerToTeam(owner.getScoreboardName(), team);
+            }
         }
     }
 
-    public static void applyTeraGlow(PokemonEntity pokemon, String aspect) {
-        if (pokemon.level() instanceof ServerLevel serverLevel) {
-            pokemon.addEffect(new MobEffectInstance(MobEffects.GLOWING, Integer.MAX_VALUE, 0, false, false));
+    public static void applyTeraGlow(PokemonEntity pokemonEntity, String aspect) {
+        if (pokemonEntity.level() instanceof ServerLevel serverLevel) {
+            pokemonEntity.setGlowingTag(true);
             ServerScoreboard scoreboard = serverLevel.getScoreboard();
-            String teamName = "glow_tera_" + pokemon.getPokemon().getTeraType().showdownId();
+            String teamName = "glow_tera_" + pokemonEntity.getPokemon().getTeraType().showdownId();
 
             PlayerTeam team = scoreboard.getPlayerTeam(teamName);
 
@@ -73,13 +85,13 @@ public class GlowHandler {
                 team.setColor(color);
             }
 
-            scoreboard.addPlayerToTeam(pokemon.getScoreboardName(), team);
+            scoreboard.addPlayerToTeam(pokemonEntity.getScoreboardName(), team);
         }
     }
 
     public static void applyZGlow(PokemonEntity pokemon, ZCrystal zCrystal) {
         if (pokemon.level() instanceof ServerLevel serverLevel) {
-            pokemon.addEffect(new MobEffectInstance(MobEffects.GLOWING, 140, 0, false, false));
+            pokemon.setGlowingTag(true);
             ServerScoreboard scoreboard = serverLevel.getScoreboard();
             String teamName = "glow_type_" + zCrystal.color().toLowerCase(Locale.ROOT);
 
@@ -92,6 +104,12 @@ public class GlowHandler {
             }
 
             scoreboard.addPlayerToTeam(pokemon.getScoreboardName(), team);
+
+            pokemon.after(7f, () -> {
+                pokemon.setGlowingTag(false);
+                scoreboard.removePlayerFromTeam(pokemon.getScoreboardName());
+                return Unit.INSTANCE;
+            });
         }
     }
 

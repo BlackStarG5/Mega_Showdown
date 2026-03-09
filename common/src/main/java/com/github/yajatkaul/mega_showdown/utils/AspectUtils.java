@@ -10,6 +10,7 @@ import com.cobblemon.mod.common.api.pokemon.feature.StringSpeciesFeature;
 import com.cobblemon.mod.common.api.storage.party.PlayerPartyStore;
 import com.cobblemon.mod.common.battles.ActiveBattlePokemon;
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon;
+import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.net.messages.client.battle.BattleTransformPokemonPacket;
 import com.cobblemon.mod.common.net.messages.client.battle.BattleUpdateTeamPokemonPacket;
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.AbilityUpdatePacket;
@@ -26,6 +27,8 @@ import kotlin.Unit;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
+import net.minecraft.server.ServerScoreboard;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.biome.Biome;
@@ -221,9 +224,13 @@ public class AspectUtils {
                 UnaspectPropertyType.INSTANCE.fromString(name).apply(pokemon);
             });
             UnaspectPropertyType.INSTANCE.fromString("play_tera").apply(pokemon);
-            if (pokemon.getEntity() != null) {
+            if (pokemon.getEntity() instanceof PokemonEntity pokemonEntity) {
                 if (MegaShowdownConfig.legacyTeraEffect) {
-                    pokemon.getEntity().removeEffect(MobEffects.GLOWING);
+                    pokemon.getEntity().setGlowingTag(false);
+                    if (pokemonEntity.level() instanceof ServerLevel serverLevel) {
+                        ServerScoreboard scoreboard = serverLevel.getScoreboard();
+                        scoreboard.removePlayerFromTeam(pokemonEntity.getScoreboardName());
+                    }
                 }
             }
             pokemon.getPersistentData().remove("is_tera");

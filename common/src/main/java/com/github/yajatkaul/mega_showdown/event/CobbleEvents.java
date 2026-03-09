@@ -219,7 +219,7 @@ public class CobbleEvents {
             });
             if (pokemon.getEntity() != null) {
                 if (MegaShowdownConfig.legacyTeraEffect) {
-                    pokemon.getEntity().removeEffect(MobEffects.GLOWING);
+                    pokemon.getEntity().setGlowingTag(false);
                 }
             }
             pokemon.getPersistentData().remove("is_tera");

@@ -40,7 +40,7 @@ public record MaxGimmick(
     public static void startGradualScalingDown(Pokemon pokemon) {
         if (pokemon == null) return;
 
-        pokemon.getEntity().removeEffect(MobEffects.GLOWING);
+        pokemon.getEntity().setGlowingTag(false);
 
         float startScale = pokemon.getScaleModifier();
         ScalingData scalingData = new ScalingData(startScale, pokemon.getPersistentData().getFloat("orignal_size"), DEFAULT_SCALING_DURATION);
