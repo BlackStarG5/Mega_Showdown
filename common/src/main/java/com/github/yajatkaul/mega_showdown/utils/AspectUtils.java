@@ -68,6 +68,10 @@ public class AspectUtils {
                 Move move = moveSet.get(i);
                 if (move == null) continue;
 
+                if (move.getName().equals("sketch")) {
+                    break;
+                }
+
                 MoveTemplate template = move.getTemplate();
                 boolean isLegal = pokemon.getForm().getMoves().getAllLegalMoves().stream()
                         .anyMatch(m -> m.getName().equals(template.getName()));
@@ -87,6 +91,10 @@ public class AspectUtils {
             while (iterator.hasNext()) {
                 BenchedMove benchedMove = iterator.next();
                 MoveTemplate template = benchedMove.getMoveTemplate();
+
+                if (template.getName().equals("sketch")) {
+                    break;
+                }
 
                 boolean isLegal = pokemon.getForm().getMoves().getAllLegalMoves().stream()
                         .anyMatch(m -> m.getName().equals(template.getName()));
