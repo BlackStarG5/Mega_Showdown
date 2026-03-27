@@ -30,10 +30,10 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.server.ServerScoreboard;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.biome.Biome;
 
 import java.util.*;
+import java.util.stream.StreamSupport;
 
 public class AspectUtils {
     public static final Set<UUID> battleDisconnecter = new HashSet<>();
@@ -62,15 +62,21 @@ public class AspectUtils {
     private static void cleanMoveset(Pokemon pokemon) {
         MoveSet moveSet = pokemon.getMoveSet();
         BenchedMoves benchedMoves = pokemon.getBenchedMoves();
+        if (moveSet.getMoves()
+                .stream()
+                .anyMatch(m -> m.getName().equals("sketch"))) {
+            return;
+        }
+
+        if (StreamSupport.stream(benchedMoves.spliterator(), false)
+                .anyMatch(m -> m.getMoveTemplate().getName().equals("sketch"))) {
+            return;
+        }
 
         moveSet.doWithoutEmitting(() -> {
             for (int i = 0; i < MoveSet.MOVE_COUNT; i++) {
                 Move move = moveSet.get(i);
                 if (move == null) continue;
-
-                if (move.getName().equals("sketch")) {
-                    break;
-                }
 
                 MoveTemplate template = move.getTemplate();
                 boolean isLegal = pokemon.getForm().getMoves().getAllLegalMoves().stream()
@@ -91,10 +97,6 @@ public class AspectUtils {
             while (iterator.hasNext()) {
                 BenchedMove benchedMove = iterator.next();
                 MoveTemplate template = benchedMove.getMoveTemplate();
-
-                if (template.getName().equals("sketch")) {
-                    break;
-                }
 
                 boolean isLegal = pokemon.getForm().getMoves().getAllLegalMoves().stream()
                         .anyMatch(m -> m.getName().equals(template.getName()));
