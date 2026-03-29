@@ -1,4 +1,4 @@
-package com.github.yajatkaul.mega_showdown.mixin.battle;
+package com.github.yajatkaul.mega_showdown.mixin.client.battle;
 
 import com.cobblemon.mod.common.client.net.battle.BattleMessageHandler;
 import com.cobblemon.mod.common.net.messages.client.battle.BattleMessagePacket;
