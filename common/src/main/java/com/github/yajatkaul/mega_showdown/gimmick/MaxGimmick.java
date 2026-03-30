@@ -43,7 +43,11 @@ public record MaxGimmick(
         pokemon.getEntity().setGlowingTag(false);
 
         float startScale = pokemon.getScaleModifier();
-        ScalingData scalingData = new ScalingData(startScale, pokemon.getPersistentData().getFloat("orignal_size"), DEFAULT_SCALING_DURATION);
+        float targetScale = pokemon.getPersistentData().getFloat("orignal_size");
+        if (targetScale == 0) {
+            return;
+        }
+        ScalingData scalingData = new ScalingData(startScale, targetScale, DEFAULT_SCALING_DURATION);
 
         ACTIVE_SCALING_ANIMATIONS.put(pokemon, scalingData);
     }
