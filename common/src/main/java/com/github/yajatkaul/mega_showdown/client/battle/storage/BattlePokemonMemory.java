@@ -217,6 +217,10 @@ public class BattlePokemonMemory {
         this.item = new Illusory<>(this.illusionBroken, item);
     }
 
+    public void setItem (Component item) {
+        this.item = new Illusory<>(this.illusionBroken, item.getString());
+    }
+
     public void setItem (CobblemonItem item) {
         this.item = new Illusory<>(this.illusionBroken, item.getDescriptionId());
     }

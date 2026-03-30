@@ -148,7 +148,7 @@ public class BattleHud {
                         pokemonMemory.setItem("");
                     }
                     else if (pokemonMemory.getItem() == null) { // Too many weird edge cases involving items, the packets will always be correct so skip this if its already been done.
-                        pokemonMemory.setItem(pokemon.heldItem().getDescriptionId());
+                        pokemonMemory.setItem(pokemon.heldItem().getDisplayName());
                     }
 
                     PersistentStatusContainer status = pokemon.getStatus();

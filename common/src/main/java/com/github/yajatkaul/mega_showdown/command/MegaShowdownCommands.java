@@ -2,7 +2,9 @@ package com.github.yajatkaul.mega_showdown.command;
 
 import com.cobblemon.mod.common.Cobblemon;
 import com.cobblemon.mod.common.api.pokemon.feature.SpeciesFeatureAssignments;
+import com.cobblemon.mod.common.api.storage.PokemonStore;
 import com.cobblemon.mod.common.api.storage.party.PlayerPartyStore;
+import com.cobblemon.mod.common.api.storage.pc.PCStore;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.pokemon.properties.UnaspectPropertyType;
@@ -116,8 +118,15 @@ public class MegaShowdownCommands {
         }
 
         PlayerPartyStore playerPartyStore = Cobblemon.INSTANCE.getStorage().getParty(player);
+        reset(playerPartyStore);
+        PCStore pcStore = Cobblemon.INSTANCE.getStorage().getPC(player);
+        reset(pcStore);
 
-        for (Pokemon pokemon : playerPartyStore) {
+        return 1;
+    }
+
+    private static void reset(PokemonStore<?> pokemonStore) {
+        for (Pokemon pokemon : pokemonStore) {
             boolean hasMega = SpeciesFeatureAssignments.getFeatures(pokemon.getSpecies()).stream()
                     .anyMatch(pokemon.getAspects()::contains);
             if (hasMega) {
@@ -165,8 +174,6 @@ public class MegaShowdownCommands {
                 }
             }
         }
-
-        return 1;
     }
 
     private static int applyComponent(CommandContext<CommandSourceStack> context) {
