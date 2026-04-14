@@ -69,15 +69,6 @@ public record SnowStormParticle(
             BattlePokemon battlePokemon,
             boolean isApply
     ) {
-        MSDFormChanging.FormChangeEvent event =
-                new MSDFormChanging.FormChangeEvent(context, battlePokemon, null);
-
-        MSDFormChanging.EVENT.invoker().onFormChange(event);
-
-        if (event.isCancelled()) {
-            return;
-        }
-
         boolean wasInBattle = context.isBattling();
 
         context.setNoAi(true);

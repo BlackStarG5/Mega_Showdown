@@ -1,10 +1,10 @@
 package com.github.yajatkaul.mega_showdown.api.event;
 
 import com.cobblemon.mod.common.api.battles.model.PokemonBattle;
-import com.cobblemon.mod.common.battles.pokemon.BattlePokemon;
-import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
+import com.cobblemon.mod.common.pokemon.Pokemon;
 import dev.architectury.event.Event;
 import dev.architectury.event.EventFactory;
+import org.jetbrains.annotations.Nullable;
 
 public interface MSDFormChanging {
     Event<MSDFormChanging> EVENT = EventFactory.createLoop(MSDFormChanging.class);
@@ -12,16 +12,16 @@ public interface MSDFormChanging {
     void onFormChange(FormChangeEvent event);
 
     class FormChangeEvent {
-        public final PokemonEntity context;
-        public final BattlePokemon battlePokemon;
+        public final Pokemon context;
         public final PokemonBattle battle;
+        public final State state;
 
         private boolean cancelled = false;
 
-        public FormChangeEvent(PokemonEntity context, BattlePokemon battlePokemon, PokemonBattle battle) {
+        public FormChangeEvent(Pokemon context, @Nullable PokemonBattle battle, State state) {
             this.context = context;
-            this.battlePokemon = battlePokemon;
             this.battle = battle;
+            this.state = state;
         }
 
         public void cancel() {
@@ -31,5 +31,10 @@ public interface MSDFormChanging {
         public boolean isCancelled() {
             return cancelled;
         }
+    }
+
+    enum State {
+        Apply,
+        Revert
     }
 }
