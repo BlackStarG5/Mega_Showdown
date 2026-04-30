@@ -2,7 +2,7 @@ package com.github.yajatkaul.mega_showdown.mixin.battle.instructions;
 
 import com.cobblemon.mod.common.api.battles.interpreter.BattleMessage;
 import com.cobblemon.mod.common.api.battles.model.PokemonBattle;
-import com.cobblemon.mod.common.battles.interpreter.instructions.AbilityInstruction;
+import com.cobblemon.mod.common.battles.interpreter.instructions.EndItemInstruction;
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.github.yajatkaul.mega_showdown.api.codec.Effect;
@@ -16,8 +16,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.List;
 import java.util.Optional;
 
-@Mixin(AbilityInstruction.class)
-public class AbilityInstructionMixin {
+@Mixin(EndItemInstruction.class)
+public class ItemInstructionMixin {
     @Final @Shadow
     private BattleMessage message;
 
@@ -25,10 +25,11 @@ public class AbilityInstructionMixin {
     private void invokeInject(PokemonBattle battle, CallbackInfo ci) {
         BattlePokemon battlePokemon = message.battlePokemon(0, battle);
         Pokemon pokemon = battlePokemon.getEffectedPokemon();
+        String item = message.argumentAt(1);
 
         if (pokemon != null) {
-            String abilityName = "mega_showdown:ability_" + pokemon.getAbility().getName();
-            Effect.getEffect(abilityName).applyEffectsBattle(pokemon, List.of(), Optional.empty(), null, battlePokemon);
+            String item_name = "mega_showdown:item_" + item;
+            Effect.getEffect(item_name).applyEffectsBattle(pokemon, List.of(), Optional.empty(), null, battlePokemon);
         }
     }
 }

@@ -28,8 +28,8 @@ public class BagItemInstructionMixin {
         String item = message.argumentAt(1);
 
         if (pokemon != null) {
-            String abilityName = "bagitem_" + item;
-            Effect.getEffect(abilityName).applyEffectsBattle(pokemon, List.of(), Optional.empty(), null, battlePokemon);
+            String bagitem_name = "mega_showdown:bagitem_" + item;
+            Effect.getEffect(bagitem_name).applyEffectsBattle(pokemon, List.of(), Optional.empty(), null, battlePokemon);
         }
     }
 }
