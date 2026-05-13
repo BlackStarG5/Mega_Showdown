@@ -14,6 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Collection;
 
+@SuppressWarnings("deprecation")
 @Mixin(value = PokemonBattle.class, remap = false)
 public abstract class PokemonBattleMixin {
     @Shadow
