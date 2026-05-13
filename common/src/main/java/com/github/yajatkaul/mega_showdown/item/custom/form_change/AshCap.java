@@ -4,7 +4,7 @@ import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.github.yajatkaul.mega_showdown.advancement.AdvancementHelper;
 import com.github.yajatkaul.mega_showdown.api.codec.Effect;
 import com.github.yajatkaul.mega_showdown.config.MegaShowdownConfig;
-import com.github.yajatkaul.mega_showdown.item.custom.PokemonSelectingItem;
+import com.github.yajatkaul.mega_showdown.item.custom.MSDPokemonSelectingItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-public class AshCap extends PokemonSelectingItem {
+public class AshCap extends MSDPokemonSelectingItem {
     public AshCap(Properties arg) {
         super(arg);
     }

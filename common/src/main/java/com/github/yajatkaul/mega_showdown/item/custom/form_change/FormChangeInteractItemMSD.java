@@ -2,7 +2,7 @@ package com.github.yajatkaul.mega_showdown.item.custom.form_change;
 
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.github.yajatkaul.mega_showdown.api.codec.Effect;
-import com.github.yajatkaul.mega_showdown.item.custom.PokemonSelectingItem;
+import com.github.yajatkaul.mega_showdown.item.custom.MSDPokemonSelectingItem;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.item.ItemStack;
@@ -12,7 +12,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-public class FormChangeInteractItem extends PokemonSelectingItem {
+public class FormChangeInteractItemMSD extends MSDPokemonSelectingItem {
     private final String form_aspect_name;
     private final String form_aspect_apply;
     private final List<String> pokemons;
@@ -21,14 +21,14 @@ public class FormChangeInteractItem extends PokemonSelectingItem {
     private final boolean revertable;
     private final String form_aspect_revert;
 
-    public FormChangeInteractItem(Properties properties,
-                                  String form_aspect_name,
-                                  String form_aspect_apply,
-                                  List<String> pokemons,
-                                  String effectId,
-                                  int consume,
-                                  boolean revertable,
-                                  String form_aspect_revert
+    public FormChangeInteractItemMSD(Properties properties,
+                                     String form_aspect_name,
+                                     String form_aspect_apply,
+                                     List<String> pokemons,
+                                     String effectId,
+                                     int consume,
+                                     boolean revertable,
+                                     String form_aspect_revert
     ) {
         super(properties);
         this.form_aspect_name = form_aspect_name;

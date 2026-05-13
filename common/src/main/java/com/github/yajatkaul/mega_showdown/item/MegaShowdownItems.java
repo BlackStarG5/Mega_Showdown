@@ -894,7 +894,7 @@ public class MegaShowdownItems {
                                                                          boolean revertable,
                                                                          String form_aspect_revert
     ) {
-        return ITEMS.register(name, () -> new FormChangeInteractItem(
+        return ITEMS.register(name, () -> new FormChangeInteractItemMSD(
                 new Item.Properties().arch$tab(MegaShowdownTabs.FORM_TAB),
                 form_name,
                 form_apply,
@@ -913,7 +913,7 @@ public class MegaShowdownItems {
                                                                                List<String> effectIds,
                                                                                int consume
     ) {
-        return ITEMS.register(name, () -> new FormChangeInteractToggleItem(
+        return ITEMS.register(name, () -> new FormChangeInteractToggleItemMSD(
                 new Item.Properties().arch$tab(MegaShowdownTabs.FORM_TAB),
                 form_apply_order,
                 form_aspect_apply_order,

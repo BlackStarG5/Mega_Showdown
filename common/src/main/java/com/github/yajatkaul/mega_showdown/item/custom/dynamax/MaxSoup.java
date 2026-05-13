@@ -2,7 +2,7 @@ package com.github.yajatkaul.mega_showdown.item.custom.dynamax;
 
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.pokemon.Pokemon;
-import com.github.yajatkaul.mega_showdown.item.custom.PokemonSelectingItem;
+import com.github.yajatkaul.mega_showdown.item.custom.MSDPokemonSelectingItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
-public class MaxSoup extends PokemonSelectingItem {
+public class MaxSoup extends MSDPokemonSelectingItem {
     public MaxSoup(Properties arg) {
         super(arg);
     }

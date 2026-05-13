@@ -18,8 +18,6 @@
     "client.ui.PCGUIMixin",
     "client.ui.SummaryCompanionMixin",
     "client.ui.SummaryMixin",
-    "client.ui.TypeIconMixin",
-    "client.ui.TypeWidgetMixin",
     "minecraft.ItemInHandRendererMixin"
   ],
   "mixins": [
@@ -46,7 +44,6 @@
     "battle.instructions.EndItemInstructionMixin",
     "battle.instructions.ItemInstructionMixin",
     "minecraft.ItemStackMixin",
-    "packet.CobblemonNetworkMixin",
     "packet.MovePartyPokemonToPCHandlerMixin"
   ],
   "injectors": {

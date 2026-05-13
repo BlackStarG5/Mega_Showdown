@@ -1,6 +1,7 @@
 package com.github.yajatkaul.mega_showdown.item.custom;
 
 import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
+import com.cobblemon.mod.common.api.item.PokemonSelectingItem;
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon;
 import com.cobblemon.mod.common.item.battle.BagItem;
 import net.minecraft.server.level.ServerPlayer;
@@ -12,9 +13,8 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@SuppressWarnings("deprecation")
-public abstract class PokemonSelectingItem extends ToolTipItem implements com.cobblemon.mod.common.api.item.PokemonSelectingItem {
-    public PokemonSelectingItem(Properties settings) {
+public abstract class MSDPokemonSelectingItem extends ToolTipItem implements PokemonSelectingItem {
+    public MSDPokemonSelectingItem(Properties settings) {
         super(settings);
     }
 
@@ -22,11 +22,6 @@ public abstract class PokemonSelectingItem extends ToolTipItem implements com.co
     @Override
     public BagItem getBagItem() {
         return null;
-    }
-
-    @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull ServerPlayer player, @NotNull ItemStack itemStack) {
-        return DefaultImpls.use(this, player, itemStack);
     }
 
     @Override

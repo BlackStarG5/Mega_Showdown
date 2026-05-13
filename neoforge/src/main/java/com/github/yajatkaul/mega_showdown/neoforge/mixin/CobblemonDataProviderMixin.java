@@ -2,7 +2,6 @@ package com.github.yajatkaul.mega_showdown.neoforge.mixin;
 
 import com.cobblemon.mod.common.data.CobblemonDataProvider;
 import com.github.yajatkaul.mega_showdown.datapack.CustomTypeStatusRegistry;
-import com.github.yajatkaul.mega_showdown.neoforge.datapack.CustomTypeRegistryNeo;
 import com.github.yajatkaul.mega_showdown.neoforge.datapack.showdown.*;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -16,7 +15,6 @@ public class CobblemonDataProviderMixin {
     private void register(CallbackInfo ci) {
         CobblemonDataProvider self = (CobblemonDataProvider) (Object) this;
 
-        self.register(CustomTypeRegistryNeo.INSTANCE, true);
         self.register(CustomTypeStatusRegistry.INSTANCE, true);
         self.register(Moves.INSTANCE, true);
         self.register(Abilities.INSTANCE, true);

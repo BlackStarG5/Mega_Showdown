@@ -2,7 +2,7 @@ package com.github.yajatkaul.mega_showdown.item.custom.form_change;
 
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.github.yajatkaul.mega_showdown.api.codec.Effect;
-import com.github.yajatkaul.mega_showdown.item.custom.PokemonSelectingItem;
+import com.github.yajatkaul.mega_showdown.item.custom.MSDPokemonSelectingItem;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.item.ItemStack;
@@ -12,19 +12,19 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Optional;
 
-public class FormChangeInteractToggleItem extends PokemonSelectingItem {
+public class FormChangeInteractToggleItemMSD extends MSDPokemonSelectingItem {
     private final List<String> form_apply_order;
     private final List<String> form_aspect_apply_order;
     private final List<String> pokemons;
     private final List<String> effectIds;
     private final int consume;
 
-    public FormChangeInteractToggleItem(Properties properties,
-                                        List<String> form_apply_order,
-                                        List<String> form_aspect_apply_order,
-                                        List<String> pokemons,
-                                        List<String> effectIds,
-                                        int consume
+    public FormChangeInteractToggleItemMSD(Properties properties,
+                                           List<String> form_apply_order,
+                                           List<String> form_aspect_apply_order,
+                                           List<String> pokemons,
+                                           List<String> effectIds,
+                                           int consume
     ) {
         super(properties);
         this.form_apply_order = form_apply_order;

@@ -3,7 +3,7 @@ package com.github.yajatkaul.mega_showdown.item.custom.dynamax;
 import com.cobblemon.mod.common.Cobblemon;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.github.yajatkaul.mega_showdown.advancement.AdvancementHelper;
-import com.github.yajatkaul.mega_showdown.item.custom.PokemonSelectingItem;
+import com.github.yajatkaul.mega_showdown.item.custom.MSDPokemonSelectingItem;
 import com.github.yajatkaul.mega_showdown.utils.ParticlesList;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -14,7 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class DynamaxCandy extends PokemonSelectingItem {
+public class DynamaxCandy extends MSDPokemonSelectingItem {
     public DynamaxCandy(Item.Properties arg) {
         super(arg);
     }
