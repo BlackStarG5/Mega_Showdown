@@ -13,7 +13,6 @@ import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@SuppressWarnings("deprecation")
 public abstract class PokemonSelectingBlockItem extends ToolTipBlockItem implements com.cobblemon.mod.common.api.item.PokemonSelectingItem {
     public PokemonSelectingBlockItem(Block block, Properties properties) {
         super(block, properties);
@@ -26,16 +25,18 @@ public abstract class PokemonSelectingBlockItem extends ToolTipBlockItem impleme
     }
 
     @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull ServerPlayer player, @NotNull ItemStack itemStack) {
-        return DefaultImpls.use(this, player, itemStack);
-    }
+    public @NotNull InteractionResultHolder<ItemStack> use(
+            Level world,
+            Player user,
+            InteractionHand hand
+    ) {
+        ItemStack stack = user.getItemInHand(hand);
 
-    @Override
-    public @NotNull InteractionResultHolder<ItemStack> use(Level world, Player user, InteractionHand hand) {
-        if (user instanceof ServerPlayer serverPlayer) {
-            return this.use(serverPlayer, user.getItemInHand(hand));
+        if (!world.isClientSide && user instanceof ServerPlayer serverPlayer) {
+            return this.use(serverPlayer, stack, false);
         }
-        return InteractionResultHolder.success(user.getItemInHand(hand));
+
+        return InteractionResultHolder.success(stack);
     }
 
     @Override
