@@ -9,10 +9,10 @@
       "texture": "cobblemon:textures/pokemon/0302_sableye/sableye_mega.png",
       "layers": [
         {
-          "name": "emissive",
+          "name": "gem",
           "emissive": false,
-          "texture": "cobblemon:textures/pokemon/0302_sableye/sableye_mega_emissive.png",
-          "translucent": true
+          "translucent": true,
+          "texture": "cobblemon:textures/pokemon/0302_sableye/sableye_mega_translucent.png"
         }
       ]
     },
@@ -23,10 +23,10 @@
       "texture": "cobblemon:textures/pokemon/0302_sableye/sableye_mega_shiny.png",
       "layers": [
         {
-          "name": "emissive",
+          "name": "gem",
           "emissive": false,
-          "texture": "cobblemon:textures/pokemon/0302_sableye/sableye_mega_shiny_emissive.png",
-          "translucent": true
+          "translucent": true,
+          "texture": "cobblemon:textures/pokemon/0302_sableye/sableye_mega_shiny_translucent.png"
         }
       ]
     }

@@ -4,12 +4,14 @@
   "variations": [
     {
       "aspects": ["mega"],
+      "poser": "cobblemon:swampert_mega",
       "model": "cobblemon:swampert_mega.geo",
       "texture": "cobblemon:textures/pokemon/0260_swampert/swampert_mega.png",
       "layers": []
     },
     {
       "aspects": ["mega", "shiny"],
+      "poser": "cobblemon:swampert_mega",
       "model": "cobblemon:swampert_mega.geo",
       "texture": "cobblemon:textures/pokemon/0260_swampert/swampert_mega_shiny.png"
     }

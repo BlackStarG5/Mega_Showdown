@@ -1,0 +1,39 @@
+{
+  "portraitScale": 1.5,
+  "portraitTranslation": [-0.3, 1.4, 0],
+  "profileScale": 0.5,
+  "profileTranslation": [-0.1, 1, 0],
+  "rootBone": "swampert",
+  "firstPersonCameraOffset": {
+    "seat_1": [0, 0.25, -0.45]
+  },
+  "thirdPersonCameraOffset": {
+    "seat_1": [1.15, 0.35, 2.75],
+    "seat_1_reverse": [1.15, 0.35, 2.5]
+  },
+  "animations": {
+    "cry": "q.bedrock_stateful('swampert_mega', 'cry')"
+  },
+  "poses": {
+    "standing": {
+      "poseTypes": ["STAND", "NONE", "PORTRAIT", "PROFILE"],
+      "animations": ["q.bedrock('swampert_mega', 'ground_idle')"]
+    },
+    "walking": {
+      "poseTypes": ["WALK"],
+      "isBattle": false,
+      "transformTicks": 5,
+      "condition": "!q.in_air && !q.is_sprinting",
+      "animations": ["q.bedrock('swampert_mega', 'ground_walk')"],
+      "quirks": ["q.bedrock_quirk('swampert_mega', 'blink')"]
+    },
+    "run": {
+      "poseTypes": ["STAND", "WALK"],
+      "isBattle": false,
+      "transformTicks": 5,
+      "condition": "!q.in_air && q.is_sprinting",
+      "animations": ["q.bedrock('swampert_mega', 'ground_run')"],
+      "quirks": ["q.bedrock_quirk('swampert_mega', 'blink')"]
+    }
+  }
+}
