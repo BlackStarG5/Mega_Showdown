@@ -1,101 +1,86 @@
 {
   "head": "head",
-  "portraitScale": 2.65,
-  "portraitTranslation": [
-    -0.3,
-    2.55,
-    0
-  ],
-  "profileScale": 0.71,
-  "profileTranslation": [
-    0,
-    0.8,
-    0
-  ],
-  "cry": "bedrock(megakangaskhan, cry)",
+  "portraitScale": 1.2,
+  "portraitTranslation": [-0.3, 1.9, 0],
+  "profileScale": 0.37,
+  "profileTranslation": [0,1.14,0],
+  "animations": {
+    "cry": "q.bedrock_stateful('megakangaskhan', 'cry')"
+  },
   "poses": {
-    "standing": {
-      "poseName": "standing",
+    "portrait": {
+      "poseName": "portrait",
+      "poseTypes": ["PORTRAIT"],
+      "animations": ["q.bedrock('megakangaskhan', 'pose')"]
+    },
+
+    "battle_standing": {
+      "poseName": "battle_standing",
+      "isBattle": true,
       "transformTicks": 10,
-      "poseTypes": [
-        "STAND",
-        "NONE",
-        "PORTRAIT",
-        "PROFILE"
-      ],
-      "animations": [
-        "look",
-        "bedrock(megakangaskhan, ground_idle)"
-      ],
+      "poseTypes": ["STAND", "NONE"],
+      "animations": ["look", "q.bedrock('megakangaskhan', 'battle_idle')"],
       "quirks": [
         {
-          "name": "blink1",
+          "name": "blink",
           "loopTimes": 1,
           "minSecondsBetweenOccurrences": 8,
           "maxSecondsBetweenOccurrences": 20,
-          "animations": [
-            "bedrock(megakangaskhan, blink1)"
-          ]
+          "animations": ["q.bedrock('megakangaskhan', 'blink')"]
         },
         {
           "name": "blink2",
           "loopTimes": 1,
           "minSecondsBetweenOccurrences": 8,
           "maxSecondsBetweenOccurrences": 20,
-          "animations": [
-            "bedrock(megakangaskhan, blink2)"
-          ]
+          "animations": ["q.bedrock('megakangaskhan', 'blink2')"]
+        }
+      ]
+    },
+    "standing": {
+      "poseName": "standing",
+      "isBattle": false,
+      "transformTicks": 10,
+      "poseTypes": ["STAND", "NONE", "PROFILE"],
+      "animations": ["look", "q.bedrock('megakangaskhan', 'ground_idle')"],
+      "quirks": [
+        {
+          "name": "blink",
+          "loopTimes": 1,
+          "minSecondsBetweenOccurrences": 8,
+          "maxSecondsBetweenOccurrences": 20,
+          "animations": ["q.bedrock('megakangaskhan', 'blink')"]
         },
         {
-          "name": "baby",
+          "name": "blink2",
           "loopTimes": 1,
-          "minSecondsBetweenOccurrences": 60,
-          "maxSecondsBetweenOccurrences": 80,
-          "animations": [
-            "bedrock(megakangaskhan, baby_quirk)"
-          ]
+          "minSecondsBetweenOccurrences": 8,
+          "maxSecondsBetweenOccurrences": 20,
+          "animations": ["q.bedrock('megakangaskhan', 'blink2')"]
         }
       ]
     },
     "walking": {
       "poseName": "walking",
       "transformTicks": 10,
-      "poseTypes": [
-        "WALK"
-      ],
+      "poseTypes": ["WALK"],
       "isTouchingWater": false,
-      "animations": [
-        "bedrock(megakangaskhan, ground_walk)"
-      ],
+      "animations": ["q.bedrock('megakangaskhan', 'ground_walk')"],
       "quirks": [
         {
-          "name": "blink1",
+          "name": "blink",
           "loopTimes": 1,
           "minSecondsBetweenOccurrences": 8,
           "maxSecondsBetweenOccurrences": 20,
-          "animations": [
-            "bedrock(megakangaskhan, blink1)"
-          ]
+          "animations": ["q.bedrock('megakangaskhan', 'blink')"]
         },
         {
           "name": "blink2",
           "loopTimes": 1,
           "minSecondsBetweenOccurrences": 8,
           "maxSecondsBetweenOccurrences": 20,
-          "animations": [
-            "bedrock(megakangaskhan, blink2)"
-          ]
+          "animations": ["q.bedrock('megakangaskhan', 'blink2')"]
         }
-      ]
-    },
-    "sleeping": {
-      "poseName": "sleeping",
-      "transformTicks": 10,
-      "poseTypes": [
-        "SLEEP"
-      ],
-      "animations": [
-        "bedrock(megakangaskhan, sleep)"
       ]
     }
   }

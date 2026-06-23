@@ -1,45 +1,61 @@
 {
-  "head": "head_body",
-  "portraitScale": 1.2,
-  "portraitTranslation": [
-    0.1,
-    1,
-    0
-  ],
-  "profileScale": 0.7,
-  "profileTranslation": [
-    0,
-    1.5,
-    0
-  ],
-  "faint": "bedrock(cosmog, faint)",
+  "portraitScale": 1.28,
+  "portraitTranslation": [0.03, 0.22, 0],
+  "profileScale": 0.57,
+  "profileTranslation": [0.03, 0.89, 0],
+  "animations": {
+    
+  },
   "poses": {
-    "standing": {
-      "poseName": "standing",
+    "battle-standing": {
       "transformTicks": 10,
-      "poseTypes": [
-        "STAND",
-        "NONE",
-        "PORTRAIT",
-        "PROFILE"
-      ],
+      "poseTypes": ["STAND", "WALK"],
+      "isBattle": true,
       "animations": [
-        "look",
-        "bedrock(cosmog, ground_idle)"
-      ],
-      "quirks": []
+        "q.look('head')",
+        "q.bedrock('cosmog', 'ground_idle')"
+      ]
+    },
+    "standing": {
+      "transformTicks": 10,
+      "poseTypes": ["STAND", "NONE", "PORTRAIT", "PROFILE"],
+      "isBattle": false,
+      "animations": [
+        "q.look('head')",
+        "q.bedrock('cosmog', 'ground_idle')"
+      ]
     },
     "walking": {
-      "poseName": "walking",
-      "transformTicks": 10,
-      "poseTypes": [
-        "WALK"
-      ],
+      "transformTicks": 8,
+      "poseTypes": ["WALK"],
       "animations": [
-        "look",
-        "bedrock(cosmog, ground_walk)"
-      ],
-      "quirks": []
+        "q.look('head')",
+        "q.bedrock('cosmog', 'ground_walk')"
+      ]
+    },
+    "hover": {
+      "transformTicks": 5,
+      "poseTypes": [ "FLY", "HOVER", "FLOAT" ],
+      "animations": [
+        "q.look('head')",
+        "q.bedrock('cosmog', 'ground_idle')"
+       ]
+    },
+    "float": {
+      "transformTicks": 5,
+      "poseTypes": ["FLOAT"],
+      "animations": [
+        "q.look('head')",
+        "q.bedrock('cosmog', 'ground_walk')"
+      ]
+    },
+    "swim": {
+      "transformTicks": 8,
+      "poseTypes": ["SWIM"],
+      "animations": [
+        "q.look('head')",
+        "q.bedrock('cosmog', 'ground_walk')"
+      ]
     }
   }
 }

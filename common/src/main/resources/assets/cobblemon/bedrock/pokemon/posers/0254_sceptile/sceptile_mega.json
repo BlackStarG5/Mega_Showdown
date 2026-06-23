@@ -1,8 +1,8 @@
 {
   "portraitScale": 2.27,
-  "portraitTranslation": [-0.69,2.8,0],
+  "portraitTranslation": [-0.69, 2.8, 0],
   "profileScale": 0.63,
-  "profileTranslation": [0.06,0.91,0],
+  "profileTranslation": [0.06, 0.91, 0],
 
   "rootBone": "sceptile_mega",
 
@@ -11,15 +11,16 @@
     "recoil": "q.bedrock_stateful('sceptile_mega', 'recoil')",
     "faint": "q.bedrock_primary('sceptile_mega', 'faint', q.curve('one'))",
     "physical": "q.bedrock_primary('sceptile_mega', 'physical', q.curve('symmetrical_wide'))",
+    "leafblade": "q.bedrock_primary('sceptile_mega', 'leafblade', q.curve('symmetrical_wide'))",
+    "leafstorm": "q.bedrock_primary('sceptile_mega', 'leafstorm', q.curve('symmetrical_wide'))",
     "special": "q.bedrock_primary('sceptile_mega', 'special', q.curve('symmetrical_wide'))",
     "status": "q.bedrock_primary('sceptile_mega', 'status', q.curve('symmetrical_wide'))"
   },
 
-  "poses": {
-
-    "battle-standing": {
-      "poseTypes": ["STAND"],
-      "isBattle": true,
+ "poses": {
+   "battle-standing": {
+     "poseTypes": ["STAND"],
+     "isBattle": true,
       "animations": [
         "q.look('head')",
         "q.bedrock('sceptile_mega', 'battle_idle')"
@@ -30,7 +31,8 @@
     },
 
     "standing": {
-      "poseTypes": ["STAND", "NONE", "PORTRAIT", "PROFILE"],
+     "poseTypes": ["STAND", "NONE", "PORTRAIT", "PROFILE"],
+      "isBattle": false,
       "animations": [
         "q.look('head')",
         "q.bedrock('sceptile_mega', 'ground_idle')"
@@ -51,9 +53,8 @@
     "sleep": {
       "poseTypes": ["SLEEP"],
       "animations": [
-        "q.bedrock('sceptile_mega', 'ground_idle')"
+        "q.bedrock('sceptile_mega', 'sleep')"
       ]
     }
-
   }
 }

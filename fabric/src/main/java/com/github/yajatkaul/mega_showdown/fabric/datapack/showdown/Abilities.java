@@ -6,7 +6,6 @@ import com.cobblemon.mod.common.api.abilities.AbilityTemplate;
 import com.cobblemon.mod.common.api.data.DataRegistry;
 import com.cobblemon.mod.common.api.reactive.SimpleObservable;
 import com.cobblemon.mod.common.battles.runner.graal.GraalShowdownService;
-import com.cobblemon.mod.relocations.graalvm.polyglot.Value;
 import com.github.yajatkaul.mega_showdown.MegaShowdown;
 import com.github.yajatkaul.mega_showdown.utils.datapack.NewAbility;
 import kotlin.Unit;
@@ -14,6 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
+import org.graalvm.polyglot.Value;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;

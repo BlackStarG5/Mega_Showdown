@@ -4,7 +4,7 @@
   "aspect_conditions": {
     "apply": {
       "aspect": {
-        "blacklist_forms": ["Galar"]
+        "blacklist_aspects": [["galarian"]]
       },
       "aspects": ["mega_evolution=mega"]
     },

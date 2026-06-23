@@ -106,8 +106,8 @@ public class MegaShowdownConfig {
             if (json.has("multipleMegas")) {
                 multipleMegas = json.get("multipleMegas").getAsBoolean();
             }
-            if (json.has("msdPathAutoUpdate")) {
-                msdPatchAutoUpdate = json.get("msdPathAutoUpdate").getAsBoolean();
+            if (json.has("msdPatchAutoUpdate")) {
+                msdPatchAutoUpdate = json.get("msdPatchAutoUpdate").getAsBoolean();
             }
             if (json.has("mega")) {
                 mega = json.get("mega").getAsBoolean();

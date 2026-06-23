@@ -1,0 +1,17 @@
+{
+  "species": "cobblemon:drampa",
+  "order": 2,
+  "variations": [
+    {
+      "aspects": ["mega"],
+	  "poser": "cobblemon:drampamega",
+      "model": "cobblemon:drampamega.geo",
+      "texture": "cobblemon:textures/pokemon/0780_drampa/drampa_mega.png",
+      "layers": []
+    },
+    {
+      "aspects": [ "mega", "shiny" ],
+      "texture": "cobblemon:textures/pokemon/0780_drampa/drampa_mega_shiny.png"
+    }
+  ]
+}
