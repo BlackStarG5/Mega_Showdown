@@ -127,8 +127,7 @@ public class MegaShowdownCommands {
 
     private static void reset(PokemonStore<?> pokemonStore) {
         for (Pokemon pokemon : pokemonStore) {
-            boolean hasMega = SpeciesFeatureAssignments.getFeatures(pokemon.getSpecies()).stream()
-                    .anyMatch(pokemon.getAspects()::contains);
+            boolean hasMega = SpeciesFeatureAssignments.getFeatures(pokemon.getSpecies()).contains("mega_evolution");
             if (hasMega) {
                 MegaGimmick.unmegaEvolve(pokemon);
             }

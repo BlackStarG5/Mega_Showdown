@@ -11,9 +11,17 @@
     },
     {
       "aspects": ["mega", "shiny"],
-      "poser": "cobblemon:swampert_mega",
-      "model": "cobblemon:swampert_mega.geo",
       "texture": "cobblemon:textures/pokemon/0260_swampert/swampert_mega_shiny.png"
+    },
+    {
+      "aspects": ["mega", "alpha_eyes"],
+      "layers": [
+        {
+          "name": "alpha_eyes",
+          "texture": "cobblemon:textures/pokemon/0260_swampert/swampert_mega_alpha.png",
+          "emissive": true
+        }
+      ]
     }
   ]
 }

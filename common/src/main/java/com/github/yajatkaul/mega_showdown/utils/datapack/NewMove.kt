@@ -35,7 +35,6 @@ object NewMove {
                 effectChances += secondaryMember.get("chance").asDouble
             }
         }
-        val weight = moveData.get("weight")?.asFloat ?: 1.0f
 
         val move = MoveTemplate(
             id,
@@ -48,8 +47,7 @@ object NewMove {
             pp,
             priority,
             critRatio,
-            effectChances.toTypedArray(),
-            weight
+            effectChances.toTypedArray()
         )
 
         return move

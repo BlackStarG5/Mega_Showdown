@@ -312,10 +312,7 @@ public class BattlePokemonMemory {
                 PokemonGuiUtilsKt.drawProfilePokemon(
                         this.renderablePokemon,
                         context.pose(),
-                        QuaternionUtilsKt.fromEulerXYZDegrees(
-                                new Quaternionf(),
-                                new Vector3f(13f, isLeft ? -35f : 35f, 0f)
-                        ),
+                        QuaternionUtilsKt.fromEulerXYZDegrees(new Quaternionf(), new Vector3f(13f, isLeft ? -35f : 35f, 0f)),
                         PoseType.PROFILE,
                         new FloatingState(),
                         tickDelta,
@@ -327,8 +324,7 @@ public class BattlePokemonMemory {
                         1f,
                         1f,
                         0f,
-                        0f,
-                        13
+                        0f
                 );
             }
             context.disableScissor();

@@ -1354,6 +1354,20 @@ const Abilities = {
     rating: 3.5,
     num: 297,
   },
+  eelevate: {
+		isNonstandard: "Future",
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				const bestStat = source.getBestStat(true, true);
+				this.boost({ [bestStat]: length }, source);
+			}
+		},
+		flags: { breakable: 1 },
+		name: "Eelevate",
+		rating: 4,
+		num: 313
+    /* airborneness implemented in sim/pokemon.js:isGrounded */
+  },
   effectspore: {
     onDamagingHit(damage, target, source, move) {
       if (
@@ -1555,6 +1569,27 @@ const Abilities = {
     name: "Filter",
     rating: 3,
     num: 111,
+  },
+  firemane: {
+		isNonstandard: "Future",
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Fire') {
+				this.debug('Fire Mane boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Fire') {
+				this.debug('Fire Mane boost');
+				return this.chainModify(1.5);
+			}
+		},
+		flags: {},
+		name: "Fire Mane",
+		rating: 3.5,
+		num: 316,
   },
   flamebody: {
     onDamagingHit(damage, target, source, move) {
@@ -3039,17 +3074,17 @@ const Abilities = {
     num: 178,
   },
   megasol: {
-    isNonstandard: "Future",
+    isNonstandard: 'Future',
     onWeatherModifyDamagePriority: 1,
     onWeatherModifyDamage(damage, attacker, defender, move) {
-    	this.dex.conditions.getByID('sunnyday').onWeatherModifyDamage
-    		.call(this, damage, attacker, defender, move);
-    	return damage;
+        if (this.field.isWeather(['sunnyday', 'desolateland'])) return;
+        return this.dex.conditions.getByID('sunnyday').onWeatherModifyDamage.call(this, damage, attacker, defender, move);
     },
     flags: {},
-    name: "Mega Sol",
+    name: 'Mega Sol',
     rating: 3,
-    num: 315,
+    num: 315
+    /* Partially implemented in Pokemon.effectiveWeather() in sim/pokemon.ts */
   },
   merciless: {
     onModifyCritRatio(critRatio, source, target) {

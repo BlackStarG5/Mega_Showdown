@@ -1690,7 +1690,7 @@ class Pokemon {
       return true;
     if (!negateImmunity && this.hasType("Flying") && !(this.hasType("???") && "roost" in this.volatiles))
       return false;
-    if (this.hasAbility("levitate") && !this.battle.suppressingAbility(this))
+    if (this.hasAbility(['levitate', 'eelevate']) && !this.battle.suppressingAbility(this))
       return null;
     if ("magnetrise" in this.volatiles)
       return false;
@@ -1722,23 +1722,17 @@ class Pokemon {
   effectiveWeather(sourceEffect, message) {
     if (!sourceEffect && this.battle.effect) sourceEffect = this.battle.effect;
     const weather = this.battle.field.effectiveWeather();
-    if (
-      this.battle.activePokemon?.hasAbility('megasol') &&
-      sourceEffect &&
-      (sourceEffect.id === 'megasol' ||
-        sourceEffect.effectType === 'Move' ||
-        sourceEffect.effectType === 'Weather') &&
-      sourceEffect.id !== 'electroshot'
-    ) {
-      if (weather !== 'sunnyday' && message)
-        this.battle.add('-activate', this, 'ability: Mega Sol');
-      return 'sunnyday';
+    if (this.battle.activePokemon?.hasAbility('megasol') && sourceEffect &&
+        (sourceEffect.id === 'megasol' || sourceEffect.effectType === 'Move' || sourceEffect.effectType === 'Weather') &&
+        sourceEffect.id !== 'electroshot') {
+        if (weather !== 'sunnyday' && message) this.battle.add('-activate', this, 'ability: Mega Sol');
+        return 'sunnyday';
     }
     switch (weather) {
-      case 'sunnyday':
-      case 'raindance':
-      case 'desolateland':
-      case 'primordialsea':
+    case 'sunnyday':
+    case 'raindance':
+    case 'desolateland':
+    case 'primordialsea':
         if (this.hasItem('utilityumbrella')) return '';
     }
     return weather;

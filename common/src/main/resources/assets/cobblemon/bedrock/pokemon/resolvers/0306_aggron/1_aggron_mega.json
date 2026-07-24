@@ -9,8 +9,17 @@
     },
     {
       "aspects": ["mega", "shiny"],
-      "model": "cobblemon:aggron_mega.geo",
       "texture": "cobblemon:textures/pokemon/0306_aggron/aggron_mega_shiny.png"
+    },
+    {
+      "aspects": ["mega", "alpha_eyes"],
+      "layers": [
+        {
+          "name": "alpha_eyes",
+          "texture": "cobblemon:textures/pokemon/0306_aggron/aggron_mega_alpha.png",
+          "emissive": true
+        }
+      ]
     }
   ]
 }

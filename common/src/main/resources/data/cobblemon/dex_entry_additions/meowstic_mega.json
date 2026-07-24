@@ -2,12 +2,8 @@
   "entryId": "cobblemon:meowstic",
   "forms": [
     {
-      "displayForm": "Mega",
-      "unlockForms": ["Mega"]
-    },
-    {
-      "displayForm": "Mega",
-      "unlockForms": ["Mega"]
+      "displayForm": "F-Mega",
+      "unlockForms": ["F-Mega", "M-Mega"]
     }
   ]
 }
