@@ -13,13 +13,21 @@
       "spawnablePositionType": "grounded",
       "bucket": "uncommon",
       "level": "16-32",
-      "weight": 0.304,
-      "weightMultiplier": {
-        "multiplier": 5.0,
-        "condition": {
-          "isThundering": true
+      "weight": 3.64,
+      "weightMultipliers": [
+        {
+          "multiplier": 5.0,
+          "condition": {
+            "isThundering": true
+          }
+        },
+        {
+          "multiplier": 2.0,
+          "condition": {
+            "isPokeSnack": true
+          }
         }
-      },
+      ],
       "condition": {
         "minSkyLight": 8,
         "maxSkyLight": 15,
@@ -31,7 +39,7 @@
           "#cobblemon:is_tropical_island"
         ],
         "structures": [
-            "#minecraft:village"
+          "#minecraft:village"
         ]
       },
       "anticondition": {
@@ -50,13 +58,21 @@
       "spawnablePositionType": "grounded",
       "bucket": "uncommon",
       "level": "16-32",
-      "weight": 0.304,
-      "weightMultiplier": {
-        "multiplier": 5.0,
-        "condition": {
-          "isThundering": true
+      "weight": 3.64,
+      "weightMultipliers": [
+        {
+          "multiplier": 5.0,
+          "condition": {
+            "isThundering": true
+          }
+        },
+        {
+          "multiplier": 2.0,
+          "condition": {
+            "isPokeSnack": true
+          }
         }
-      },
+      ],
       "condition": {
         "minSkyLight": 8,
         "maxSkyLight": 15,
@@ -68,7 +84,7 @@
           "#cobblemon:is_tropical_island"
         ],
         "structures": [
-            "#minecraft:village"
+          "#minecraft:village"
         ]
       },
       "anticondition": {

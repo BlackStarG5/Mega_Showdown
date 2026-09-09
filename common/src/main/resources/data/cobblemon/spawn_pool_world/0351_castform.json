@@ -13,7 +13,7 @@
       "spawnablePositionType": "grounded",
       "bucket": "rare",
       "level": "23-48",
-      "weight": 10.0,
+      "weight": 100.0,
       "condition": {
         "minSkyLight": 8,
         "maxSkyLight": 15,
@@ -39,7 +39,7 @@
       "spawnablePositionType": "grounded",
       "bucket": "rare",
       "level": "23-48",
-      "weight": 10.0,
+      "weight": 100.0,
       "condition": {
         "minSkyLight": 8,
         "maxSkyLight": 15,
@@ -59,7 +59,7 @@
       "spawnablePositionType": "grounded",
       "bucket": "rare",
       "level": "23-48",
-      "weight": 10.0,
+      "weight": 100.0,
       "condition": {
         "minSkyLight": 8,
         "maxSkyLight": 15,
@@ -85,13 +85,33 @@
       "spawnablePositionType": "grounded",
       "bucket": "rare",
       "level": "23-48",
-      "weight": 10.0,
+      "weight": 100.0,
       "condition": {
         "minSkyLight": 8,
         "maxSkyLight": 15,
         "isRaining": true,
         "biomes": [
           "#cobblemon:is_cold"
+        ]
+      }
+    },
+    {
+      "id": "castform-5",
+      "pokemon": "castform",
+      "presets": [
+        "natural"
+      ],
+      "type": "pokemon",
+      "spawnablePositionType": "grounded",
+      "bucket": "rare",
+      "level": "23-48",
+      "weight": 100.0,
+      "condition": {
+        "minSkyLight": 8,
+        "maxSkyLight": 15,
+        "isRaining": false,
+        "biomes": [
+          "#aether:is_aether"
         ]
       }
     }
