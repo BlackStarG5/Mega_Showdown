@@ -12,9 +12,9 @@
             ],
             "type": "pokemon",
             "spawnablePositionType": "grounded",
-            "bucket": "common",
+            "bucket": "uncommon",
             "level": "20-46",
-            "weight": 5.5,
+            "weight": 4.8,
             "condition": {
                 "minSkyLight": 8,
                 "maxSkyLight": 15,
@@ -27,31 +27,6 @@
                     "#cobblemon:is_freezing",
                     "#cobblemon:is_spooky"
                 ],
-                "structures": [
-                    "#minecraft:village"
-                ]
-            }
-        },
-        {
-            "id": "wormadam-plant-2",
-            "pokemon": "wormadam bagworm_cloak=plant",
-            "presets": [
-                "foliage",
-                "treetop"
-            ],
-            "type": "pokemon",
-            "spawnablePositionType": "grounded",
-            "bucket": "common",
-            "level": "20-46",
-            "weight": 5.5,
-            "condition": {
-                "minSkyLight": 8,
-                "maxSkyLight": 15,
-                "biomes": [
-                    "biomesoplenty:aspen_glade"
-                ]
-            },
-            "anticondition": {
                 "structures": [
                     "#minecraft:village"
                 ]

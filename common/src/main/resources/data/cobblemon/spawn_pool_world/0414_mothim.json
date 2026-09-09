@@ -11,9 +11,9 @@
             ],
             "type": "pokemon",
             "spawnablePositionType": "grounded",
-            "bucket": "common",
+            "bucket": "uncommon",
             "level": "20-46",
-            "weight": 5.5,
+            "weight": 4.8,
             "condition": {
                 "minSkyLight": 8,
                 "maxSkyLight": 15,
@@ -40,9 +40,9 @@
             ],
             "type": "pokemon",
             "spawnablePositionType": "grounded",
-            "bucket": "common",
+            "bucket": "uncommon",
             "level": "20-46",
-            "weight": 0.5,
+            "weight": 4.8,
             "condition": {
                 "minSkyLight": 8,
                 "maxSkyLight": 15,
@@ -57,35 +57,6 @@
                 "biomes": [
                     "#cobblemon:is_freezing",
                     "#cobblemon:is_spooky"
-                ]
-            }
-        },
-        {
-            "id": "mothim-3",
-            "pokemon": "mothim",
-            "presets": [
-                "treetop"
-            ],
-            "type": "pokemon",
-            "spawnablePositionType": "grounded",
-            "bucket": "common",
-            "level": "20-46",
-            "weight": 0.5,
-            "condition": {
-                "minSkyLight": 8,
-                "maxSkyLight": 15,
-                "biomes": [
-                    "biomesoplenty:aspen_glade",
-                    "biomesoplenty:dryland",
-                    "biomesoplenty:jacaranda_glade",
-                    "biomesoplenty:maple_woods",
-                    "biomesoplenty:wasteland",
-                    "biomesoplenty:wasteland_steppe"
-                ]
-            },
-            "anticondition": {
-                "structures": [
-                    "#minecraft:village"
                 ]
             }
         }
