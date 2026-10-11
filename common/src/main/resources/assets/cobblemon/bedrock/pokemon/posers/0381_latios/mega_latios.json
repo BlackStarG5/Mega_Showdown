@@ -17,7 +17,9 @@
   },
   "poses": {
     "battle-standing": {
-      "poseTypes": ["STAND"],
+      "poseTypes": [
+        "STAND"
+      ],
       "isBattle": true,
       "isTouchingWater": false,
       "animations": [
@@ -29,7 +31,10 @@
       ]
     },
     "standing": {
-      "poseTypes": ["STAND", "NONE"],
+      "poseTypes": [
+        "STAND",
+        "NONE"
+      ],
       "isBattle": false,
       "isTouchingWater": false,
       "condition": "!q.in_air",
@@ -42,7 +47,9 @@
       ]
     },
     "walking": {
-      "poseTypes": ["WALK"],
+      "poseTypes": [
+        "WALK"
+      ],
       "isBattle": false,
       "isTouchingWater": false,
       "condition": "!q.in_air && !q.is_sprinting",
@@ -55,9 +62,11 @@
       ]
     },
     "hover": {
-      "poseTypes": ["HOVER"],
+      "poseTypes": [
+        "HOVER"
+      ],
       "isBattle": false,
-	  "isTouchingWater": false,
+      "isTouchingWater": false,
       "animations": [
         "q.look('head_ai')",
         "q.bedrock('mega_latios', 'ground_idle')"
@@ -67,9 +76,11 @@
       ]
     },
     "fly": {
-      "poseTypes": ["FLY"],
+      "poseTypes": [
+        "FLY"
+      ],
       "isBattle": false,
-	  "isTouchingWater": false,
+      "isTouchingWater": false,
       "condition": "!q.is_gliding",
       "animations": [
         "q.look('head_ai')",
@@ -79,16 +90,22 @@
         "q.bedrock_quirk('mega_latios', 'blink')"
       ]
     },
-	"swimming": {
+    "swimming": {
       "poseName": "swimming",
       "isBattle": false,
       "isTouchingWater": true,
-      "poseTypes": ["STAND","WALK","SWIM"],
+      "poseTypes": [
+        "STAND",
+        "WALK",
+        "SWIM"
+      ],
       "animations": [
         "q.look('head')",
         "q.bedrock('mega_latios', 'air_sprint')"
       ],
-      "quirks": ["q.bedrock_quirk('mega_latios', 'blink')"]
+      "quirks": [
+        "q.bedrock_quirk('mega_latios', 'blink')"
+      ]
     }
   }
 }

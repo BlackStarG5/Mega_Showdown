@@ -24,7 +24,8 @@
         "q.look('head')",
         "q.bedrock('volcanion', 'battle_idle')"
       ],
-      "quirks": [        {
+      "quirks": [
+        {
           "name": "blink",
           "animations": [
             "bedrock(volcanion, blink)"

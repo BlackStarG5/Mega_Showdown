@@ -7,8 +7,8 @@
 				"texture_width": 256,
 				"texture_height": 256,
 				"visible_bounds_width": 13,
-				"visible_bounds_height": 5.5,
-				"visible_bounds_offset": [0, 2.25, 0]
+				"visible_bounds_height": 6,
+				"visible_bounds_offset": [0, 2, 0]
 			},
 			"bones": [
 				{
@@ -281,6 +281,17 @@
 					]
 				},
 				{
+					"name": "locator_eye_left",
+					"parent": "eyes_left",
+					"pivot": [3, 58.3, -13.1],
+					"locators": {
+						"eye2": {
+							"offset": [3, 58.3, -13.1],
+							"rotation": [0, 0, 90]
+						}
+					}
+				},
+				{
 					"name": "eye_right",
 					"parent": "head",
 					"pivot": [-0.5, 54.65109, -8.99341],
@@ -304,6 +315,17 @@
 					"cubes": [
 						{"origin": [-3, 57.70109, -13.04341], "size": [1, 2, 0], "uv": [84, 147]}
 					]
+				},
+				{
+					"name": "locator_eye_left2",
+					"parent": "eyes_right",
+					"pivot": [-3, 58.3, -13.1],
+					"locators": {
+						"eye3": {
+							"offset": [-3, 58.3, -13.1],
+							"rotation": [0, 0, 90]
+						}
+					}
 				},
 				{
 					"name": "bone82",
@@ -843,7 +865,10 @@
 					"pivot": [0, 13.5, 9],
 					"cubes": [
 						{"origin": [-6, 8.25, 9], "size": [12, 12, 16], "uv": [92, 0]}
-					]
+					],
+					"locators": {
+						"clouds_loc": [0, 22, 53]
+					}
 				},
 				{
 					"name": "tail2",
@@ -874,21 +899,6 @@
 					"name": "bone23",
 					"parent": "tail4",
 					"pivot": [0, 13.25, 69.5]
-				},
-				{
-					"name": "bone96",
-					"parent": "bone23",
-					"pivot": [0.00625, 40.75, 69.23401],
-					"cubes": [
-						{"origin": [-9, 37.25, 91], "size": [18, 7, 0], "inflate": 0.01, "uv": [150, 90]},
-						{"origin": [-9, 37.25, 47.5], "size": [18, 7, 0], "inflate": 0.01, "uv": [0, 169]},
-						{"origin": [21.8, 37.25, 60.225], "size": [0, 7, 18], "inflate": 0.01, "uv": [166, 119]},
-						{"origin": [-21.8, 37.25, 60.225], "size": [0, 7, 18], "inflate": 0.01, "uv": [130, 124]},
-						{"origin": [-21.8, 37.25, 42.225], "size": [0, 7, 18], "inflate": 0.01, "pivot": [-21.8, 40.75, 60.225], "rotation": [0, -45, 0], "uv": [94, 124]},
-						{"origin": [21.8, 37.25, 42.225], "size": [0, 7, 18], "inflate": 0.01, "pivot": [21.8, 40.75, 60.225], "rotation": [0, 45, 0], "uv": [0, 144]},
-						{"origin": [-24.35, 37.25, 84.6], "size": [18, 7, 0], "inflate": 0.01, "pivot": [-15.35, 40.75, 84.6], "rotation": [0, -45, 0], "uv": [138, 115]},
-						{"origin": [6.4, 37.25, 84.6], "size": [18, 7, 0], "inflate": 0.01, "pivot": [15.4, 40.75, 84.6], "rotation": [0, 45, 0], "uv": [164, 36]}
-					]
 				},
 				{
 					"name": "flames",

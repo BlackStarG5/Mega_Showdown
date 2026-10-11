@@ -15,30 +15,6 @@
     "legendary",
     "restricted"
   ],
-  "riding": {
-    "behaviours": {
-      "LAND": {
-        "key": "cobblemon:land/horse",
-        "rideSounds": [],
-        "stats": {
-          "ACCELERATION": "30-60",
-          "JUMP": "30-65",
-          "SKILL": "20-50",
-          "SPEED": "20-40",
-          "STAMINA": "90-130"
-        }
-      }
-    },
-    "seats": [
-      {
-        "offset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        }
-      }
-    ]
-  },
   "aspects": [
     "50-percent"
   ],
@@ -76,6 +52,26 @@
       "canSleep": true,
       "light": "0-4"
     }
+  },
+  "riding": {
+    "behaviours": {
+      "LAND": {
+        "key": "cobblemon:land/horse",
+        "rideSounds": [],
+        "stats": {
+          "ACCELERATION": "30-60",
+          "JUMP": "30-65",
+          "SKILL": "20-50",
+          "SPEED": "20-40",
+          "STAMINA": "90-130"
+        }
+      }
+    },
+    "seats": [
+      {
+        "locator": "seat_1"
+      }
+    ]
   },
   "baseExperienceYield": 300,
   "experienceGroup": "slow",
@@ -184,7 +180,17 @@
     "tutor:stoneedge",
     "tutor:superpower",
     "tutor:swift",
-    "tutor:zenheadbutt"
+    "tutor:zenheadbutt",
+    "legacy:confide",
+    "legacy:doubleteam",
+    "legacy:frustration",
+    "legacy:hiddenpower",
+    "legacy:return",
+    "legacy:round",
+    "legacy:secretpower",
+    "legacy:snore",
+    "legacy:swagger",
+    "legacy:toxic"
   ],
   "evolutions": [],
   "forms": [
@@ -222,6 +228,9 @@
       },
       "baseExperienceYield": 243,
       "behaviour": {
+        "entityInteract": {
+          "avoidedBySkeleton": true
+        },
         "resting": {
           "canSleep": true,
           "light": "0-4"
@@ -232,6 +241,22 @@
             "walkSpeed": 0.147
           }
         }
+      },
+      "riding": {
+        "behaviours": {
+          "LAND": {
+            "key": "cobblemon:land/horse",
+            "rideSounds": [],
+            "stats": {
+              "ACCELERATION": "30-60",
+              "JUMP": "30-65",
+              "SKILL": "20-50",
+              "SPEED": "20-40",
+              "STAMINA": "90-130"
+            }
+          }
+        },
+        "seats": []
       },
       "moves": [
         "1:bulldoze",
@@ -333,7 +358,19 @@
         "tutor:stoneedge",
         "tutor:superpower",
         "tutor:swift",
-        "tutor:zenheadbutt"
+        "tutor:zenheadbutt",
+        "legacy:confide",
+        "legacy:doubleteam",
+        "legacy:frustration",
+        "legacy:hiddenpower",
+        "legacy:return",
+        "legacy:rocksmash",
+        "legacy:round",
+        "legacy:secretpower",
+        "legacy:snore",
+        "legacy:strength",
+        "legacy:swagger",
+        "legacy:toxic"
       ],
       "evolutions": [],
       "battleOnly": false
@@ -374,6 +411,22 @@
           "canSleep": true,
           "light": "0-4"
         }
+      },
+      "riding": {
+        "behaviours": {
+          "LAND": {
+            "key": "cobblemon:land/horse",
+            "rideSounds": [],
+            "stats": {
+              "ACCELERATION": "30-60",
+              "JUMP": "30-65",
+              "SKILL": "20-50",
+              "SPEED": "20-40",
+              "STAMINA": "90-130"
+            }
+          }
+        },
+        "seats": []
       },
       "baseExperienceYield": 243,
       "moves": [
@@ -509,6 +562,26 @@
           "canSleep": true,
           "light": "0-4"
         }
+      },
+      "riding": {
+        "behaviours": {
+          "LAND": {
+            "key": "cobblemon:land/horse",
+            "rideSounds": [],
+            "stats": {
+              "ACCELERATION": "30-60",
+              "JUMP": "30-65",
+              "SKILL": "20-50",
+              "SPEED": "20-40",
+              "STAMINA": "90-130"
+            }
+          }
+        },
+        "seats": [
+          {
+            "locator": "seat_1"
+          }
+        ]
       },
       "moves": [
         "1:bulldoze",
@@ -651,6 +724,22 @@
         "special_defence": 95,
         "speed": 85
       },
+      "riding": {
+        "behaviours": {
+          "LAND": {
+            "key": "cobblemon:land/horse",
+            "rideSounds": [],
+            "stats": {
+              "ACCELERATION": "30-60",
+              "JUMP": "30-65",
+              "SKILL": "20-50",
+              "SPEED": "20-40",
+              "STAMINA": "90-130"
+            }
+          }
+        },
+        "seats": []
+      },
       "baseExperienceYield": 354,
       "moves": [
         "1:bulldoze",
@@ -779,6 +868,22 @@
       "moves": [
         "1:bulldoze"
       ],
+      "riding": {
+        "behaviours": {
+          "LAND": {
+            "key": "cobblemon:land/horse",
+            "rideSounds": [],
+            "stats": {
+              "ACCELERATION": "30-60",
+              "JUMP": "30-65",
+              "SKILL": "20-50",
+              "SPEED": "20-40",
+              "STAMINA": "90-130"
+            }
+          }
+        },
+        "seats": []
+      },
       "evolutions": [],
       "battleOnly": true
     }

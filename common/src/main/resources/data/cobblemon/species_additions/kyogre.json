@@ -17,17 +17,13 @@
     },
     "seats": [
       {
-        "offset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        }
+        "locator": "seat_1"
       }
     ]
   },
-  "baseScale": 1,
+  "baseScale": 0.8,
   "hitbox": {
-    "width": 10,
+    "width": 5.8,
     "height": 2.1,
     "fixed": false
   },
@@ -43,8 +39,7 @@
         "swimSpeed": 1.2,
         "canSwimInWater": true,
         "canBreatheUnderwater": true
-      },
-      "canFly": true
+      }
     }
   }
 }

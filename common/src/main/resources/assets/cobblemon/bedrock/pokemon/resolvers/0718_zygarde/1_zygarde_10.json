@@ -3,7 +3,9 @@
   "order": 1,
   "variations": [
     {
-      "aspects": ["10-percent"],
+      "aspects": [
+        "10-percent"
+      ],
       "poser": "cobblemon:zygarde_10",
       "model": "cobblemon:zygarde_10.geo",
       "texture": "cobblemon:textures/pokemon/0718_zygarde/10/zygarde10.png",
@@ -16,9 +18,11 @@
       ]
     },
     {
-      "aspects": ["10-percent", "shiny"],
-      "texture": "cobblemon:textures/pokemon/0718_zygarde/10/zygarde10_shiny.png",
-      "layers": []
+      "aspects": [
+        "10-percent",
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0718_zygarde/10/zygarde10_shiny.png"
     }
   ]
 }

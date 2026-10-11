@@ -227,12 +227,28 @@
 					]
 				},
 				{
+					"name": "locator_eye_right",
+					"parent": "eye_right",
+					"pivot": [-1.25, 2.75, -3.05],
+					"locators": {
+						"eye1": [-1.25, 2.75, -3.05]
+					}
+				},
+				{
 					"name": "eye_left",
 					"parent": "torso_bottom",
 					"pivot": [1.25, 2.75, -3.025],
 					"cubes": [
 						{"origin": [0.75, 1.75, -3], "size": [1, 2, 0], "inflate": 0.01, "uv": [0, 0]}
 					]
+				},
+				{
+					"name": "locator_eye_left",
+					"parent": "eye_left",
+					"pivot": [1.25, 2.75, -3.05],
+					"locators": {
+						"eye2": [1.25, 2.75, -3.05]
+					}
 				},
 				{
 					"name": "hand_right",

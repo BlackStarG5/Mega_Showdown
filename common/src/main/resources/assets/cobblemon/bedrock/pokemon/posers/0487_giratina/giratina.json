@@ -69,7 +69,7 @@
       ],
       "animations": [
         "q.look('head')",
-        "q.bedrock('giratina', 'air_fly'')"
+        "q.bedrock('giratina', 'air_fly')"
       ]
     },
     "swim": {

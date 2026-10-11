@@ -59,6 +59,7 @@
         "1:confusion",
         "1:doubleedge",
         "1:doublekick",
+        "1:glaciallance",
         "form_change:glaciallance",
         "1:growth",
         "1:iciclecrash",
@@ -175,7 +176,9 @@
         "tutor:glaciallance",
         "tutor:irondefense",
         "tutor:lashout",
-        "tutor:psychic"
+        "tutor:psychic",
+        "legacy:round",
+        "legacy:snore"
       ],
       "labels": [
         "gen8",
@@ -233,6 +236,7 @@
       ],
       "moves": [
         "1:agility",
+        "1:astralbarrage",
         "form_change:astralbarrage",
         "1:confuseray",
         "1:confusion",
@@ -344,7 +348,10 @@
         "tutor:expandingforce",
         "tutor:gigadrain",
         "tutor:lashout",
-        "tutor:psychic"
+        "tutor:psychic",
+        "legacy:round",
+        "legacy:snore",
+        "legacy:uproar"
       ],
       "labels": [
         "gen8",
@@ -450,7 +457,10 @@
     "tm:zenheadbutt",
     "tutor:expandingforce",
     "tutor:gigadrain",
-    "tutor:psychic"
+    "tutor:psychic",
+    "legacy:round",
+    "legacy:snore",
+    "legacy:uproar"
   ],
   "labels": [
     "gen8",

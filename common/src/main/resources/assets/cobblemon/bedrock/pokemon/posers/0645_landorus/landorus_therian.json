@@ -1,8 +1,16 @@
 {
   "portraitScale": 1,
-  "portraitTranslation": [-0.2, 1.3, 0],
+  "portraitTranslation": [
+    -0.2,
+    1.3,
+    0
+  ],
   "profileScale": 0.5,
-  "profileTranslation": [0, 1.3, 0],
+  "profileTranslation": [
+    0,
+    1.3,
+    0
+  ],
   "animations": {
     "cry": "q.bedrock_stateful('pokemans_landorus_therian', 'cry', q.curve('symmetrical_wide'))",
     "physical": "q.bedrock_stateful('pokemans_landorus_therian', 'physical_attack', q.curve('symmetrical_wide'))",
@@ -11,9 +19,14 @@
   },
   "poses": {
     "battle-standing": {
-      "poseTypes": ["STAND", "PORTRAIT", "PROFILE"],
+      "poseTypes": [
+        "STAND",
+        "PORTRAIT",
+        "PROFILE"
+      ],
       "isBattle": true,
-      "animations": ["look",
+      "animations": [
+        "look",
         "q.bedrock('pokemans_landorus_therian', 'battle_idle')"
       ],
       "quirks": [
@@ -21,9 +34,13 @@
       ]
     },
     "standing": {
-      "poseTypes": ["STAND", "NONE"],
+      "poseTypes": [
+        "STAND",
+        "NONE"
+      ],
       "isBattle": false,
-      "animations": ["look",
+      "animations": [
+        "look",
         "q.bedrock('pokemans_landorus_therian', 'ground_idle')"
       ],
       "quirks": [
@@ -31,61 +48,74 @@
       ]
     },
     "walking": {
-      "poseTypes": ["WALK"],
-      "animations": ["look",
+      "poseTypes": [
+        "WALK"
+      ],
+      "animations": [
+        "look",
         "q.bedrock('pokemans_landorus_therian', 'ground_walk')"
       ],
-      "quirks": ["q.bedrock_quirk('pokemans_landorus_therian', 'blink')"]
+      "quirks": [
+        "q.bedrock_quirk('pokemans_landorus_therian', 'blink')"
+      ]
     },
     "float": {
-      "poseTypes": ["FLOAT"],
+      "poseTypes": [
+        "FLOAT"
+      ],
       "animations": [
         "q.bedrock('pokemans_landorus_therian', 'ground_idle')"
       ],
-      "quirks": ["q.bedrock_quirk('pokemans_landorus_therian', 'blink')"]
+      "quirks": [
+        "q.bedrock_quirk('pokemans_landorus_therian', 'blink')"
+      ]
     },
     "swim": {
-      "poseTypes": ["SWIM"],
+      "poseTypes": [
+        "SWIM"
+      ],
       "animations": [
         "q.bedrock('pokemans_landorus_therian', 'ground_walk')"
       ],
-      "quirks": ["q.bedrock_quirk('pokemans_landorus_therian', 'blink')"]
+      "quirks": [
+        "q.bedrock_quirk('pokemans_landorus_therian', 'blink')"
+      ]
     },
-      "hovering": {
-        "poseName": "hovering",
-        "transformTicks": 10,
-        "poseTypes": [
-          "HOVER"
-        ],
-        "animations": [
-          "bedrock(pokemans_landorus_therian, ground_idle)"
-        ],
-        "quirks": [
-          {
-            "name": "blink",
-            "animations": [
-              "bedrock(pokemans_landorus_therian, blink)"
-            ]
-          }
-        ]
-      },
-      "flying": {
-        "poseName": "flying",
-        "transformTicks": 10,
-        "poseTypes": [
-          "FLY"
-        ],
-        "animations": [
-          "bedrock(pokemans_landorus_therian, ground_walk)"
-        ],
-        "quirks": [
-          {
-            "name": "blink",
-            "animations": [
-              "bedrock(pokemans_landorus_therian, blink)"
-            ]
-          }
-        ]
-      }
+    "hovering": {
+      "poseName": "hovering",
+      "transformTicks": 10,
+      "poseTypes": [
+        "HOVER"
+      ],
+      "animations": [
+        "bedrock(pokemans_landorus_therian, ground_idle)"
+      ],
+      "quirks": [
+        {
+          "name": "blink",
+          "animations": [
+            "bedrock(pokemans_landorus_therian, blink)"
+          ]
+        }
+      ]
+    },
+    "flying": {
+      "poseName": "flying",
+      "transformTicks": 10,
+      "poseTypes": [
+        "FLY"
+      ],
+      "animations": [
+        "bedrock(pokemans_landorus_therian, ground_walk)"
+      ],
+      "quirks": [
+        {
+          "name": "blink",
+          "animations": [
+            "bedrock(pokemans_landorus_therian, blink)"
+          ]
+        }
+      ]
+    }
   }
 }

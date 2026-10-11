@@ -1,14 +1,14 @@
 {
-  "portraitScale": 0.5,
+  "portraitScale": 0.26,
   "portraitTranslation": [
     0,
-    3,
+    2.4,
     0
   ],
-  "profileScale": 0.3,
+  "profileScale": 0.19,
   "profileTranslation": [
     0,
-    1.2,
+    1.6,
     0
   ],
   "rootBone": "melmetalgmax",
@@ -22,7 +22,7 @@
       "isBattle": false,
       "isTouchingWater": false,
       "animations": [
-        "q.bedrock('melmetalgmax', 'ground_idle')"
+        "q.bedrock('melmetal_gmax', 'ground_idle')"
       ]
     },
     "battle-standing": {
@@ -31,7 +31,7 @@
       ],
       "isBattle": true,
       "animations": [
-        "q.bedrock('melmetalgmax', 'ground_idle')"
+        "q.bedrock('melmetal_gmax', 'ground_idle')"
       ]
     }
   }

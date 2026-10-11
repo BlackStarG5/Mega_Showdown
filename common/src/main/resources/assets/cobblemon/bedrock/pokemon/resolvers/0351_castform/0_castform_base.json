@@ -10,11 +10,15 @@
       "layers": []
     },
     {
-      "aspects": ["shiny"],
+      "aspects": [
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0351_castform/castform_shiny.png"
     },
     {
-      "aspects": ["snowy-form"],
+      "aspects": [
+        "snowy-form"
+      ],
       "model": "cobblemon:castform_snowy.geo",
       "texture": "cobblemon:textures/pokemon/0351_castform/castform_snowy.png",
       "layers": [
@@ -27,12 +31,17 @@
       ]
     },
     {
-      "aspects": ["shiny", "snowy-form"],
+      "aspects": [
+        "shiny",
+        "snowy-form"
+      ],
       "texture": "cobblemon:textures/pokemon/0351_castform/castform_snowy_shiny.png",
       "layers": []
     },
     {
-      "aspects": ["sunny-form"],
+      "aspects": [
+        "sunny-form"
+      ],
       "model": "cobblemon:castform_sunny.geo",
       "texture": "cobblemon:textures/pokemon/0351_castform/castform_sunny.png",
       "layers": [
@@ -45,12 +54,17 @@
       ]
     },
     {
-      "aspects": ["shiny", "sunny-form"],
+      "aspects": [
+        "shiny",
+        "sunny-form"
+      ],
       "texture": "cobblemon:textures/pokemon/0351_castform/castform_sunny_shiny.png",
       "layers": []
     },
     {
-      "aspects": ["rainy-form"],
+      "aspects": [
+        "rainy-form"
+      ],
       "model": "cobblemon:castform_rainy.geo",
       "texture": "cobblemon:textures/pokemon/0351_castform/castform_rainy.png",
       "layers": [
@@ -63,7 +77,10 @@
       ]
     },
     {
-      "aspects": ["shiny", "rainy-form"],
+      "aspects": [
+        "shiny",
+        "rainy-form"
+      ],
       "texture": "cobblemon:textures/pokemon/0351_castform/castform_rainy_shiny.png",
       "layers": []
     }

@@ -1,0 +1,40 @@
+{
+  "portraitScale": 1.9,
+  "portraitTranslation": [-0.4, 0.0, 0],
+  "profileScale": 0.65,
+  "profileTranslation": [0.0, 0.75, 0.0],
+  "animations": {
+    "cry": "q.bedrock_primary('raichu_mega_x', 'cry', q.curve('symmetrical_wide'))",
+    "physical": "q.bedrock_primary('raichu_mega_x', 'physical', q.curve('symmetrical_wide'))",
+    "faint": "q.bedrock_primary('raichu_mega_x', 'faint', q.curve('symmetrical_wide'))"
+  },
+  "poses": {
+    "standing": {
+      "poseTypes": ["STAND", "NONE", "PORTRAIT", "PROFILE"],
+      "isBattle": false,
+      "animations": ["q.look('head')", "q.bedrock('raichu_mega_x', 'ground_idle')"],
+      "quirks": ["q.bedrock_quirk('raichu_mega_x', 'blink', 2, 5, 1)"]
+    },
+    "battle-standing": {
+      "poseTypes": ["STAND"],
+      "isBattle": true,
+      "animations": ["q.look('head')", "q.bedrock('raichu_mega_x', 'battle_idle')"],
+      "quirks": ["q.bedrock_quirk('raichu_mega_x', 'blink', 2, 5, 1)"],
+       "namedAnimations": {"cry": "q.bedrock_primary('raichu_mega_x', 'battle_cry', q.curve('symmetrical_wide'))"}
+    },
+    "walking": {
+      "poseTypes": ["WALK"],
+      "isBattle": false,
+      "animations": ["q.look('head')", "q.bedrock('raichu_mega_x', 'ground_walk')"],
+      "quirks": ["q.bedrock_quirk('raichu_mega_x', 'blink', 2, 5, 1)"]
+    },
+    "sleep": {
+      "poseTypes": ["SLEEP"],
+      "animations": ["q.bedrock('raichu_mega_x', 'sleep')"]
+    },
+    "fly": {
+      "poseTypes": ["FLY", "HOVER"],
+      "animations": ["q.bedrock('raichu_mega_x', 'battle_idle')"]
+    }
+  }
+}

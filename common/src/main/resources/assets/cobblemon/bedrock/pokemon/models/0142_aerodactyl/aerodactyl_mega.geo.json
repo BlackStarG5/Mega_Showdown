@@ -305,6 +305,14 @@
 					]
 				},
 				{
+					"name": "locator_eye_left",
+					"parent": "eye_left",
+					"pivot": [5.025, 22.35, -32.5],
+					"locators": {
+						"eye2": [5.025, 22.35, -32.5]
+					}
+				},
+				{
 					"name": "eye_right",
 					"parent": "head",
 					"pivot": [-4, 22.84997, -31],
@@ -375,6 +383,14 @@
 					"cubes": [
 						{"origin": [-4.9, 21.34822, -33.40002], "size": [2, 3, 5], "inflate": 0.03, "uv": [102, 198]}
 					]
+				},
+				{
+					"name": "locator_eye_right",
+					"parent": "eye_right",
+					"pivot": [-5.025, 22.35, -32.5],
+					"locators": {
+						"eye1": [-5.025, 22.35, -32.5]
+					}
 				},
 				{
 					"name": "jaw",

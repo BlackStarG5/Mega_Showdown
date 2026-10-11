@@ -3,16 +3,58 @@
   "order": 1,
   "variations": [
     {
-      "aspects": ["mega"],
+      "aspects": [
+        "mega"
+      ],
+      "poser": "cobblemon:sceptile_mega",
       "model": "cobblemon:sceptile_mega.geo",
       "texture": "cobblemon:textures/pokemon/0254_sceptile/sceptile_mega.png",
-      "layers": []
+      "layers": [
+        {
+          "name": "emissive",
+          "emissive": true,
+          "texture": "cobblemon:textures/pokemon/0254_sceptile/sceptile_mega_emissive.png"
+        }
+      ]
     },
     {
-      "aspects": ["mega", "shiny"],
-      "model": "cobblemon:sceptile_mega.geo",
+      "aspects": [
+        "mega",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0254_sceptile/sceptile_mega_shiny.png",
-      "layers": []
+      "layers": [
+        {
+          "name": "emissive",
+          "emissive": true,
+          "texture": "cobblemon:textures/pokemon/0254_sceptile/sceptile_mega_emissive_shiny.png"
+        }
+      ]
+    },
+    {
+      "aspects": [
+        "mega",
+        "alpha"
+      ],
+      "layers": [
+        {
+          "name": "alpha_eyes",
+          "texture": "cobblemon:textures/pokemon/0254_sceptile/sceptile_mega_alpha.png",
+          "emissive": true,
+          "translucent": true
+        }
+      ]
+    },
+    {
+      "aspects": [
+        "mega",
+        "cosmetic_item-stick"
+      ],
+      "layers": [
+        {
+          "texture": "cobblemon:textures/pokemon/0254_sceptile/sceptile_mega_stickplane.png"
+        }
+      ]
     }
   ]
 }

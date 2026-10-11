@@ -8591,7 +8591,6 @@
       }
     },
     "animation.kyuremblack.physical_attack": {
-      "loop": true,
       "animation_length": 2.25,
       "bones": {
         "lowerbody": {
@@ -21490,7 +21489,6 @@
       }
     },
     "animation.kyuremblack.special_attack": {
-      "loop": true,
       "animation_length": 2.5,
       "bones": {
         "torso": {
@@ -37950,18 +37948,11 @@
                 0
               ]
             },
-            "1.2083": {
-              "pre": [
-                0,
-                0,
-                0
-              ],
-              "post": [
-                0,
-                0,
-                0
-              ]
-            },
+            "1.2083": [
+              0,
+              0,
+              0
+            ],
             "1.2917": {
               "pre": [
                 1,

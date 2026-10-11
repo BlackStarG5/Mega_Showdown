@@ -6,11 +6,12 @@
       "aspects": [],
       "poser": "cobblemon:cosmog",
       "model": "cobblemon:cosmog.geo",
-      "texture": "cobblemon:textures/pokemon/0789_cosmog/cosmog.png",
-      "layers": []
+      "texture": "cobblemon:textures/pokemon/0789_cosmog/cosmog.png"
     },
     {
-      "aspects": ["shiny"],
+      "aspects": [
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0789_cosmog/cosmog_shiny.png"
     }
   ]

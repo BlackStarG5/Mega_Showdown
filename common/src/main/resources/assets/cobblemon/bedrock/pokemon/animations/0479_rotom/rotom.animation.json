@@ -1734,7 +1734,14 @@
             "-17.5+Math.cos((query.anim_time) * 90 * 52) * 6"
           ]
         },
-        "bodyrotation": {
+        "body_bottom": {
+          "rotation": [
+            "2.5*math.sin(q.anim_time*90*2)*1",
+            0,
+            "2.5*math.sin(q.anim_time*90*2+90)*1"
+          ]
+        },
+        "body": {
           "rotation": [
             "2.5*math.sin(q.anim_time*90*2)*1",
             0,
@@ -1744,13 +1751,6 @@
             0,
             "0+math.sin(q.anim_time*90*4-90)*0.8",
             0
-          ]
-        },
-        "body_bottom": {
-          "rotation": [
-            "2.5*math.sin(q.anim_time*90*2)*1",
-            0,
-            "2.5*math.sin(q.anim_time*90*2+90)*1"
           ]
         }
       }

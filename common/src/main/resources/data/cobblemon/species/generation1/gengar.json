@@ -344,6 +344,11 @@
       "pokedex": [
         "cobblemon.species.gengar-gmax.desc"
       ],
+      "hitbox": {
+        "width": 4.5,
+        "height": 6.3,
+        "fixed": false
+      },
       "labels": [
         "gen8",
         "gmax"

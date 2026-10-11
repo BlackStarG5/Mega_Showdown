@@ -22,6 +22,8 @@ public class AccessoriesRegisterRenderer {
         AccessoriesRendererRegistry.registerRenderer(MegaShowdownItems.MAXIE_GLASSES.get(), HeadRenderer::new);
         AccessoriesRendererRegistry.registerRenderer(MegaShowdownItems.ARCHIE_ANCHOR.get(), ChestRenderer::new);
         AccessoriesRendererRegistry.registerRenderer(MegaShowdownItems.LISIA_MEGA_TIARA.get(), HeadRenderer::new);
+        AccessoriesRendererRegistry.registerRenderer(MegaShowdownItems.DIANTHA_MEGA_CHARM.get(), ChestRenderer::new);
+        AccessoriesRendererRegistry.registerRenderer(MegaShowdownItems.ZINNIA_MEGA_ANKLET.get(), RightLegRenderer::new);
 
         AccessoriesRendererRegistry.registerRenderer(MegaShowdownItems.Z_RING.get(), HighOffHandRenderer::new);
         AccessoriesRendererRegistry.registerRenderer(MegaShowdownItems.Z_RING_BLACK.get(), HighOffHandRenderer::new);

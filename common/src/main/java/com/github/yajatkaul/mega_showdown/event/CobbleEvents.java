@@ -3,6 +3,7 @@ package com.github.yajatkaul.mega_showdown.event;
 import com.cobblemon.mod.common.Cobblemon;
 import com.cobblemon.mod.common.api.Priority;
 import com.cobblemon.mod.common.api.battles.model.PokemonBattle;
+import com.cobblemon.mod.common.api.battles.model.actor.BattleActor;
 import com.cobblemon.mod.common.api.drop.ItemDropEntry;
 import com.cobblemon.mod.common.api.events.CobblemonEvents;
 import com.cobblemon.mod.common.api.events.battles.BattleFaintedEvent;
@@ -36,7 +37,6 @@ import com.github.yajatkaul.mega_showdown.api.codec.ZCrystal;
 import com.github.yajatkaul.mega_showdown.api.event.DynamaxEndCallback;
 import com.github.yajatkaul.mega_showdown.api.event.DynamaxStartCallback;
 import com.github.yajatkaul.mega_showdown.api.event.UltraBurstCallback;
-import com.github.yajatkaul.mega_showdown.components.MegaShowdownDataComponents;
 import com.github.yajatkaul.mega_showdown.config.MegaShowdownConfig;
 import com.github.yajatkaul.mega_showdown.datapack.MegaShowdownDatapackRegister;
 import com.github.yajatkaul.mega_showdown.gimmick.MaxGimmick;
@@ -44,7 +44,7 @@ import com.github.yajatkaul.mega_showdown.gimmick.MegaGimmick;
 import com.github.yajatkaul.mega_showdown.gimmick.UltraGimmick;
 import com.github.yajatkaul.mega_showdown.item.MegaShowdownItems;
 import com.github.yajatkaul.mega_showdown.item.custom.form_change.FormChangeHeldItem;
-import com.github.yajatkaul.mega_showdown.item.custom.tera.CustomTeraShard;
+import com.github.yajatkaul.mega_showdown.item.custom.form_change.FormChangeHeldItemHidden;
 import com.github.yajatkaul.mega_showdown.sound.MegaShowdownSounds;
 import com.github.yajatkaul.mega_showdown.tag.MegaShowdownTags;
 import com.github.yajatkaul.mega_showdown.utils.*;
@@ -53,7 +53,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -62,7 +61,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class CobbleEvents {
     public static void register() {
@@ -97,8 +95,6 @@ public class CobbleEvents {
 
         if (pokemon.getSpecies().getName().equals("Greninja") && formeChangeEvent.getFormeName().equals("ash")) {
             AdvancementHelper.grantAdvancement(pokemon.getOwnerPlayer(), "bond/ash_greninja");
-        } else if (pokemon.getSpecies().getName().equals("Greninja") && pokemon.getAspects().contains("bond")) {
-            AdvancementHelper.grantAdvancement(pokemon.getOwnerPlayer(), "bond/ash_battle_bond");
         }
 
         BattlePokemon battlePokemon = formeChangeEvent.getPokemon();
@@ -132,7 +128,7 @@ public class CobbleEvents {
     }
 
     private static void dropShardPokemon(LootDroppedEvent event) {
-        if (!MegaShowdownConfig.teralization) {
+        if (!MegaShowdownConfig.terastallization) {
             return;
         }
 
@@ -150,9 +146,7 @@ public class CobbleEvents {
 
             if (otherSuccess) {
                 ItemStack stack = new ItemStack(correspondingTeraShard);
-                if (correspondingTeraShard instanceof CustomTeraShard) {
-                    stack.set(MegaShowdownDataComponents.TERA_TYPE.get(), pokemon.getTeraType());
-                }
+
                 ItemEntity itemEntity = new ItemEntity(
                         pokemonEntity.level(),
                         pokemonEntity.getX(), pokemonEntity.getY(), pokemonEntity.getZ(),
@@ -219,7 +213,7 @@ public class CobbleEvents {
             });
             if (pokemon.getEntity() != null) {
                 if (MegaShowdownConfig.legacyTeraEffect) {
-                    pokemon.getEntity().removeEffect(MobEffects.GLOWING);
+                    pokemon.getEntity().setGlowingTag(false);
                 }
             }
             pokemon.getPersistentData().remove("is_tera");
@@ -354,24 +348,29 @@ public class CobbleEvents {
     }
 
     private static void hookBattlePre(BattleStartedEvent.Pre event) {
-        AtomicBoolean cancelled = new AtomicBoolean(false);
-        event.getBattle().getActivePokemon().forEach(pkmn -> {
-            if (pkmn.getBattlePokemon().getEffectedPokemon().getAspects().contains("core-percent")) {
-                event.cancel();
-                cancelled.set(true);
+        for (BattleActor actor : event.getBattle().getActors()) {
+            for (BattlePokemon battlePokemon : actor.getPokemonList()) {
+                Pokemon pokemon = battlePokemon.getEffectedPokemon();
+
+                if (pokemon.getAspects().contains("core-percent")) {
+                    event.cancel();
+                    return;
+                }
             }
-        });
-        if (cancelled.get()) {
-            return;
         }
 
         event.getBattle().getPlayers().forEach(serverPlayer -> {
-            PlayerPartyStore playerPartyStore = Cobblemon.INSTANCE.getStorage().getParty(serverPlayer);
+            PlayerPartyStore playerPartyStore =
+                    Cobblemon.INSTANCE.getStorage().getParty(serverPlayer);
+
             AspectUtils.revertPokemonsIfRequiredBattleStart(playerPartyStore);
         });
     }
 
     private static void hookBattleStarted(BattleStartedEvent.Post event) {
+        if (MegaShowdownConfig.debugMode) {
+            event.getBattle().setMute(false);
+        }
         event.getBattle().getOnEndHandlers().add((battle -> {
             battle.getPlayers().forEach(AspectUtils::revertPokemonsIfRequiredBattleEnd);
             return Unit.INSTANCE;
@@ -398,6 +397,10 @@ public class CobbleEvents {
         }
 
         if (itemReturning.getItem() instanceof FormChangeHeldItem formChangeItem) {
+            formChangeItem.revert(pokemon);
+        }
+
+        if (itemReturning.getItem() instanceof FormChangeHeldItemHidden formChangeItem) {
             formChangeItem.revert(pokemon);
         }
 

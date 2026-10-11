@@ -3,18 +3,19 @@
   "order": 1,
   "variations": [
     {
-      "aspects": ["mega"],
-      "poser": "cobblemon:altaria_mega",
+      "aspects": [
+        "mega"
+      ],
+      "poser": "cobblemon:mega_altaria",
       "model": "cobblemon:altaria_mega.geo",
-      "texture": "cobblemon:textures/pokemon/0334_altaria/megaaltaria.png",
-      "layers": []
+      "texture": "cobblemon:textures/pokemon/0334_altaria/altaria_mega.png"
     },
     {
-      "aspects": ["mega", "shiny"],
-      "poser": "cobblemon:altaria_mega",
-      "model": "cobblemon:altaria_mega.geo",
-      "texture": "cobblemon:textures/pokemon/0334_altaria/megaaltaria_shiny.png",
-      "layers": []
+      "aspects": [
+        "mega",
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0334_altaria/altaria_mega_shiny.png"
     }
   ]
 }

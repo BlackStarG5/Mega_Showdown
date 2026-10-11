@@ -1,17 +1,33 @@
 package com.github.yajatkaul.mega_showdown.utils;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
+
 import com.cobblemon.mod.common.Cobblemon;
 import com.cobblemon.mod.common.api.battles.model.PokemonBattle;
 import com.cobblemon.mod.common.api.battles.model.actor.ActorType;
+import com.cobblemon.mod.common.api.moves.BenchedMove;
+import com.cobblemon.mod.common.api.moves.BenchedMoves;
+import com.cobblemon.mod.common.api.moves.Move;
+import com.cobblemon.mod.common.api.moves.MoveSet;
+import com.cobblemon.mod.common.api.moves.MoveTemplate;
 import com.cobblemon.mod.common.api.pokemon.PokemonProperties;
 import com.cobblemon.mod.common.api.pokemon.feature.FlagSpeciesFeature;
 import com.cobblemon.mod.common.api.pokemon.feature.StringSpeciesFeature;
+import com.cobblemon.mod.common.api.pokemon.moves.LearnsetQuery;
 import com.cobblemon.mod.common.api.storage.party.PlayerPartyStore;
 import com.cobblemon.mod.common.battles.ActiveBattlePokemon;
 import com.cobblemon.mod.common.battles.pokemon.BattlePokemon;
+import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.net.messages.client.battle.BattleTransformPokemonPacket;
 import com.cobblemon.mod.common.net.messages.client.battle.BattleUpdateTeamPokemonPacket;
 import com.cobblemon.mod.common.net.messages.client.pokemon.update.AbilityUpdatePacket;
+import com.cobblemon.mod.common.pokemon.FormData;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.cobblemon.mod.common.pokemon.properties.UnaspectPropertyType;
 import com.github.yajatkaul.mega_showdown.api.codec.Effect;
@@ -21,19 +37,20 @@ import com.github.yajatkaul.mega_showdown.gimmick.MegaGimmick;
 import com.github.yajatkaul.mega_showdown.tag.MegaShowdownTags;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
+import net.minecraft.server.ServerScoreboard;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.biome.Biome;
-
-import java.util.*;
 
 public class AspectUtils {
     public static final Set<UUID> battleDisconnecter = new HashSet<>();
 
     public static void applyAspects(Pokemon pokemon, List<String> aspects) {
+        FormData oldForm = pokemon.getForm();
         for (String aspect : aspects) {
             String[] aspect_split = aspect.split("=");
             if (aspect_split[1].equals("true") || aspect_split[1].equals("false")) {
@@ -42,14 +59,93 @@ public class AspectUtils {
                 new StringSpeciesFeature(aspect_split[0], aspect_split[1]).apply(pokemon);
             }
         }
+        updateMovesOnFormChange(pokemon, oldForm);
     }
 
     public static void applyProperties(Pokemon pokemon, Optional<String> propertyString) {
+        FormData oldForm = pokemon.getForm();
         propertyString.ifPresent((property) -> {
                     PokemonProperties properties = PokemonProperties.Companion.parse(property);
                     properties.apply(pokemon);
                 }
         );
+        updateMovesOnFormChange(pokemon, oldForm);
+    }
+
+    private static void updateMovesOnFormChange(Pokemon pokemon, FormData oldForm) {
+        FormData newForm = pokemon.getForm();
+        if (oldForm.equals(newForm)) return;
+
+        MoveSet moveSet = pokemon.getMoveSet();
+        BenchedMoves benchedMoves = pokemon.getBenchedMoves();
+        Set<MoveTemplate> oldFormChangeMoves = new HashSet<>(oldForm.getMoves().getFormChangeMoves());
+
+        // Only remove moves that were granted by the OLD form's form-change moves AND are not learnable
+        // by the NEW form - a move the new form can still legally have shouldn't be stripped just because
+        // it happened to come from the old form's exclusive list.
+        for (int i = 0; i < MoveSet.MOVE_COUNT; i++) {
+            Move move = moveSet.get(i);
+            if (move != null
+                    && oldFormChangeMoves.contains(move.getTemplate())
+                    && !LearnsetQuery.Companion.getANY().canLearn(move.getTemplate(), newForm.getMoves())) {
+                moveSet.setMove(i, null);
+            }
+        }
+
+        List<MoveTemplate> noLongerLearnable = new ArrayList<>();
+        for (BenchedMove benchedMove : benchedMoves) {
+            if (!LearnsetQuery.Companion.getANY().canLearn(benchedMove.getMoveTemplate(), newForm.getMoves())) {
+                noLongerLearnable.add(benchedMove.getMoveTemplate());
+            }
+        }
+        noLongerLearnable.forEach(benchedMoves::remove);
+
+        // Add the new form's form-change moves, skipping any that are also a level-up move the Pokémon
+        // hasn't reached yet. E.g. Glaciate shouldn't be granted by a form change if it's also a level 80
+        // move and this Pokémon is below level 80.
+        Map<Integer, List<MoveTemplate>> levelUpMoves = newForm.getMoves().getLevelUpMoves();
+        for (MoveTemplate move : newForm.getMoves().getFormChangeMoves()) {
+            boolean alreadyKnown = false;
+            for (Move known : moveSet.getMoves()) {
+                if (known.getTemplate().equals(move)) {
+                    alreadyKnown = true;
+                    break;
+                }
+            }
+            if (alreadyKnown) {
+                continue;
+            }
+
+            Integer requiredLevel = null;
+            for (Map.Entry<Integer, List<MoveTemplate>> entry : levelUpMoves.entrySet()) {
+                if (entry.getValue().contains(move)) {
+                    requiredLevel = entry.getKey();
+                    break;
+                }
+            }
+            if (requiredLevel != null && pokemon.getLevel() < requiredLevel) {
+                continue;
+            }
+
+            if (moveSet.hasSpace()) {
+                moveSet.add(move.create());
+            } else {
+                benchedMoves.add(new BenchedMove(move, 0));
+            }
+        }
+
+        // If moveset is empty try to find one valid move to fill it.
+        if (moveSet.getMoves().isEmpty()) {
+            BenchedMove firstBenched = null;
+            for (BenchedMove benchedMove : benchedMoves) {
+                firstBenched = benchedMove;
+                break;
+            }
+            // This shouldn't ever be null, but you never know with data driven.
+            if (firstBenched != null) {
+                moveSet.setMove(0, new Move(firstBenched.getMoveTemplate(), firstBenched.getPpRaisedStages(), 0));
+            }
+        }
     }
 
     public static void appendRevertDataPokemon(Effect effect, List<String> aspects, Optional<String> properties, Pokemon pokemon, String tagName) {
@@ -95,16 +191,29 @@ public class AspectUtils {
             if (pokemon.getSpecies().getName().equals("Burmy")) {
                 Holder<Biome> biomeHolder = player.serverLevel().getBiome(player.blockPosition());
 
-                boolean isSandy = biomeHolder.is(MegaShowdownTags.Biomes.sandyKey);
-                boolean isForest = biomeHolder.is(MegaShowdownTags.Biomes.forestKey);
-                boolean isTrash = biomeHolder.is(MegaShowdownTags.Biomes.trashKey);
+                ServerLevel serverLevel = (ServerLevel) player.level();
+                boolean isTrash = serverLevel.structureManager()
+                        .getStructureWithPieceAt(player.blockPosition(), MegaShowdownTags.Biomes.VILLAGE)
+                        .isValid();
 
-                if (isForest) {
+
+                boolean isPlant = false;
+                boolean isSandy = false;
+
+                if (!isTrash) {
+                    isSandy = MegaShowdownTags.Biomes.SANDY_BIOMES
+                            .stream().anyMatch(biomeHolder::is);
+
+                    isPlant = MegaShowdownTags.Biomes.PLANT_BIOMES
+                            .stream().anyMatch(biomeHolder::is);
+                }
+
+                if (isTrash) {
+                    new StringSpeciesFeature("bagworm_cloak", "trash").apply(pokemon);
+                } else if (isPlant) {
                     new StringSpeciesFeature("bagworm_cloak", "plant").apply(pokemon);
                 } else if (isSandy) {
                     new StringSpeciesFeature("bagworm_cloak", "sandy").apply(pokemon);
-                } else if (isTrash) {
-                    new StringSpeciesFeature("bagworm_cloak", "trash").apply(pokemon);
                 }
             }
         }
@@ -174,9 +283,13 @@ public class AspectUtils {
                 UnaspectPropertyType.INSTANCE.fromString(name).apply(pokemon);
             });
             UnaspectPropertyType.INSTANCE.fromString("play_tera").apply(pokemon);
-            if (pokemon.getEntity() != null) {
+            if (pokemon.getEntity() instanceof PokemonEntity pokemonEntity) {
                 if (MegaShowdownConfig.legacyTeraEffect) {
-                    pokemon.getEntity().removeEffect(MobEffects.GLOWING);
+                    pokemon.getEntity().setGlowingTag(false);
+                    if (pokemonEntity.level() instanceof ServerLevel serverLevel) {
+                        ServerScoreboard scoreboard = serverLevel.getScoreboard();
+                        scoreboard.removePlayerFromTeam(pokemonEntity.getScoreboardName());
+                    }
                 }
             }
             pokemon.getPersistentData().remove("is_tera");
@@ -203,7 +316,7 @@ public class AspectUtils {
     }
 
     public static void updatePackets(BattlePokemon battlePokemon) {
-        Pokemon pokemon = battlePokemon.getEntity().getPokemon();
+        Pokemon pokemon = battlePokemon.getEffectedPokemon();
         PokemonBattle battle = battlePokemon.getActor().getBattle();
 
         if (battlePokemon.getActor().getType() == ActorType.PLAYER) {

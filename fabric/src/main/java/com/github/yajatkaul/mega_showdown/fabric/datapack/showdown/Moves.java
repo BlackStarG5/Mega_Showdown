@@ -6,7 +6,6 @@ import com.cobblemon.mod.common.api.data.DataRegistry;
 import com.cobblemon.mod.common.api.moves.MoveTemplate;
 import com.cobblemon.mod.common.api.reactive.SimpleObservable;
 import com.cobblemon.mod.common.battles.runner.graal.GraalShowdownService;
-import com.cobblemon.mod.relocations.graalvm.polyglot.Value;
 import com.github.yajatkaul.mega_showdown.MegaShowdown;
 import com.github.yajatkaul.mega_showdown.utils.datapack.NewMove;
 import com.google.gson.Gson;
@@ -16,6 +15,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.server.packs.resources.ResourceManager;
+import org.graalvm.polyglot.Value;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.BufferedReader;
@@ -44,10 +44,14 @@ public class Moves implements DataRegistry {
                 Value receiveMoveDataFn = service.context.getBindings("js").getMember("receiveMoveData");
                 for (Map.Entry<String, String> entry : Moves.INSTANCE.getMoveScripts().entrySet()) {
                     String moveId = entry.getKey();
-                    String js = entry.getValue().replace("\n", " ");
-                    JsonObject moveData = gson.fromJson(receiveMoveDataFn.execute(moveId, js).asString(), JsonObject.class);
-                    MoveTemplate newMove = NewMove.INSTANCE.createMoveTemplate(moveData, moveId);
-                    NewMove.INSTANCE.register(newMove);
+                    try {
+                        String js = entry.getValue().replace("\n", " ");
+                        JsonObject moveData = gson.fromJson(receiveMoveDataFn.execute(moveId, js).asString(), JsonObject.class);
+                        MoveTemplate newMove = NewMove.INSTANCE.createMoveTemplate(moveData, moveId);
+                        NewMove.INSTANCE.register(newMove);
+                    } catch (Throwable t) {
+                        MegaShowdown.LOGGER.error("Failed to register move {}: {}", moveId, t);
+                    }
                 }
             }
             return Unit.INSTANCE;

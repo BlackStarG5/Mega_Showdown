@@ -3,30 +3,27 @@
   "order": 1,
   "variations": [
     {
-      "aspects": ["mega"],
+      "aspects": [
+        "mega"
+      ],
+      "poser": "cobblemon:substitute",
       "model": "cobblemon:gengar_mega.geo",
       "texture": "cobblemon:textures/pokemon/0094_gengar/gengar_mega.png",
       "layers": [
         {
           "name": "emissive",
-          "texture": "cobblemon:textures/pokemon/0094_gengar/gengar_mega_emissives.png",
-          "emissive": true,
+          "texture": "cobblemon:textures/pokemon/blank.png",
+          "emissive": false,
           "translucent": true
         }
       ]
     },
     {
-      "aspects": ["mega", "shiny"],
-      "model": "cobblemon:gengar_mega.geo",
-      "texture": "cobblemon:textures/pokemon/0094_gengar/gengar_mega_shiny.png",
-      "layers": [
-        {
-          "name": "emissive",
-          "texture": "cobblemon:textures/pokemon/0094_gengar/gengar_mega_emissives.png",
-          "emissive": true,
-          "translucent": true
-        }
-      ]
+      "aspects": [
+        "mega",
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0094_gengar/gengar_shiny_mega.png"
     }
   ]
 }

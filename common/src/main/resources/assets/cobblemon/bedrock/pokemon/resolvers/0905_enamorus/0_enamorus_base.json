@@ -6,11 +6,12 @@
       "aspects": [],
       "poser": "cobblemon:enamorus",
       "model": "cobblemon:enamorus.geo",
-      "texture": "cobblemon:textures/pokemon/0905_enamorus/enamorus.png",
-      "layers": []
+      "texture": "cobblemon:textures/pokemon/0905_enamorus/enamorus.png"
     },
     {
-      "aspects": ["shiny"],
+      "aspects": [
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0905_enamorus/enamorus_shiny.png"
     }
   ]

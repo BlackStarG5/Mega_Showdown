@@ -1,0 +1,21 @@
+{
+  "species": "cobblemon:dragalge",
+  "order": 1,
+  "variations": [
+    {
+      "aspects": [
+        "mega"
+      ],
+      "poser": "cobblemon:dragalge_mega",
+      "model": "cobblemon:dragalge_mega.geo",
+      "texture": "cobblemon:textures/pokemon/0691_dragalge/dragalge_mega.png"
+    },
+    {
+      "aspects": [
+        "mega",
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0691_dragalge/dragalge_mega_shiny.png"
+    }
+  ]
+}

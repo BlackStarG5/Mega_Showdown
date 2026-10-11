@@ -1,0 +1,26 @@
+{
+  "portraitScale": 0.48,
+  "portraitTranslation": [
+    -0.23,
+    2.82,
+    0
+  ],
+  "profileScale": 0.22,
+  "profileTranslation": [
+    0,
+    1.3,
+    0
+  ],
+  "rootBone": "kingler",
+  "poses": {
+    "battle-standing": {
+      "poseTypes": [
+        "STAND"
+      ],
+      "animations": [
+        "q.look('head_ai')",
+        "q.bedrock('kingler_gmax', 'ground_idle')"
+      ]
+    }
+  }
+}

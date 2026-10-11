@@ -1,0 +1,46 @@
+{
+  "target": "cobblemon:absol",
+  "forms": [
+    {
+      "name": "Mega-Z",
+      "primaryType": "dark",
+      "secondaryType": "ghost",
+      "pokedex": ["cobblemon.species.absol-mega-z.desc"],
+      "labels": ["gen3", "mega"],
+      "aspects": ["mega_z"],
+      "abilities": ["sharpness", "sharpness", "h:sharpness"],
+      "baseStats": {
+        "hp": 65,
+        "attack": 154,
+        "defence": 60,
+        "special_attack": 75,
+        "special_defence": 60,
+        "speed": 151
+      },
+      "battleOnly": true,
+      "dynamaxBlocked": true,
+      "height": 12,
+      "weight": 490,
+      "riding": {
+        "behaviours": {
+          "LAND": {
+            "key": "cobblemon:land/horse",
+            "rideSounds": [],
+            "stats": {
+              "ACCELERATION": "75-85",
+              "JUMP": "30-50",
+              "SKILL": "60-80",
+              "SPEED": "50-70",
+              "STAMINA": "35-55"
+            }
+          }
+        },
+        "seats": [
+          {
+            "locator": "seat_1"
+          }
+        ]
+      }
+    }
+  ]
+}

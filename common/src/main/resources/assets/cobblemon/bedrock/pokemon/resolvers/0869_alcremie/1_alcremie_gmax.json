@@ -3,7 +3,9 @@
   "order": 1,
   "variations": [
     {
-      "aspects": ["gmax"],
+      "aspects": [
+        "gmax"
+      ],
       "poser": "cobblemon:alcremie-gmax",
       "model": "cobblemon:alcremie_gmax.geo",
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax.png",
@@ -16,7 +18,10 @@
       ]
     },
     {
-      "aspects": ["gmax", "shiny"],
+      "aspects": [
+        "gmax",
+        "shiny"
+      ],
       "poser": "cobblemon:alcremie-gmax",
       "model": "cobblemon:alcremie_gmax.geo",
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png",
@@ -29,7 +34,10 @@
       ]
     },
     {
-      "aspects": ["gmax", "decoration-strawberry"],
+      "aspects": [
+        "gmax",
+        "decoration-strawberry"
+      ],
       "layers": [
         {
           "name": "decoration",
@@ -39,7 +47,11 @@
       ]
     },
     {
-      "aspects": ["gmax", "decoration-strawberry", "shiny"],
+      "aspects": [
+        "gmax",
+        "decoration-strawberry",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png",
       "layers": [
         {
@@ -50,7 +62,10 @@
       ]
     },
     {
-      "aspects": ["gmax", "decoration-berry"],
+      "aspects": [
+        "gmax",
+        "decoration-berry"
+      ],
       "layers": [
         {
           "name": "decoration",
@@ -60,7 +75,11 @@
       ]
     },
     {
-      "aspects": ["gmax", "decoration-berry", "shiny"],
+      "aspects": [
+        "gmax",
+        "decoration-berry",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png",
       "layers": [
         {
@@ -71,7 +90,10 @@
       ]
     },
     {
-      "aspects": ["gmax", "decoration-clover"],
+      "aspects": [
+        "gmax",
+        "decoration-clover"
+      ],
       "layers": [
         {
           "name": "decoration",
@@ -81,7 +103,11 @@
       ]
     },
     {
-      "aspects": ["gmax", "decoration-clover", "shiny"],
+      "aspects": [
+        "gmax",
+        "decoration-clover",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png",
       "layers": [
         {
@@ -92,7 +118,10 @@
       ]
     },
     {
-      "aspects": ["gmax", "decoration-flower"],
+      "aspects": [
+        "gmax",
+        "decoration-flower"
+      ],
       "layers": [
         {
           "name": "decoration",
@@ -102,7 +131,11 @@
       ]
     },
     {
-      "aspects": ["gmax", "decoration-flower", "shiny"],
+      "aspects": [
+        "gmax",
+        "decoration-flower",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png",
       "layers": [
         {
@@ -113,7 +146,10 @@
       ]
     },
     {
-      "aspects": ["gmax", "decoration-love"],
+      "aspects": [
+        "gmax",
+        "decoration-love"
+      ],
       "layers": [
         {
           "name": "decoration",
@@ -123,7 +159,11 @@
       ]
     },
     {
-      "aspects": ["gmax", "decoration-love", "shiny"],
+      "aspects": [
+        "gmax",
+        "decoration-love",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png",
       "layers": [
         {
@@ -134,7 +174,10 @@
       ]
     },
     {
-      "aspects": ["gmax", "decoration-ribbon"],
+      "aspects": [
+        "gmax",
+        "decoration-ribbon"
+      ],
       "layers": [
         {
           "name": "decoration",
@@ -144,7 +187,11 @@
       ]
     },
     {
-      "aspects": ["gmax", "decoration-ribbon", "shiny"],
+      "aspects": [
+        "gmax",
+        "decoration-ribbon",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png",
       "layers": [
         {
@@ -155,7 +202,10 @@
       ]
     },
     {
-      "aspects": ["gmax", "decoration-star"],
+      "aspects": [
+        "gmax",
+        "decoration-star"
+      ],
       "layers": [
         {
           "name": "decoration",
@@ -165,7 +215,11 @@
       ]
     },
     {
-      "aspects": ["gmax", "decoration-star", "shiny"],
+      "aspects": [
+        "gmax",
+        "decoration-star",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png",
       "layers": [
         {
@@ -176,75 +230,138 @@
       ]
     },
     {
-      "aspects": ["gmax", "cream-vanilla"],
+      "aspects": [
+        "gmax",
+        "cream-vanilla"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax.png"
     },
     {
-      "aspects": ["gmax", "cream-vanilla", "shiny"],
+      "aspects": [
+        "gmax",
+        "cream-vanilla",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png"
     },
     {
-      "aspects": ["gmax", "cream-caramel_swirl"],
+      "aspects": [
+        "gmax",
+        "cream-caramel_swirl"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax.png"
     },
     {
-      "aspects": ["gmax", "cream-caramel_swirl", "shiny"],
+      "aspects": [
+        "gmax",
+        "cream-caramel_swirl",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png"
     },
     {
-      "aspects": ["gmax", "cream-ruby"],
+      "aspects": [
+        "gmax",
+        "cream-ruby"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax.png"
     },
     {
-      "aspects": ["gmax", "cream-ruby", "shiny"],
+      "aspects": [
+        "gmax",
+        "cream-ruby",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png"
     },
     {
-      "aspects": ["gmax", "cream-matcha"],
+      "aspects": [
+        "gmax",
+        "cream-matcha"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax.png"
     },
     {
-      "aspects": ["gmax", "cream-matcha", "shiny"],
+      "aspects": [
+        "gmax",
+        "cream-matcha",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png"
     },
     {
-      "aspects": ["gmax", "cream-mint"],
+      "aspects": [
+        "gmax",
+        "cream-mint"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax.png"
     },
     {
-      "aspects": ["gmax", "cream-mint", "shiny"],
+      "aspects": [
+        "gmax",
+        "cream-mint",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png"
     },
     {
-      "aspects": ["gmax", "cream-lemon"],
+      "aspects": [
+        "gmax",
+        "cream-lemon"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax.png"
     },
     {
-      "aspects": ["gmax", "cream-lemon", "shiny"],
+      "aspects": [
+        "gmax",
+        "cream-lemon",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png"
     },
     {
-      "aspects": ["gmax", "cream-salted"],
+      "aspects": [
+        "gmax",
+        "cream-salted"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax.png"
     },
     {
-      "aspects": ["gmax", "cream-salted", "shiny"],
+      "aspects": [
+        "gmax",
+        "cream-salted",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png"
     },
     {
-      "aspects": ["gmax", "cream-ruby_swirl"],
+      "aspects": [
+        "gmax",
+        "cream-ruby_swirl"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax.png"
     },
     {
-      "aspects": ["gmax", "cream-ruby_swirl", "shiny"],
+      "aspects": [
+        "gmax",
+        "cream-ruby_swirl",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png"
     },
     {
-      "aspects": ["gmax", "cream-rainbow_swirl"],
+      "aspects": [
+        "gmax",
+        "cream-rainbow_swirl"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax.png"
     },
     {
-      "aspects": ["gmax", "cream-rainbow_swirl", "shiny"],
+      "aspects": [
+        "gmax",
+        "cream-rainbow_swirl",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0869_alcremie/alcremie_gmax_shiny.png"
     }
   ]

@@ -6,13 +6,13 @@
       "aspects": [],
       "poser": "cobblemon:glastrier",
       "model": "cobblemon:glastrier.geo",
-      "texture": "cobblemon:textures/pokemon/0896_glastrier/glastrier.png",
-      "layers": []
+      "texture": "cobblemon:textures/pokemon/0896_glastrier/glastrier.png"
     },
     {
-      "aspects": ["shiny"],
-      "texture": "cobblemon:textures/pokemon/0896_glastrier/glastrier_shiny.png",
-      "layers": []
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0896_glastrier/glastrier_shiny.png"
     }
   ]
 }

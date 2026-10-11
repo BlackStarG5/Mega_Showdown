@@ -4,7 +4,6 @@ import com.github.yajatkaul.mega_showdown.block.MegaShowdownBlockEntities;
 import com.github.yajatkaul.mega_showdown.block.MegaShowdownBlocks;
 import com.github.yajatkaul.mega_showdown.command.MegaShowdownCommands;
 import com.github.yajatkaul.mega_showdown.components.MegaShowdownDataComponents;
-import com.github.yajatkaul.mega_showdown.config.MegaShowdownConfig;
 import com.github.yajatkaul.mega_showdown.creative.MegaShowdownTabs;
 import com.github.yajatkaul.mega_showdown.event.EventRegister;
 import com.github.yajatkaul.mega_showdown.item.MegaShowdownItems;
@@ -20,7 +19,7 @@ public final class MegaShowdown {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
     public static void init() {
-        MegaShowdownConfig.load();
+//        MegaShowdownConfig.load(); Meh i dont kinda do it here it auto starts with the mixin anyways
         MegaShowdownDataComponents.register();
         MegaShowdownBlocks.register();
         MegaShowdownBlockEntities.register();

@@ -1,0 +1,21 @@
+{
+  "species": "cobblemon:pyroar",
+  "order": 2,
+  "variations": [
+    {
+      "aspects": [
+        "mega"
+      ],
+      "poser": "cobblemon:pyroar_mega",
+      "model": "cobblemon:pyroar_mega.geo",
+      "texture": "cobblemon:textures/pokemon/0668_pyroar/pyroar_mega.png"
+    },
+    {
+      "aspects": [
+        "mega",
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0668_pyroar/pyroar_mega_shiny.png"
+    }
+  ]
+}

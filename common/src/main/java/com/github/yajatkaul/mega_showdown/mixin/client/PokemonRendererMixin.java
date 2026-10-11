@@ -33,7 +33,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
 /*
 IK this code is shit but im bored doing this so ill fix it later
@@ -48,9 +51,9 @@ public class PokemonRendererMixin {
     @Unique
     private final Set<String> mega_showdown$teraCrystalAspects = new HashSet<>();
     @Unique
-    private DynamaxCloudsLayer mega_showdown$dynamaxCloudsLayer = new DynamaxCloudsLayer();
+    private final DynamaxCloudsLayer mega_showdown$dynamaxCloudsLayer = new DynamaxCloudsLayer();
     @Unique
-    private TeraHatsLayer mega_showdown$teraHatsLayer = new TeraHatsLayer();
+    private final TeraHatsLayer mega_showdown$teraHatsLayer = new TeraHatsLayer();
     //
 
     @Inject(method = "<init>", at = @At(value = "RETURN"))
@@ -84,7 +87,7 @@ public class PokemonRendererMixin {
             }
         }
 
-        boolean dmax_aspect = pokemon.getAspects().contains("msd:dmax");
+        boolean dmax_aspect = pokemon.getAspects().contains("msd:dmax") || pokemon.getAspects().contains("gmax");
 
         if (aspect.isPresent()) {
             if (MegaShowdownConfig.teraHats) {
@@ -177,15 +180,23 @@ public class PokemonRendererMixin {
         poseStack.translate(0.08, 0.0, 0.0);
 
         if (settings != null) {
-            List<Float> translate = settings.translate();
-            poseStack.translate(translate.get(0), translate.get(1), translate.get(2));
+            settings.translate().ifPresent((translate) -> {
+                poseStack.translate(translate.get(0), translate.get(1), translate.get(2));
+            });
         }
 
         poseStack.scale(1.5f, 1.5f, 1.5f);
 
         if (settings != null) {
-            List<Float> scale = settings.scale();
-            poseStack.scale(scale.get(0), scale.get(1), scale.get(2));
+            settings.rotation().ifPresent((rotation) -> {
+                poseStack.mulPose(Axis.XP.rotationDegrees(rotation.get(0)));
+                poseStack.mulPose(Axis.YP.rotationDegrees(rotation.get(1)));
+                poseStack.mulPose(Axis.ZP.rotationDegrees(rotation.get(2)));
+            });
+
+            settings.scale().ifPresent((scale) -> {
+                poseStack.scale(scale.get(0), scale.get(1), scale.get(2));
+            });
         }
 
         // Apply animations

@@ -11,13 +11,6 @@
     0.6,
     0
   ],
-  "animations": {
-    "faint": "q.bedrock_primary('mega_medicham', 'faint', q.curve('symmetrical_wide'))",
-    "physical": "q.bedrock_primary('mega_medicham', 'physical', q.curve('symmetrical_wide'))",
-    "special": "q.bedrock_primary('mega_medicham', 'special', q.curve('symmetrical_wide'))",
-    "status": "q.bedrock_primary('mega_medicham', 'special', q.curve('symmetrical_wide'))",
-    "recoil": "q.bedrock_primary('mega_medicham', 'recoil', q.curve('symmetrical_wide'))"
-  },
   "poses": {
     "battle-standing": {
       "transformTicks": 10,
@@ -55,36 +48,12 @@
         "q.bedrock('mega_medicham', 'ground_walk')"
       ]
     },
-    "hover": {
-      "transformTicks": 5,
+    "sleep": {
       "poseTypes": [
-        "FLY",
-        "HOVER",
-        "FLOAT"
+        "SLEEP"
       ],
       "animations": [
-        "q.look('head')",
-        "q.bedrock('mega_medicham', 'ground_walk')"
-      ]
-    },
-    "float": {
-      "transformTicks": 5,
-      "poseTypes": [
-        "FLOAT"
-      ],
-      "animations": [
-        "q.look('head')",
-        "q.bedrock('mega_medicham', 'ground_walk')"
-      ]
-    },
-    "swim": {
-      "transformTicks": 8,
-      "poseTypes": [
-        "SWIM"
-      ],
-      "animations": [
-        "q.look('head')",
-        "q.bedrock('mega_medicham', 'ground_walk')"
+        "q.bedrock('mega_medicham', 'sleep')"
       ]
     }
   }

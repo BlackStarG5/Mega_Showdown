@@ -1,15 +1,15 @@
 {
   "head": "head",
-  "portraitScale": 0.5,
+  "portraitScale": 0.46,
   "portraitTranslation": [
     0,
-    1.5,
+    1.77,
     0
   ],
-  "profileScale": 0.5,
+  "profileScale": 0.33,
   "profileTranslation": [
     0,
-    1,
+    1.35,
     0
   ],
   "poses": {

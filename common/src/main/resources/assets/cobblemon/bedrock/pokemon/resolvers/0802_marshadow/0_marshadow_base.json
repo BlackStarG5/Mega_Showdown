@@ -16,7 +16,9 @@
       ]
     },
     {
-      "aspects": ["shiny"],
+      "aspects": [
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0802_marshadow/marshadow_shiny.png"
     }
   ]

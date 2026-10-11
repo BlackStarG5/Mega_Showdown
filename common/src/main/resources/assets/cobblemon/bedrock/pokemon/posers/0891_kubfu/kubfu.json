@@ -1,9 +1,17 @@
 {
-    "head": "head",
-	"portraitScale": 2.4,
-    "portraitTranslation": [ 0, 0.3, 0 ],
-    "profileScale": 0.9,
-    "profileTranslation": [ 0, 0.5, 0 ],
+  "head": "head",
+  "portraitScale": 2.4,
+  "portraitTranslation": [
+    0,
+    0.3,
+    0
+  ],
+  "profileScale": 0.9,
+  "profileTranslation": [
+    0,
+    0.5,
+    0
+  ],
   "animations": {
     "cry": "bedrock('kubfu', 'cry')",
     "recoil": "q.bedrock_stateful('kubfu', 'recoil')",
@@ -11,7 +19,10 @@
   },
   "poses": {
     "battle-standing": {
-      "poseTypes": ["STAND", "WALK"],
+      "poseTypes": [
+        "STAND",
+        "WALK"
+      ],
       "isBattle": true,
       "animations": [
         "q.bedrock('kubfu', 'battle_idle')"
@@ -19,16 +30,25 @@
       "quirks": [
         {
           "name": "blink",
-          "animations": ["bedrock(kubfu, blink)"]
+          "animations": [
+            "bedrock(kubfu, blink)"
+          ]
         },
         {
           "name": "quirk",
-          "animations": ["bedrock(kubfu, stretch_quirk)"]
+          "animations": [
+            "bedrock(kubfu, stretch_quirk)"
+          ]
         }
       ]
     },
     "standing": {
-      "poseTypes": ["STAND", "NONE", "PORTRAIT", "PROFILE"],
+      "poseTypes": [
+        "STAND",
+        "NONE",
+        "PORTRAIT",
+        "PROFILE"
+      ],
       "isBattle": false,
       "animations": [
         "q.bedrock('kubfu', 'ground_idle')"
@@ -36,89 +56,119 @@
       "quirks": [
         {
           "name": "blink",
-          "animations": ["bedrock(kubfu, blink)"]
+          "animations": [
+            "bedrock(kubfu, blink)"
+          ]
         },
         {
           "name": "quirk",
-          "animations": ["bedrock(kubfu, stretch_quirk)"]
+          "animations": [
+            "bedrock(kubfu, stretch_quirk)"
+          ]
         }
       ]
     },
     "walking": {
-      "poseTypes": ["WALK"],
+      "poseTypes": [
+        "WALK"
+      ],
       "animations": [
         "q.bedrock('kubfu', 'ground_walk')"
       ]
     },
     "float": {
-      "poseTypes": ["FLOAT"],
+      "poseTypes": [
+        "FLOAT"
+      ],
       "animations": [
         "q.bedrock('kubfu', 'ground_walk')"
       ]
     },
     "swim": {
-      "poseTypes": ["SWIM"],
+      "poseTypes": [
+        "SWIM"
+      ],
       "animations": [
         "q.bedrock('kubfu', 'ground_walk')"
       ]
     },
     "sleep": {
-      "poseTypes": ["SLEEP"],
-      "animations": ["q.bedrock('kubfu', 'sleep')"]
+      "poseTypes": [
+        "SLEEP"
+      ],
+      "animations": [
+        "q.bedrock('kubfu', 'sleep')"
+      ]
     },
-   "leftshoulder": {
-     "poseName": "leftshoulder",
-     "transformTicks": 10,
-     "poseTypes": [
-       "SHOULDER_LEFT"
-     ],
-     "animations": [
-       "bedrock(kubfu, left_shoulder)",
-       "q.look('head')"
-     ],
-     "quirks": [
-       {
-         "name": "blink",
-         "animations": [
-           "bedrock(kubfu, blink)"
-         ]
-       }
-     ],
-	 "transformedParts": [
-         {
-           "part": "body",
-           "position": [-4, -5.5, 4.5],
-           "rotation": [0, 0, 0],
-           "isVisible": true
-         }
-	]
-   },
-   "rightshoulder": {
-     "poseName": "rightshoulder",
-     "transformTicks": 10,
-     "poseTypes": [
-       "SHOULDER_RIGHT"
-     ],
-     "animations": [
-       "bedrock(kubfu, right_shoulder)",
-       "q.look('head')"
-     ],
-     "quirks": [
-       {
-         "name": "blink",
-         "animations": [
-           "bedrock(kubfu, blink)"
-         ]
-       }
-     ],
-	 "transformedParts": [
-         {
-           "part": "body",
-           "position": [4, -5.5, 4.5],
-           "rotation": [0, 0, 0],
-           "isVisible": true
-         }
-	]
-   }
+    "leftshoulder": {
+      "poseName": "leftshoulder",
+      "transformTicks": 10,
+      "poseTypes": [
+        "SHOULDER_LEFT"
+      ],
+      "animations": [
+        "bedrock(kubfu, left_shoulder)",
+        "q.look('head')"
+      ],
+      "quirks": [
+        {
+          "name": "blink",
+          "animations": [
+            "bedrock(kubfu, blink)"
+          ]
+        }
+      ],
+      "transformedParts": [
+        {
+          "part": "body",
+          "position": [
+            -4,
+            -5.5,
+            4.5
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "isVisible": true
+        }
+      ]
+    },
+    "rightshoulder": {
+      "poseName": "rightshoulder",
+      "transformTicks": 10,
+      "poseTypes": [
+        "SHOULDER_RIGHT"
+      ],
+      "animations": [
+        "bedrock(kubfu, right_shoulder)",
+        "q.look('head')"
+      ],
+      "quirks": [
+        {
+          "name": "blink",
+          "animations": [
+            "bedrock(kubfu, blink)"
+          ]
+        }
+      ],
+      "transformedParts": [
+        {
+          "part": "body",
+          "position": [
+            4,
+            -5.5,
+            4.5
+          ],
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "isVisible": true
+        }
+      ]
+    }
   }
 }

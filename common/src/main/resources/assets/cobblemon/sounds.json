@@ -1,8 +1,6 @@
 {
   "pokemon.minior.cry": {
-    "sounds": [
-      "cobblemon:pokemon/minior/cry"
-    ]
+    "sounds": ["cobblemon:pokemon/minior/cry"]
   },
   "pokemon.arceus.cry": {
     "sounds": [
@@ -475,5 +473,19 @@
         "volume": 0.8
       }
     ]
+  },
+  "pokemon.zygardecore.cry": {
+    "sounds": [
+      {
+        "name": "cobblemon:pokemon/zygarde/zygarde_core",
+        "volume": 1.0
+      }
+    ]
+  },
+  "pokemon.sceptile_mega.cry": {
+    "sounds": ["cobblemon:pokemon/sceptile/sceptile_mega_cry"]
+  },
+  "pokemon.virizion.cry": {
+    "sounds": ["cobblemon:pokemon/virizion/virizion_cry"]
   }
 }

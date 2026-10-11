@@ -38,6 +38,59 @@
     "special_defence": 0,
     "speed": 0
   },
+  "riding": {
+    "behaviours": {
+      "AIR": {
+        "key": "cobblemon:air/hover",
+        "rideSounds": [
+          {
+            "muffleEnabled": true,
+            "pitchExpr": "math.max(1.0 ,0.2 + math.pow(math.min(q.ride_velocity() / 1.5, 1.0),2))",
+            "playForNonPassengers": false,
+            "playForPassengers": true,
+            "soundLocation": "cobblemon:ride.loop.wind.stereo",
+            "volumeExpr": "math.pow(math.min(q.ride_velocity() / 1.5, 1.0),2)"
+          },
+          {
+            "muffleEnabled": true,
+            "pitchExpr": "math.max(1.0 ,0.2 + math.pow(math.min(q.ride_velocity() / 1.5, 1.0),2))",
+            "playForNonPassengers": true,
+            "playForPassengers": false,
+            "soundLocation": "cobblemon:ride.loop.wind.mono",
+            "volumeExpr": "math.pow(math.min(q.ride_velocity() / 1.5, 1.0),2)"
+          },
+          {
+            "muffleEnabled": true,
+            "pitchExpr": "math.max(1.0 ,0.2 + math.pow(math.min(q.ride_velocity() / 1.5, 1.0),2))",
+            "playForNonPassengers": false,
+            "playForPassengers": true,
+            "soundLocation": "cobblemon:ride.loop.saucer.stereo",
+            "volumeExpr": "math.pow(math.min(q.ride_velocity() / 1.5, 1.0),2)"
+          },
+          {
+            "muffleEnabled": true,
+            "pitchExpr": "math.max(1.0 ,0.2 + math.pow(math.min(q.ride_velocity() / 1.5, 1.0),2))",
+            "playForNonPassengers": true,
+            "playForPassengers": false,
+            "soundLocation": "cobblemon:ride.loop.saucer.mono",
+            "volumeExpr": "math.pow(math.min(q.ride_velocity() / 1.5, 1.0),2)"
+          }
+        ],
+        "stats": {
+          "ACCELERATION": "65-90",
+          "JUMP": "45-65",
+          "SKILL": "41-80",
+          "SPEED": "34-70",
+          "STAMINA": "20-25"
+        }
+      }
+    },
+    "seats": [
+      {
+        "locator": "seat_1"
+      }
+    ]
+  },
   "baseExperienceYield": 300,
   "experienceGroup": "slow",
   "catchRate": 3,
@@ -46,7 +99,7 @@
   "baseScale": 1,
   "hitbox": {
     "width": 3,
-    "height": 3.5,
+    "height": 5,
     "fixed": false
   },
   "moves": [
@@ -172,8 +225,18 @@
     "tutor:stoneedge",
     "tutor:swift",
     "tutor:telekinesis",
-    "tutor:trick",
-    "tutor:xscissor"
+    "tutor:xscissor",
+    "legacy:breakingswipe",
+    "legacy:confide",
+    "legacy:doubleteam",
+    "legacy:frustration",
+    "legacy:hiddenpower",
+    "legacy:return",
+    "legacy:round",
+    "legacy:snore",
+    "legacy:swagger",
+    "legacy:thunderwave",
+    "legacy:toxic"
   ],
   "evolutions": [],
   "forms": [
@@ -343,7 +406,6 @@
         "tutor:stoneedge",
         "tutor:swift",
         "tutor:telekinesis",
-        "tutor:trick",
         "tutor:xscissor"
       ],
       "evolutions": [],
@@ -515,7 +577,6 @@
         "tutor:stoneedge",
         "tutor:swift",
         "tutor:telekinesis",
-        "tutor:trick",
         "tutor:xscissor"
       ],
       "evolutions": [],
@@ -545,8 +606,8 @@
         "h:neuroforce"
       ],
       "hitbox": {
-        "width": 3,
-        "height": 4.45,
+        "width": 5,
+        "height": 12,
         "fixed": false
       },
       "baseStats": {

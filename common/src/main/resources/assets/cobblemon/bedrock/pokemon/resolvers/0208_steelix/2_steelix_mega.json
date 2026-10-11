@@ -3,7 +3,9 @@
   "order": 2,
   "variations": [
     {
-      "aspects": ["mega"],
+      "aspects": [
+        "mega"
+      ],
       "model": "cobblemon:steelix_mega.geo",
       "texture": "cobblemon:textures/pokemon/0208_steelix/steelix_mega.png",
       "layers": [
@@ -16,17 +18,11 @@
       ]
     },
     {
-      "aspects": ["mega", "shiny"],
-      "model": "cobblemon:steelix_mega.geo",
-      "texture": "cobblemon:textures/pokemon/0208_steelix/steelix_mega_shiny.png",
-      "layers": [
-        {
-          "name": "emissive",
-          "emissive": true,
-          "texture": "cobblemon:textures/pokemon/0208_steelix/steelix_mega_emissive.png",
-          "translucent": false
-        }
-      ]
+      "aspects": [
+        "mega",
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0208_steelix/steelix_mega_shiny.png"
     }
   ]
 }

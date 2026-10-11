@@ -69,6 +69,10 @@ function getTypeChart() {
   return JSON.stringify(Dex.data.TypeChart);
 }
 
+function getTypeChartData() {
+  return Dex.data.TypeChart;
+}
+
 function resetData(type) {
   const registry = Cobblemon.getRegistry(type);
   registry.reset();
@@ -145,6 +149,27 @@ function receiveTypeChartData(typeChartId, typeChartData) {
   const existing = typechart.TypeChart[typeChartId];
 
   typechart.TypeChart[typeChartId] = {
+    ...existing,
+
+    // merge damageTaken instead of replacing it
+    damageTaken: {
+      ...(existing.damageTaken ?? {}),
+      ...(parsed.damageTaken ?? {}),
+    },
+
+    // merge other fields normally
+    HPivs: {
+      ...(existing.HPivs ?? {}),
+      ...(parsed.HPivs ?? {}),
+    },
+
+    HPdvs: {
+      ...(existing.HPdvs ?? {}),
+      ...(parsed.HPdvs ?? {}),
+    },
+  };
+
+  Dex.data.TypeChart[typeChartId] = {
     ...existing,
 
     // merge damageTaken instead of replacing it

@@ -11,14 +11,10 @@
     1.0,
     0
   ],
-  "rootBone": "blastoisegmax",
+  "rootBone": "blastoise",
   "animations": {
-    "faint": "q.bedrock_primary('blastoisegmax', 'faint', q.curve('one'))",
     "cry": "q.bedrock_stateful('blastoisegmax', 'cry')",
-    "recoil": "q.bedrock_stateful('blastoisegmax', 'recoil')",
-    "physical": "q.bedrock_primary('blastoisegmax', 'physical', q.curve('symmetrical_wide'))",
-    "special": "q.bedrock_primary('blastoisegmax', 'special', q.curve('symmetrical_wide'))",
-    "status": "q.bedrock_primary('blastoisegmax', 'status', q.curve('symmetrical_wide'))"
+    "recoil": "q.bedrock_stateful('blastoisegmax', 'recoil')"
   },
   "poses": {
     "battle-standing": {
@@ -33,8 +29,7 @@
         "q.bedrock('blastoisegmax', 'battle_idle')"
       ],
       "quirks": [
-        "q.bedrock_quirk('blastoisegmax', 'blink')",
-        "q.bedrock_quirk('blastoisegmax', q.array('quirk_battle_idle', 'quirk_battle_idle2'), 30, 60, 1)"
+        "q.bedrock_quirk('blastoisegmax', 'blink')"
       ]
     },
     "standing": {
@@ -48,52 +43,7 @@
         "q.bedrock('blastoisegmax', 'ground_idle')"
       ],
       "quirks": [
-        "q.bedrock_quirk('blastoisegmax', 'blink')",
-        "q.bedrock_quirk('blastoisegmax', 'quirk_ground_idle', 20, 60, 1)"
-      ]
-    },
-    "walking": {
-      "poseTypes": [
-        "WALK"
-      ],
-      "animations": [
-        "q.look('head_ai')",
-        "q.bedrock('blastoisegmax', 'ground_walk')"
-      ],
-      "quirks": [
         "q.bedrock_quirk('blastoisegmax', 'blink')"
-      ]
-    },
-    "float": {
-      "poseTypes": [
-        "FLOAT"
-      ],
-      "animations": [
-        "q.look('head_ai')",
-        "q.bedrock('blastoisegmax', 'water_idle')"
-      ],
-      "quirks": [
-        "q.bedrock_quirk('blastoisegmax', 'blink')"
-      ]
-    },
-    "swim": {
-      "poseTypes": [
-        "SWIM"
-      ],
-      "animations": [
-        "q.look('head_ai')",
-        "q.bedrock('blastoisegmax', 'water_swim')"
-      ],
-      "quirks": [
-        "q.bedrock_quirk('blastoisegmax', 'blink')"
-      ]
-    },
-    "sleep": {
-      "poseTypes": [
-        "SLEEP"
-      ],
-      "animations": [
-        "q.bedrock('blastoisegmax', 'sleep')"
       ]
     }
   }

@@ -1,14 +1,8 @@
 {
-  "root": "mawile",
-  "head": "head",
-  "rightArm": "arm_right",
-  "leftArm": "arm_left",
-  "rightLeg": "leg_right",
-  "leftLeg": "leg_left",
-  "portraitScale": 2.93,
+  "portraitScale": 2.4,
   "portraitTranslation": [
-    0.2,
-    -1.06,
+    -0.12,
+    0.7,
     0.0
   ],
   "profileScale": 0.8,
@@ -17,19 +11,21 @@
     0.6,
     0.0
   ],
+  "rootBone": "mawile",
+  "animations": {
+    "cry": "q.bedrock_stateful('mawile_mega', 'cry')"
+  },
   "poses": {
     "battle-standing": {
       "poseTypes": [
-        "STAND",
-        "WALK"
+        "STAND"
       ],
       "isBattle": true,
       "animations": [
-        "q.look('head')",
-        "q.bedrock('mawilemega', 'battle_idle')"
+        "q.bedrock('mawile_mega', 'battle_idle')"
       ],
       "quirks": [
-        "q.bedrock_quirk('mawilemega', 'blink')"
+        "q.bedrock_quirk('mawile_mega', 'blink')"
       ]
     },
     "standing": {
@@ -41,11 +37,10 @@
       ],
       "isBattle": false,
       "animations": [
-        "q.look('head')",
-        "q.bedrock('mawilemega', 'ground_idle')"
+        "q.bedrock('mawile_mega', 'ground_idle')"
       ],
       "quirks": [
-        "q.bedrock_quirk('mawilemega', 'blink')"
+        "q.bedrock_quirk('mawile_mega', 'blink')"
       ]
     },
     "walking": {
@@ -53,10 +48,10 @@
         "WALK"
       ],
       "animations": [
-        "q.look('head')",
-        "q.bedrock('mawilemega', 'ground_idle')",
-        "q.BipedWalkAnimation(0.6, 0.9)",
-        "q.BimanualSwingAnimation(0.6, 0.9)"
+        "q.bedrock('mawile_mega', 'ground_walk')"
+      ],
+      "quirks": [
+        "q.bedrock_quirk('mawile_mega', 'blink')"
       ]
     }
   }

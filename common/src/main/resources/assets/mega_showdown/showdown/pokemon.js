@@ -192,6 +192,7 @@ class Pokemon {
     this.baseStoredStats = null;
     this.storedStats = { atk: 0, def: 0, spa: 0, spd: 0, spe: 0 };
     this.boosts = { atk: 0, def: 0, spa: 0, spd: 0, spe: 0, accuracy: 0, evasion: 0 };
+    this.alphaBoosts = { atk: 0, def: 0, spa: 0, spd: 0, spe: 0, accuracy: 0, evasion: 0 };
     this.baseAbility = (0, import_dex.toID)(set.ability);
     this.ability = this.baseAbility;
     this.abilityState = { id: this.ability };
@@ -326,39 +327,43 @@ class Pokemon {
     return this.battle.modify(stat, modifier || 1);
   }
   getStat(statName, unboosted, unmodified) {
-    statName = (0, import_dex.toID)(statName);
-    if (statName === "hp")
-      throw new Error("Please read `maxhp` directly");
-    let stat = this.storedStats[statName];
-    if (unmodified && "wonderroom" in this.battle.field.pseudoWeather) {
-      if (statName === "def") {
-        statName = "spd";
-      } else if (statName === "spd") {
-        statName = "def";
+      statName = (0, import_dex.toID)(statName);
+      if (statName === "hp")
+        throw new Error("Please read `maxhp` directly");
+      let stat = this.storedStats[statName];
+      if (this.alphaBoosts[statName] > 0) {
+        const alphaBoostTable = [1, 1.5, 2, 2.5, 3, 3.5, 4];
+        stat = Math.floor(stat * alphaBoostTable[this.alphaBoosts[statName]]);
       }
-    }
-    if (!unboosted) {
-      const boosts = this.battle.runEvent("ModifyBoost", this, null, null, { ...this.boosts });
-      let boost = boosts[statName];
-      const boostTable = [1, 1.5, 2, 2.5, 3, 3.5, 4];
-      if (boost > 6)
-        boost = 6;
-      if (boost < -6)
-        boost = -6;
-      if (boost >= 0) {
-        stat = Math.floor(stat * boostTable[boost]);
-      } else {
-        stat = Math.floor(stat / boostTable[-boost]);
+      if (unmodified && "wonderroom" in this.battle.field.pseudoWeather) {
+        if (statName === "def") {
+          statName = "spd";
+        } else if (statName === "spd") {
+          statName = "def";
+        }
       }
+      if (!unboosted) {
+        const boosts = this.battle.runEvent("ModifyBoost", this, null, null, { ...this.boosts });
+        let boost = boosts[statName];
+        const boostTable = [1, 1.5, 2, 2.5, 3, 3.5, 4];
+        if (boost > 6)
+          boost = 6;
+        if (boost < -6)
+          boost = -6;
+        if (boost >= 0) {
+          stat = Math.floor(stat * boostTable[boost]);
+        } else {
+          stat = Math.floor(stat / boostTable[-boost]);
+        }
+      }
+      if (!unmodified) {
+        const statTable = { atk: "Atk", def: "Def", spa: "SpA", spd: "SpD", spe: "Spe" };
+        stat = this.battle.runEvent("Modify" + statTable[statName], this, null, null, stat);
+      }
+      if (statName === "spe" && stat > 1e4 && !this.battle.format.battle?.trunc)
+        stat = 1e4;
+      return stat;
     }
-    if (!unmodified) {
-      const statTable = { atk: "Atk", def: "Def", spa: "SpA", spd: "SpD", spe: "Spe" };
-      stat = this.battle.runEvent("Modify" + statTable[statName], this, null, null, stat);
-    }
-    if (statName === "spe" && stat > 1e4 && !this.battle.format.battle?.trunc)
-      stat = 1e4;
-    return stat;
-  }
   getActionSpeed() {
     let speed = this.getStat("spe", false, false);
     if (this.battle.field.getPseudoWeather("trickroom")) {
@@ -1035,6 +1040,14 @@ class Pokemon {
    * as well as sending all relevant messages sent to the client.
    */
   formeChange(speciesId, source = this.battle.effect, isPermanent, message) {
+
+    if (isPermanent && source?.effectType === 'Item') {
+      const volatileId = this.getAbility().clearOnMega;
+      if (volatileId && this.volatiles[volatileId]) {
+        delete this.volatiles[volatileId];
+      }
+    }
+
     const rawSpecies = this.battle.dex.species.get(speciesId);
     const species = this.setSpecies(rawSpecies, source);
     if (!species)
@@ -1082,12 +1095,18 @@ class Pokemon {
       }
       if (source || !this.getAbility().flags["cantsuppress"])
         this.setAbility(species.abilities["0"], null, true);
-      this.baseAbility = (0, import_dex.toID)(species.abilities["0"]);
+      this.baseAbility = this.battle.toID(species.abilities["0"]);
     }
     if (this.terastallized) {
       this.knownType = true;
       this.apparentType = this.terastallized;
     }
+
+    const isMegaItem = isPermanent && source?.effectType === 'Item';
+    if (!isMegaItem && !this.side.hasMegaEvolved) {
+      this.canMegaEvo = this.battle.actions.canMegaEvo(this);
+    }
+
     return true;
   }
   clearVolatile(includeSwitchFlags = true) {
@@ -1690,7 +1709,7 @@ class Pokemon {
       return true;
     if (!negateImmunity && this.hasType("Flying") && !(this.hasType("???") && "roost" in this.volatiles))
       return false;
-    if (this.hasAbility("levitate") && !this.battle.suppressingAbility(this))
+    if (this.hasAbility(['levitate', 'eelevate']) && !this.battle.suppressingAbility(this))
       return null;
     if ("magnetrise" in this.volatiles)
       return false;
@@ -1719,15 +1738,21 @@ class Pokemon {
    * Like Field.effectiveWeather(), but ignores sun and rain if
    * the Utility Umbrella is active for the Pokemon.
    */
-  effectiveWeather() {
+  effectiveWeather(sourceEffect, message) {
+    if (!sourceEffect && this.battle.effect) sourceEffect = this.battle.effect;
     const weather = this.battle.field.effectiveWeather();
+    if (this.battle.activePokemon?.hasAbility('megasol') && sourceEffect &&
+        (sourceEffect.id === 'megasol' || sourceEffect.effectType === 'Move' || sourceEffect.effectType === 'Weather') &&
+        sourceEffect.id !== 'electroshot') {
+        if (weather !== 'sunnyday' && message) this.battle.add('-activate', this, 'ability: Mega Sol');
+        return 'sunnyday';
+    }
     switch (weather) {
-      case "sunnyday":
-      case "raindance":
-      case "desolateland":
-      case "primordialsea":
-        if (this.hasItem("utilityumbrella"))
-          return "";
+    case 'sunnyday':
+    case 'raindance':
+    case 'desolateland':
+    case 'primordialsea':
+        if (this.hasItem('utilityumbrella')) return '';
     }
     return weather;
   }

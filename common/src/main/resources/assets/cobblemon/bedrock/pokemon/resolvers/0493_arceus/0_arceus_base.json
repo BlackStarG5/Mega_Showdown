@@ -16,7 +16,9 @@
       ]
     },
     {
-      "aspects": ["shiny"],
+      "aspects": [
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_shiny.png",
       "layers": [
         {
@@ -27,7 +29,9 @@
       ]
     },
     {
-      "aspects": ["fire-plate"],
+      "aspects": [
+        "fire-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_fire.png",
       "layers": [
         {
@@ -38,7 +42,9 @@
       ]
     },
     {
-      "aspects": ["water-plate"],
+      "aspects": [
+        "water-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_water.png",
       "layers": [
         {
@@ -49,7 +55,9 @@
       ]
     },
     {
-      "aspects": ["grass-plate"],
+      "aspects": [
+        "grass-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_grass.png",
       "layers": [
         {
@@ -60,7 +68,9 @@
       ]
     },
     {
-      "aspects": ["electric-plate"],
+      "aspects": [
+        "electric-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_electric.png",
       "layers": [
         {
@@ -71,7 +81,9 @@
       ]
     },
     {
-      "aspects": ["ice-plate"],
+      "aspects": [
+        "ice-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_ice.png",
       "layers": [
         {
@@ -82,7 +94,9 @@
       ]
     },
     {
-      "aspects": ["fighting-plate"],
+      "aspects": [
+        "fighting-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_fighting.png",
       "layers": [
         {
@@ -93,7 +107,9 @@
       ]
     },
     {
-      "aspects": ["poison-plate"],
+      "aspects": [
+        "poison-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_poison.png",
       "layers": [
         {
@@ -104,7 +120,9 @@
       ]
     },
     {
-      "aspects": ["ground-plate"],
+      "aspects": [
+        "ground-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_ground.png",
       "layers": [
         {
@@ -115,7 +133,9 @@
       ]
     },
     {
-      "aspects": ["flying-plate"],
+      "aspects": [
+        "flying-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_flying.png",
       "layers": [
         {
@@ -126,7 +146,9 @@
       ]
     },
     {
-      "aspects": ["psychic-plate"],
+      "aspects": [
+        "psychic-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_psychic.png",
       "layers": [
         {
@@ -137,7 +159,9 @@
       ]
     },
     {
-      "aspects": ["bug-plate"],
+      "aspects": [
+        "bug-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_bug.png",
       "layers": [
         {
@@ -148,7 +172,9 @@
       ]
     },
     {
-      "aspects": ["rock-plate"],
+      "aspects": [
+        "rock-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_rock.png",
       "layers": [
         {
@@ -159,7 +185,9 @@
       ]
     },
     {
-      "aspects": ["ghost-plate"],
+      "aspects": [
+        "ghost-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_ghost.png",
       "layers": [
         {
@@ -170,7 +198,9 @@
       ]
     },
     {
-      "aspects": ["dragon-plate"],
+      "aspects": [
+        "dragon-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_dragon.png",
       "layers": [
         {
@@ -181,7 +211,9 @@
       ]
     },
     {
-      "aspects": ["dark-plate"],
+      "aspects": [
+        "dark-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_dark.png",
       "layers": [
         {
@@ -192,7 +224,9 @@
       ]
     },
     {
-      "aspects": ["steel-plate"],
+      "aspects": [
+        "steel-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_steel.png",
       "layers": [
         {
@@ -203,7 +237,9 @@
       ]
     },
     {
-      "aspects": ["fairy-plate"],
+      "aspects": [
+        "fairy-plate"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_fairy.png",
       "layers": [
         {
@@ -214,7 +250,10 @@
       ]
     },
     {
-      "aspects": ["fire-plate", "shiny"],
+      "aspects": [
+        "fire-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_fire_shiny.png",
       "layers": [
         {
@@ -225,7 +264,10 @@
       ]
     },
     {
-      "aspects": ["water-plate", "shiny"],
+      "aspects": [
+        "water-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_water_shiny.png",
       "layers": [
         {
@@ -236,7 +278,10 @@
       ]
     },
     {
-      "aspects": ["grass-plate", "shiny"],
+      "aspects": [
+        "grass-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_grass_shiny.png",
       "layers": [
         {
@@ -247,7 +292,10 @@
       ]
     },
     {
-      "aspects": ["electric-plate", "shiny"],
+      "aspects": [
+        "electric-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_electric_shiny.png",
       "layers": [
         {
@@ -258,7 +306,10 @@
       ]
     },
     {
-      "aspects": ["ice-plate", "shiny"],
+      "aspects": [
+        "ice-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_ice_shiny.png",
       "layers": [
         {
@@ -269,7 +320,10 @@
       ]
     },
     {
-      "aspects": ["fighting-plate", "shiny"],
+      "aspects": [
+        "fighting-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_fighting_shiny.png",
       "layers": [
         {
@@ -280,7 +334,10 @@
       ]
     },
     {
-      "aspects": ["poison-plate", "shiny"],
+      "aspects": [
+        "poison-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_poison_shiny.png",
       "layers": [
         {
@@ -291,7 +348,10 @@
       ]
     },
     {
-      "aspects": ["ground-plate", "shiny"],
+      "aspects": [
+        "ground-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_ground_shiny.png",
       "layers": [
         {
@@ -302,7 +362,10 @@
       ]
     },
     {
-      "aspects": ["flying-plate", "shiny"],
+      "aspects": [
+        "flying-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_flying_shiny.png",
       "layers": [
         {
@@ -313,7 +376,10 @@
       ]
     },
     {
-      "aspects": ["psychic-plate", "shiny"],
+      "aspects": [
+        "psychic-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_psychic_shiny.png",
       "layers": [
         {
@@ -324,7 +390,10 @@
       ]
     },
     {
-      "aspects": ["bug-plate", "shiny"],
+      "aspects": [
+        "bug-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_bug_shiny.png",
       "layers": [
         {
@@ -335,7 +404,10 @@
       ]
     },
     {
-      "aspects": ["rock-plate", "shiny"],
+      "aspects": [
+        "rock-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_rock_shiny.png",
       "layers": [
         {
@@ -346,7 +418,10 @@
       ]
     },
     {
-      "aspects": ["ghost-plate", "shiny"],
+      "aspects": [
+        "ghost-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_ghost_shiny.png",
       "layers": [
         {
@@ -357,7 +432,10 @@
       ]
     },
     {
-      "aspects": ["dragon-plate", "shiny"],
+      "aspects": [
+        "dragon-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_dragon_shiny.png",
       "layers": [
         {
@@ -368,7 +446,10 @@
       ]
     },
     {
-      "aspects": ["dark-plate", "shiny"],
+      "aspects": [
+        "dark-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_dark_shiny.png",
       "layers": [
         {
@@ -379,7 +460,10 @@
       ]
     },
     {
-      "aspects": ["steel-plate", "shiny"],
+      "aspects": [
+        "steel-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_steel_shiny.png",
       "layers": [
         {
@@ -390,7 +474,10 @@
       ]
     },
     {
-      "aspects": ["fairy-plate", "shiny"],
+      "aspects": [
+        "fairy-plate",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0493_arceus/arceus_fairy_shiny.png",
       "layers": [
         {

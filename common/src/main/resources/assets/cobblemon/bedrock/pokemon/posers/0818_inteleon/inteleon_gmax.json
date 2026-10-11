@@ -1,0 +1,31 @@
+{
+  "portraitScale": 0.72,
+  "portraitTranslation": [
+    -0.27,
+    8.89,
+    0
+  ],
+  "profileScale": 0.21,
+  "profileTranslation": [
+    0,
+    3,
+    0
+  ],
+  "rootBone": "inteleon",
+  "poses": {
+    "standing": {
+      "poseName": "standing",
+      "poseTypes": [
+        "STAND",
+        "NONE",
+        "PORTRAIT",
+        "PROFILE"
+      ],
+      "animations": [
+        "q.look('head')",
+        "q.bedrock('inteleon_gmax', 'ground_idle')"
+      ]
+    }
+  }
+}
+  

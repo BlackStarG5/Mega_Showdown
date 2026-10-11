@@ -37,7 +37,7 @@
 						{"origin": [-4.5, 3.78709, -13.25], "size": [0, 2, 4], "inflate": 0.001, "pivot": [-4.5, 4.78709, -13.25], "rotation": [0, -7.5, 0], "uv": [8, 0]}
 					]
 				},
-                                {
+				{
 					"name": "locator_seat_1",
 					"parent": "body",
 					"pivot": [0, 15, 10],
@@ -71,6 +71,14 @@
 					]
 				},
 				{
+					"name": "locator_eye_right",
+					"parent": "eye_right",
+					"pivot": [-7.425, 8.75, -9.375],
+					"locators": {
+						"eye1": [-7.425, 8.75, -9.375]
+					}
+				},
+				{
 					"name": "gills_left",
 					"parent": "body",
 					"pivot": [7.5, 8.5, 2.5],
@@ -94,6 +102,14 @@
 						{"origin": [8.751, 9.75, -8.01], "size": [-2, -2, -2], "pivot": [8.75, 10.25, -3], "rotation": [0, 7.5, 0], "uv": [14, 44], "mirror": true},
 						{"origin": [7.251, 8.25, -9.515], "size": [1, 1, 1], "pivot": [8.75, 10.75, -3], "rotation": [0, 7.5, 0], "uv": [0, 53], "mirror": true}
 					]
+				},
+				{
+					"name": "locator_eye_left",
+					"parent": "eye_left",
+					"pivot": [7.425, 8.75, -9.375],
+					"locators": {
+						"eye2": [7.425, 8.75, -9.375]
+					}
 				},
 				{
 					"name": "jaw",

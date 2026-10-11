@@ -6,6 +6,7 @@ import com.cobblemon.mod.common.api.types.tera.TeraType;
 import com.cobblemon.mod.common.api.types.tera.TeraTypes;
 import com.cobblemon.mod.common.pokemon.Pokemon;
 import com.github.yajatkaul.mega_showdown.MegaShowdown;
+import com.github.yajatkaul.mega_showdown.block.MegaShowdownBlocks;
 import com.github.yajatkaul.mega_showdown.components.MegaShowdownDataComponents;
 import com.github.yajatkaul.mega_showdown.config.MegaShowdownConfig;
 import com.github.yajatkaul.mega_showdown.creative.MegaShowdownTabs;
@@ -21,7 +22,6 @@ import com.github.yajatkaul.mega_showdown.item.custom.fusion.DuFusion;
 import com.github.yajatkaul.mega_showdown.item.custom.fusion.SoloFusion;
 import com.github.yajatkaul.mega_showdown.item.custom.gimmick.*;
 import com.github.yajatkaul.mega_showdown.item.custom.mega.MegaStone;
-import com.github.yajatkaul.mega_showdown.item.custom.tera.CustomTeraShard;
 import com.github.yajatkaul.mega_showdown.item.custom.tera.LikosPendant;
 import com.github.yajatkaul.mega_showdown.item.custom.tera.TeraShard;
 import com.github.yajatkaul.mega_showdown.item.custom.z.ElementalZCrystal;
@@ -34,9 +34,11 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
@@ -96,8 +98,47 @@ public class MegaShowdownItems {
     public static final RegistrySupplier<Item> SWAMPERTITE = registerMegaStone("swampertite");
     public static final RegistrySupplier<Item> TYRANITARITE = registerMegaStone("tyranitarite");
     public static final RegistrySupplier<Item> VENUSAURITE = registerMegaStone("venusaurite");
+    public static final RegistrySupplier<Item> CHANDELURITE = registerMegaStone("chandelurite");
+    public static final RegistrySupplier<Item> CHESNAUGHTITE = registerMegaStone("chesnaughtite");
+    public static final RegistrySupplier<Item> CHIMECHITE = registerMegaStone("chimechite");
+    public static final RegistrySupplier<Item> CLEFABLITE = registerMegaStone("clefablite");
+    public static final RegistrySupplier<Item> CRABOMINITE = registerMegaStone("crabominite");
+    public static final RegistrySupplier<Item> DELPHOXITE = registerMegaStone("delphoxite");
+    public static final RegistrySupplier<Item> DRAGONINITE = registerMegaStone("dragoninite");
+    public static final RegistrySupplier<Item> DRAMPANITE = registerMegaStone("drampanite");
+    public static final RegistrySupplier<Item> EMBOARITE = registerMegaStone("emboarite");
+    public static final RegistrySupplier<Item> EXCADRITE = registerMegaStone("excadrite");
+    public static final RegistrySupplier<Item> FERALIGITE = registerMegaStone("feraligite");
+    public static final RegistrySupplier<Item> FLOETTITE = registerMegaStone("floettite");
+    public static final RegistrySupplier<Item> FROSLASSITE = registerMegaStone("froslassite");
+    public static final RegistrySupplier<Item> GLIMMORANITE = registerMegaStone("glimmoranite");
+    public static final RegistrySupplier<Item> GOLURKITE = registerMegaStone("golurkite");
+    public static final RegistrySupplier<Item> GRENINJITE = registerMegaStone("greninjite");
+    public static final RegistrySupplier<Item> HAWLUCHANITE = registerMegaStone("hawluchanite");
+    public static final RegistrySupplier<Item> MEGANIUMITE = registerMegaStone("meganiumite");
+    public static final RegistrySupplier<Item> MEOWSTICITE = registerMegaStone("meowsticite");
+    public static final RegistrySupplier<Item> RAICHUNITE_X = registerMegaStone("raichunite_x");
+    public static final RegistrySupplier<Item> RAICHUNITE_Y = registerMegaStone("raichunite_y");
+    public static final RegistrySupplier<Item> SCOVILLAINITE = registerMegaStone("scovillainite");
+    public static final RegistrySupplier<Item> SKARMORITE = registerMegaStone("skarmorite");
+    public static final RegistrySupplier<Item> STARMINITE = registerMegaStone("starminite");
+    public static final RegistrySupplier<Item> VICTREEBELITE = registerMegaStone("victreebelite");
+    public static final RegistrySupplier<Item> STARAPTITE = registerMegaStone("staraptite");
+    public static final RegistrySupplier<Item> SCOLIPITE = registerMegaStone("scolipite");
+    public static final RegistrySupplier<Item> SCRAFTINITE = registerMegaStone("scraftinite");
+    public static final RegistrySupplier<Item> EELEKTROSSITE = registerMegaStone("eelektrossite");
+    public static final RegistrySupplier<Item> PYROARITE = registerMegaStone("pyroarite");
+    public static final RegistrySupplier<Item> MALAMARITE = registerMegaStone("malamarite");
+    public static final RegistrySupplier<Item> BARBARACITE = registerMegaStone("barbaracite");
+    public static final RegistrySupplier<Item> DRAGALGITE = registerMegaStone("dragalgite");
+    public static final RegistrySupplier<Item> FALINKSITE = registerMegaStone("falinksite");
+    public static final RegistrySupplier<Item> ABSOLITE_Z = registerMegaStone("absolite_z");
+    public static final RegistrySupplier<Item> BAXCALIBRITE = registerMegaStone("baxcalibrite");
+    public static final RegistrySupplier<Item> GARCHOMPITE_Z = registerMegaStone("garchompite_z");
+    public static final RegistrySupplier<Item> GOLISOPITE = registerMegaStone("golisopite");
+    public static final RegistrySupplier<Item> LUCARIONITE_Z = registerMegaStone("lucarionite_z");
 
-    public static final RegistrySupplier<Item> RED_ORB = registerFormChangeHeldItems(
+    public static final RegistrySupplier<Item> RED_ORB = registerFormChangeHeldHiddenItems(
             "red_orb",
             "reversion_state=standard",
             "reversion_state=primal",
@@ -107,7 +148,7 @@ public class MegaShowdownItems {
             null
     );
 
-    public static final RegistrySupplier<Item> BLUE_ORB = registerFormChangeHeldItems(
+    public static final RegistrySupplier<Item> BLUE_ORB = registerFormChangeHeldHiddenItems(
             "blue_orb",
             "reversion_state=standard",
             "reversion_state=primal",
@@ -146,8 +187,6 @@ public class MegaShowdownItems {
     public static final RegistrySupplier<Item> STEEL_TERA_SHARD = registerTeraShards("steel_tera_shard", TeraTypes.getSTEEL());
     public static final RegistrySupplier<Item> FAIRY_TERA_SHARD = registerTeraShards("fairy_tera_shard", TeraTypes.getFAIRY());
     public static final RegistrySupplier<Item> STELLAR_TERA_SHARD = registerTeraShards("stellar_tera_shard", TeraTypes.getSTELLAR());
-
-    public static final RegistrySupplier<Item> CUSTOM_TERA_SHARD = registerCustomTeraShards("custom_tera_shard");
 
     public static final RegistrySupplier<Item> SPARKLING_STONE_LIGHT = registerItem("sparkling_stone_light", () -> new ToolTipItem(new Item.Properties().arch$tab(MegaShowdownTabs.Z_TAB)));
     public static final RegistrySupplier<Item> SPARKLING_STONE_DARK = registerItem("sparkling_stone_dark", () -> new ToolTipItem(new Item.Properties().arch$tab(MegaShowdownTabs.Z_TAB)));
@@ -260,6 +299,8 @@ public class MegaShowdownItems {
     public static final RegistrySupplier<Item> MAXIE_GLASSES = registerMegaBracelet("maxie_glasses");
     public static final RegistrySupplier<Item> ARCHIE_ANCHOR = registerMegaBracelet("archie_anchor");
     public static final RegistrySupplier<Item> LISIA_MEGA_TIARA = registerMegaBracelet("lisia_mega_tiara");
+    public static final RegistrySupplier<Item> DIANTHA_MEGA_CHARM = registerMegaBracelet("diantha_mega_charm");
+    public static final RegistrySupplier<Item> ZINNIA_MEGA_ANKLET = registerMegaBracelet("zinnia_mega_anklet");
 
     public static final RegistrySupplier<Item> TERA_ORB = registerTeraOrb("tera_orb");
 
@@ -289,7 +330,7 @@ public class MegaShowdownItems {
     public static final RegistrySupplier<Item> MAX_HONEY = registerItem("max_honey", () -> new MaxHoney(new Item.Properties().arch$tab(MegaShowdownTabs.DYNAMAX_TAB)));
     public static final RegistrySupplier<Item> MAX_SOUP = registerItem("max_soup", () -> new MaxSoup(new Item.Properties().arch$tab(MegaShowdownTabs.DYNAMAX_TAB)));
     public static final RegistrySupplier<Item> SWEET_MAX_SOUP = registerItem("sweet_max_soup", () -> new SweetMaxSoup(new Item.Properties().arch$tab(MegaShowdownTabs.DYNAMAX_TAB)));
-    public static final RegistrySupplier<Item> WISHING_STAR = registerTooltipItem("wishing_star", MegaShowdownTabs.DYNAMAX_TAB);
+    public static final RegistrySupplier<Item> WISHING_STAR = registerTooltipBlockItem("wishing_star", () -> MegaShowdownBlocks.WISHING_STAR_CRYSTAL.get(), MegaShowdownTabs.DYNAMAX_TAB);
 
     public static final RegistrySupplier<Item> ZYGARDE_CUBE = registerItem("zygarde_cube", () -> new ZygardeCube(new Item.Properties().stacksTo(1).arch$tab(MegaShowdownTabs.FORM_TAB)));
     public static final RegistrySupplier<Item> ZYGARDE_CELL = registerItem("zygarde_cell", () -> new ToolTipItem(new Item.Properties().stacksTo(95).arch$tab(MegaShowdownTabs.FORM_TAB)));
@@ -762,10 +803,10 @@ public class MegaShowdownItems {
             true
     );
 
-    public static final RegistrySupplier<Item> RUSTED_SWORD = registerFormChangeHeldItems(
+    public static final RegistrySupplier<Item> RUSTED_SWORD = registerFormChangeHeldHiddenItems(
             "rusted_sword",
-            "crowned=false",
-            "crowned=true",
+            "behemoth_warrior=hero",
+            "behemoth_warrior=crowned",
             List.of("Zacian"),
             "mega_showdown:end_rod",
             true,
@@ -780,10 +821,10 @@ public class MegaShowdownItems {
             })
     );
 
-    public static final RegistrySupplier<Item> RUSTED_SHIELD = registerFormChangeHeldItems(
+    public static final RegistrySupplier<Item> RUSTED_SHIELD = registerFormChangeHeldHiddenItems(
             "rusted_shield",
-            "crowned=false",
-            "crowned=true",
+            "behemoth_warrior=hero",
+            "behemoth_warrior=crowned",
             List.of("Zamazenta"),
             "mega_showdown:end_rod",
             true,
@@ -894,7 +935,7 @@ public class MegaShowdownItems {
                                                                          boolean revertable,
                                                                          String form_aspect_revert
     ) {
-        return ITEMS.register(name, () -> new FormChangeInteractItem(
+        return ITEMS.register(name, () -> new FormChangeInteractItemMSD(
                 new Item.Properties().arch$tab(MegaShowdownTabs.FORM_TAB),
                 form_name,
                 form_apply,
@@ -913,7 +954,7 @@ public class MegaShowdownItems {
                                                                                List<String> effectIds,
                                                                                int consume
     ) {
-        return ITEMS.register(name, () -> new FormChangeInteractToggleItem(
+        return ITEMS.register(name, () -> new FormChangeInteractToggleItemMSD(
                 new Item.Properties().arch$tab(MegaShowdownTabs.FORM_TAB),
                 form_apply_order,
                 form_aspect_apply_order,
@@ -1033,10 +1074,6 @@ public class MegaShowdownItems {
         return ITEMS.register(name, () -> new TeraShard(new Item.Properties().arch$tab(MegaShowdownTabs.TERA_TAB), teraType));
     }
 
-    private static RegistrySupplier<Item> registerCustomTeraShards(String name) {
-        return ITEMS.register(name, () -> new CustomTeraShard(new Item.Properties().arch$tab(MegaShowdownTabs.TERA_TAB)));
-    }
-
     private static RegistrySupplier<Item> registerZElementalCrystals(String name, ElementalType type) {
         return ITEMS.register(name, () -> new ElementalZCrystal(
                 new Item.Properties()
@@ -1086,6 +1123,20 @@ public class MegaShowdownItems {
                 ));
     }
 
+    private static RegistrySupplier<Item> registerFormChangeHeldHiddenItems(String name, String revertAspect, String applyAspect, List<String> pokemons, String effectId, boolean tradable, Consumer<Pokemon> callBack) {
+        return ITEMS.register(name,
+                () -> new FormChangeHeldItemHidden(
+                        new Item.Properties().arch$tab(MegaShowdownTabs.FORM_TAB),
+                        revertAspect,
+                        applyAspect,
+                        pokemons,
+                        effectId,
+                        tradable,
+                        callBack,
+                        null
+                ));
+    }
+
     private static RegistrySupplier<Item> registerFormChangeHeldItems(String name, String revertAspect, String applyAspect, List<String> pokemons, String effectId, boolean tradable, Consumer<Pokemon> callBackApply, Consumer<Pokemon> callBackRevert) {
         return ITEMS.register(name,
                 () -> new FormChangeHeldItem(
@@ -1104,6 +1155,13 @@ public class MegaShowdownItems {
         return ITEMS.register(name, () -> new ToolTipItem(
                 new Item.Properties().arch$tab(tab))
         );
+    }
+
+    private static RegistrySupplier<Item> registerTooltipBlockItem(String name, Supplier<Block> block, DeferredSupplier<CreativeModeTab> tab) {
+        return ITEMS.register(name, () -> new BlockItem(
+                block.get(),
+                new Item.Properties().arch$tab(tab)
+        ));
     }
 
     private static RegistrySupplier<Item> registerItem(String name, Supplier<Item> item) {

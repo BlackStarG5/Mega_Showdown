@@ -4,7 +4,7 @@
   "neededUninstalledMods": [],
   "spawns": [
     {
-      "id": "oricorio-1",
+      "id": "oricorio-baile-1",
       "pokemon": "oricorio dance_style=baile",
       "presets": [
         "natural"
@@ -12,18 +12,19 @@
       "type": "pokemon",
       "spawnablePositionType": "grounded",
       "bucket": "uncommon",
-      "level": "18-33",
-      "weight": 3.0,
+      "level": "16-41",
+      "weight": 60.0,
       "condition": {
-        "canSeeSky": true,
+        "minSkyLight": 8,
+        "maxSkyLight": 15,
+        "timeRange": "morning",
         "biomes": [
-          "#cobblemon:is_plains",
-          "#cobblemon:is_hills"
+          "#cobblemon:is_floral"
         ]
       }
     },
     {
-      "id": "oricorio-2",
+      "id": "oricorio-pom-pom-1",
       "pokemon": "oricorio dance_style=pom-pom",
       "presets": [
         "natural"
@@ -31,18 +32,19 @@
       "type": "pokemon",
       "spawnablePositionType": "grounded",
       "bucket": "uncommon",
-      "level": "18-33",
-      "weight": 3.0,
+      "level": "16-41",
+      "weight": 60.0,
       "condition": {
-        "canSeeSky": true,
+        "minSkyLight": 8,
+        "maxSkyLight": 15,
+        "timeRange": "5000-10999",
         "biomes": [
-          "#cobblemon:is_mountain",
-          "#cobblemon:is_jungle"
+          "#cobblemon:is_floral"
         ]
       }
     },
     {
-      "id": "oricorio-3",
+      "id": "oricorio-pau-1",
       "pokemon": "oricorio dance_style=pau",
       "presets": [
         "natural"
@@ -50,29 +52,33 @@
       "type": "pokemon",
       "spawnablePositionType": "grounded",
       "bucket": "uncommon",
-      "level": "18-33",
-      "weight": 3.0,
+      "level": "16-41",
+      "weight": 60.0,
       "condition": {
-        "canSeeSky": true,
+        "minSkyLight": 8,
+        "maxSkyLight": 15,
+        "timeRange": "11000-16999",
         "biomes": [
           "#cobblemon:is_floral"
         ]
       }
     },
     {
-      "id": "oricorio-4",
+      "id": "oricorio-sensu-1",
       "pokemon": "oricorio dance_style=sensu",
       "presets": [
       ],
       "type": "pokemon",
       "spawnablePositionType": "grounded",
       "bucket": "uncommon",
-      "level": "18-33",
-      "weight": 3.0,
+      "level": "16-41",
+      "weight": 60.0,
       "condition": {
-        "canSeeSky": true,
+        "minSkyLight": 8,
+        "maxSkyLight": 15,
+        "timeRange": "17000-22999",
         "biomes": [
-          "#cobblemon:is_forest"
+          "#cobblemon:is_floral"
         ]
       }
     }

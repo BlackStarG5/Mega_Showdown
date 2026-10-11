@@ -3,13 +3,13 @@
   "portraitScale": 0.5,
   "portraitTranslation": [
     0,
-    0.5,
+    0.84,
     0
   ],
   "profileScale": 0.5,
   "profileTranslation": [
     0,
-    0.5,
+    1,
     0
   ],
   "cry": "bedrock(snorlaxgmax, cry)",

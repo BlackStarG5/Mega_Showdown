@@ -4,5 +4,4 @@
 - Make a item for datapack pokemon selection item
 
 # Future
-- Make custom weather datapackable
 - Datapackable logic like Burmy and Keldeo

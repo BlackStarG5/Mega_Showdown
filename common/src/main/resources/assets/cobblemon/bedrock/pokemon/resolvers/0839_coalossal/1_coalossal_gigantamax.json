@@ -1,0 +1,21 @@
+{
+  "species": "cobblemon:coalossal",
+  "order": 1,
+  "variations": [
+    {
+      "aspects": [
+        "gmax"
+      ],
+      "poser": "cobblemon:coalossalgmax",
+      "model": "cobblemon:gmax_coalossal.geo",
+      "texture": "cobblemon:textures/pokemon/0839_coalossal/gmax_coalossal.png"
+    },
+    {
+      "aspects": [
+        "gmax",
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0839_coalossal/gmax_coalossal_shiny.png"
+    }
+  ]
+}

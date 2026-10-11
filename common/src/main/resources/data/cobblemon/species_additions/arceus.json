@@ -48,29 +48,7 @@
   },
   "seats": [
     {
-      "offset": {
-        "x": 0.0,
-        "y": 0,
-        "z": 0
-      },
-      "poseOffsets": [
-        {
-          "offset": {
-            "x": 0,
-            "y": 0,
-            "z": 0
-          },
-          "poseTypes": ["HOVER"]
-        },
-        {
-          "offset": {
-            "x": 0,
-            "y": 0,
-            "z": 0
-          },
-          "poseTypes": ["FLY"]
-        }
-      ]
+      "locator": "seat_1"
     }
   ]
 },
@@ -79,7 +57,7 @@
     "moving": {
       "canLook": true,
       "walk": {
-        "walkSpeed": 0.6,
+        "walkSpeed": 0.28,
         "canWalk": true,
         "avoidsLand": false
       },

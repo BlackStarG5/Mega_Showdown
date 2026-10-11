@@ -3,7 +3,9 @@ package com.github.yajatkaul.mega_showdown.mixin;
 import com.cobblemon.mod.common.api.pokemon.feature.SpeciesFeatureAssignments;
 import com.cobblemon.mod.common.entity.pokemon.PokemonEntity;
 import com.cobblemon.mod.common.pokemon.Pokemon;
+import com.github.yajatkaul.mega_showdown.gimmick.CrownGimmick;
 import com.github.yajatkaul.mega_showdown.gimmick.MegaGimmick;
+import com.github.yajatkaul.mega_showdown.gimmick.PrimalGimmick;
 import com.github.yajatkaul.mega_showdown.gimmick.UltraGimmick;
 import com.github.yajatkaul.mega_showdown.networking.client.packet.InteractionWheelPacket;
 import com.github.yajatkaul.mega_showdown.render.layerEntities.states.TeraCrystalState;
@@ -58,14 +60,31 @@ public abstract class PokemonEntityMixin implements PokemonEntityDuck {
         PokemonEntity self = (PokemonEntity) (Object) this;
         Pokemon pokemon = self.getPokemon();
 
-        if (pokemon.getOwnerPlayer() == player) {
-            boolean shouldPokemonMega = SpeciesFeatureAssignments.getFeatures(pokemon.getSpecies()).contains("mega_evolution") || pokemon.getSpecies().getFeatures().contains("mega_evolution");
+        if (self.isBattling()) {
+            NetworkManager.sendToPlayer(player, new InteractionWheelPacket(false, false, false, false, false, false, false, false));
+        } else if (pokemon.getOwnerPlayer() == player) {
+            boolean shouldPokemonMega = (SpeciesFeatureAssignments.getFeatures(pokemon.getSpecies()).contains("mega_evolution") || pokemon.getSpecies().getFeatures().contains("mega_evolution"));
             boolean shouldPokemonUltra = pokemon.getSpecies().getName().equals("Necrozma");
 
             boolean canPokemonMega = MegaGimmick.isMega(pokemon) || MegaGimmick.canMega(pokemon);
             boolean canPokemonUltra = UltraGimmick.isUltra(pokemon) || UltraGimmick.canUltraBurst(pokemon);
 
-            NetworkManager.sendToPlayer(player, new InteractionWheelPacket(shouldPokemonMega, shouldPokemonUltra, canPokemonMega, canPokemonUltra));
+            boolean shouldPokemonCrown = pokemon.getSpecies().getName().equals("Zacian") || pokemon.getSpecies().getName().equals("Zamazenta");
+            boolean shouldPokemonPrimal = pokemon.getSpecies().getName().equals("Groudon") || pokemon.getSpecies().getName().equals("Kyogre");
+
+            boolean canPokemonCrown = CrownGimmick.isCrowned(pokemon) || CrownGimmick.canCrown(pokemon);
+            boolean canPokemonPrimal = PrimalGimmick.isPrimal(pokemon) || PrimalGimmick.canPrimal(pokemon);
+
+            NetworkManager.sendToPlayer(player, new InteractionWheelPacket(
+                    shouldPokemonMega,
+                    shouldPokemonUltra,
+                    canPokemonMega,
+                    canPokemonUltra,
+                    shouldPokemonPrimal,
+                    shouldPokemonCrown,
+                    canPokemonPrimal,
+                    canPokemonCrown
+            ));
         }
     }
 

@@ -11,7 +11,8 @@
     },
     {
       "aspects": ["shiny", "unbound"],
-      "texture": "cobblemon:textures/pokemon/0720_hoopa/hoopa_unbound_shiny.png"
+      "texture": "cobblemon:textures/pokemon/0720_hoopa/hoopa_unbound_shiny.png",
+      "layers": []
     }
   ]
 }

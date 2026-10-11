@@ -1,0 +1,22 @@
+{
+  "species": "cobblemon:hatterene",
+  "order": 0,
+  "variations": [
+    {
+      "aspects": [
+        "gmax"
+      ],
+      "poser": "cobblemon:hatterene_gmax",
+      "model": "cobblemon:hatterene_gmax.geo",
+      "texture": "cobblemon:textures/pokemon/0858_hatterene/hatterene_gmax.png",
+      "layers": []
+    },
+    {
+      "aspects": [
+        "gmax",
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0858_hatterene/hatterene_gmax_shiny.png"
+    }
+  ]
+}

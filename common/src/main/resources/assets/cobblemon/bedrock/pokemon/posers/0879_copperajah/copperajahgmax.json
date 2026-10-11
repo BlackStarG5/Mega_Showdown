@@ -1,0 +1,39 @@
+{
+  "portraitScale": 0.61,
+  "portraitTranslation": [
+    -0.34,
+    2.1,
+    0
+  ],
+  "profileScale": 0.33,
+  "profileTranslation": [
+    -0.1,
+    1.2,
+    0
+  ],
+  "rootBone": "gmax_copperajah",
+  "animations": {},
+  "poses": {
+    "standing": {
+      "poseTypes": [
+        "STAND",
+        "NONE"
+      ],
+      "isBattle": false,
+      "animations": [
+        "q.bedrock('gmax_copperajah', 'ground_idle')"
+      ]
+    },
+    "walk": {
+      "poseName": "walk",
+      "poseTypes": [
+        "WALK",
+        "SWIM",
+        "FLY"
+      ],
+      "animations": [
+        "q.bedrock('gmax_copperajah', 'ground_walk')"
+      ]
+    }
+  }
+}

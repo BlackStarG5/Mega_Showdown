@@ -2009,7 +2009,6 @@
       }
     },
     "animation.kyurem.cry": {
-      "loop": true,
       "animation_length": 2.5,
       "bones": {
         "body": {
@@ -2659,13 +2658,12 @@
         }
       },
       "sound_effects": {
-        "0.1": {
+        "0.0833": {
           "effect": "pokemon.kyurem.cry"
         }
       }
     },
     "animation.kyurem.physical_attack": {
-      "loop": true,
       "animation_length": 2,
       "bones": {
         "neck": {
@@ -3371,7 +3369,7 @@
       }
     },
     "animation.kyurem.faint": {
-      "loop": true,
+      "loop": "hold_on_last_frame",
       "animation_length": 3,
       "bones": {
         "neck": {

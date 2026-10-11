@@ -4,15 +4,31 @@
   "variations": [
     {
       "aspects": ["mega"],
+      "poser": "cobblemon:lucario_mega",
       "model": "cobblemon:lucario_mega.geo",
       "texture": "cobblemon:textures/pokemon/0448_lucario/lucario_mega.png",
-      "layers": []
+      "layers": [
+        {
+          "name": "emissive",
+          "texture": "cobblemon:textures/pokemon/0448_lucario/lucario_mega_emissive.png",
+          "emissive": true,
+          "translucent": true
+        }
+      ]
     },
     {
       "aspects": ["mega", "shiny"],
-      "model": "cobblemon:lucario_mega.geo",
-      "texture": "cobblemon:textures/pokemon/0448_lucario/lucario_mega_shiny.png",
-      "layers": []
+      "texture": "cobblemon:textures/pokemon/0448_lucario/lucario_mega_shiny.png"
+    },
+    {
+      "aspects": ["mega", "alpha_eyes"],
+      "layers": [
+        {
+          "name": "alpha_eyes",
+          "texture": "cobblemon:textures/pokemon/0448_lucario/lucario_mega_alpha.png",
+          "emissive": false
+        }
+      ]
     }
   ]
 }

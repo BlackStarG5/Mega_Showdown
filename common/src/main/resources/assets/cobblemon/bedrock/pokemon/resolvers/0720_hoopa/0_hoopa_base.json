@@ -3,14 +3,16 @@
   "order": 0,
   "variations": [
     {
-      "poser": "cobblemon:hoopa",
-      "model": "cobblemon:hoopa.geo",
+      "aspects": [],
+      "poser": "cobblemon:hoopa_confined",
+      "model": "cobblemon:hoopa_confined.geo",
       "texture": "cobblemon:textures/pokemon/0720_hoopa/hoopa.png",
       "layers": []
     },
     {
       "aspects": ["shiny"],
-      "texture": "cobblemon:textures/pokemon/0720_hoopa/hoopa_shiny.png"
+      "texture": "cobblemon:textures/pokemon/0720_hoopa/hoopa_shiny.png",
+      "layers": []
     }
   ]
 }

@@ -3,26 +3,19 @@
   "order": 1,
   "variations": [
     {
-      "aspects": ["flower-eternal"],
+      "aspects": [
+        "flower-eternal"
+      ],
       "poser": "cobblemon:floette_eternal",
       "model": "cobblemon:floette_eternal.geo",
-      "texture": "cobblemon:textures/pokemon/0670_floette/floette_eternal.png",
-      "layers": [
-        {
-          "texture": "cobblemon:textures/pokemon/0670_floette/floette_eternal.png"
-        }
-      ]
+      "texture": "cobblemon:textures/pokemon/0670_floette/floette_eternal.png"
     },
     {
-      "aspects": ["flower-eternal", "shiny"],
-      "poser": "cobblemon:floette_eternal",
-      "model": "cobblemon:floette_eternal.geo",
-      "texture": "cobblemon:textures/pokemon/0670_floette/floette_eternal_shiny.png",
-      "layers": [
-        {
-          "texture": "cobblemon:textures/pokemon/0670_floette/floette_eternal_shiny.png"
-        }
-      ]
+      "aspects": [
+        "flower-eternal",
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0670_floette/floette_eternal_shiny.png"
     }
   ]
 }

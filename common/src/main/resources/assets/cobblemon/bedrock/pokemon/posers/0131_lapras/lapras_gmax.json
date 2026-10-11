@@ -1,0 +1,38 @@
+{
+  "portraitScale": 0.88,
+  "portraitTranslation": [
+    -1.04,
+    3.27,
+    0
+  ],
+  "profileScale": 0.26,
+  "profileTranslation": [
+    0,
+    1.2,
+    0
+  ],
+  "rootBone": "lapras",
+  "poses": {
+    "standing": {
+      "poseTypes": [
+        "STAND",
+        "NONE",
+        "PORTRAIT",
+        "PROFILE"
+      ],
+      "animations": [
+        "q.look('head')",
+        "q.bedrock('lapras_gmax', 'ground_idle')"
+      ]
+    },
+    "walking": {
+      "poseTypes": [
+        "WALK"
+      ],
+      "animations": [
+        "q.look('head')",
+        "q.bedrock('lapras_gmax', 'ground_walk')"
+      ]
+    }
+  }
+}

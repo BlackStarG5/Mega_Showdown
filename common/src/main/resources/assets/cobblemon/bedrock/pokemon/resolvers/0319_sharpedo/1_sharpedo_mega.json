@@ -3,7 +3,9 @@
   "order": 1,
   "variations": [
     {
-      "aspects": ["mega"],
+      "aspects": [
+        "mega"
+      ],
       "model": "cobblemon:sharpedomega.geo",
       "texture": "cobblemon:textures/pokemon/0319_sharpedo/sharpedomega.png",
       "layers": [
@@ -15,8 +17,10 @@
       ]
     },
     {
-      "aspects": ["mega", "shiny"],
-      "model": "cobblemon:sharpedomega.geo",
+      "aspects": [
+        "mega",
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0319_sharpedo/sharpedomega_shiny.png"
     }
   ]

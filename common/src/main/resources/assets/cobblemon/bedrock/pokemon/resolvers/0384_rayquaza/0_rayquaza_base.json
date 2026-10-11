@@ -6,13 +6,13 @@
       "aspects": [],
       "poser": "cobblemon:rayquaza2",
       "model": "cobblemon:rayquaza2.geo",
-      "texture": "cobblemon:textures/pokemon/0384_rayquaza/rayquaza.png",
-      "layers": []
+      "texture": "cobblemon:textures/pokemon/0384_rayquaza/rayquaza.png"
     },
     {
-      "aspects": ["shiny"],
-      "texture": "cobblemon:textures/pokemon/0384_rayquaza/rayquaza_shiny.png",
-      "layers": []
+      "aspects": [
+        "shiny"
+      ],
+      "texture": "cobblemon:textures/pokemon/0384_rayquaza/rayquaza_shiny.png"
     }
   ]
 }

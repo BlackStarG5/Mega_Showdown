@@ -1,4 +1,5 @@
 {
+  "implemented": true,
   "nationalPokedexNumber": 890,
   "name": "Eternatus",
   "primaryType": "poison",
@@ -49,11 +50,7 @@
     },
     "seats": [
       {
-        "offset": {
-          "x": 0.0,
-          "y": 0.0,
-          "z": 0.0
-        }
+        "locator": "seat_1"
       }
     ]
   },
@@ -165,7 +162,8 @@
     "tutor:shadowball",
     "tutor:sleeptalk",
     "tutor:sludgebomb",
-    "tutor:spikes"
+    "legacy:round",
+    "legacy:snore"
   ],
   "evolutions": [],
   "forms": [

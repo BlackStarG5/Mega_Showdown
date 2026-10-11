@@ -6,11 +6,12 @@
       "aspects": [],
       "poser": "cobblemon:tornadus",
       "model": "cobblemon:tornadus.geo",
-      "texture": "cobblemon:textures/pokemon/0641_tornadus/tornadus.png",
-      "layers": []
+      "texture": "cobblemon:textures/pokemon/0641_tornadus/tornadus.png"
     },
     {
-      "aspects": ["shiny"],
+      "aspects": [
+        "shiny"
+      ],
       "texture": "cobblemon:textures/pokemon/0641_tornadus/tornadus_shiny.png"
     }
   ]

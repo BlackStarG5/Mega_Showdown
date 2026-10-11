@@ -655,6 +655,25 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('I', Items.IRON_INGOT)
                 .unlockedBy("has_keystone", has(MegaShowdownItems.KEYSTONE.get())).save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MegaShowdownItems.DIANTHA_MEGA_CHARM.get())
+                .pattern(" NS")
+                .pattern("GKN")
+                .pattern("GG ")
+                .define('K', MegaShowdownItems.KEYSTONE.get())
+                .define('G', Items.GOLD_INGOT)
+                .define('N', Items.GOLD_NUGGET)
+                .define('S', Items.STRING)
+                .unlockedBy("has_keystone", has(MegaShowdownItems.KEYSTONE.get())).save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MegaShowdownItems.ZINNIA_MEGA_ANKLET.get())
+                .pattern("CTC")
+                .pattern("CKC")
+                .pattern("CTC")
+                .define('K', MegaShowdownItems.KEYSTONE.get())
+                .define('C', Items.CHAIN)
+                .define('T', CobblemonItems.SKY_TUMBLESTONE)
+                .unlockedBy("has_keystone", has(MegaShowdownItems.KEYSTONE.get())).save(recipeOutput);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MegaShowdownItems.LIKOS_PENDANT.get())
                 .pattern("S S")
                 .pattern(" D ")
@@ -757,7 +776,6 @@ public class ModRecipeProvider extends RecipeProvider {
                 )
                 .unlockedBy("has_meteor", has(MegaShowdownBlocks.MEGA_METEOROID_BLOCK.get()))
                 .save(recipeOutput, "polished_meteor_from_blasting");
-
 
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, MegaShowdownItems.TERA_POUCH_WHITE.get())

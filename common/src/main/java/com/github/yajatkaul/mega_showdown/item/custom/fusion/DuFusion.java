@@ -23,6 +23,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Optional;
@@ -72,7 +73,7 @@ public class DuFusion extends ToolTipItem {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+    public @NotNull InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (level.isClientSide) {
             return InteractionResultHolder.pass(stack);
@@ -138,15 +139,21 @@ public class DuFusion extends ToolTipItem {
                 }
 
             } else if (pokemonStored == null &&
-                    pokemons1.contains(pokemon.getSpecies().getName()) ||
-                    pokemons2.contains(pokemon.getSpecies().getName())
+                    (pokemons1.contains(pokemon.getSpecies().getName()) ||
+                            pokemons2.contains(pokemon.getSpecies().getName()))
             ) {
+                pokemon.getPersistentData().putUUID("lastOwner", player.getUUID());
                 stack.set(MegaShowdownDataComponents.POKEMON_STORAGE.get(), pokemonStorge.save(registryAccess, pokemon));
                 stack.set(DataComponents.CUSTOM_NAME, Component.translatable("item.mega_showdown." + namespace + ".charged"));
 
                 playerPartyStore.remove(pokemon);
             }
         } else if (pokemonStored != null) {
+            if (!pokemonStored.getTradeable() && !pokemonStored.getPersistentData().getUUID("lastOwner").equals(player.getUUID())) {
+                player.displayClientMessage(Component.translatable("message.mega_showdown.untradable")
+                        .withStyle(ChatFormatting.RED), true);
+                return InteractionResultHolder.pass(stack);
+            }
             playerPartyStore.add(pokemonStored);
             stack.remove(MegaShowdownDataComponents.POKEMON_STORAGE.get());
             stack.set(DataComponents.CUSTOM_NAME, Component.translatable("item.mega_showdown." + namespace + ".inactive"));

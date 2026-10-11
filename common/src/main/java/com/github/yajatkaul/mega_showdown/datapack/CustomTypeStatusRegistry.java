@@ -101,9 +101,10 @@ public class CustomTypeStatusRegistry implements JsonDataRegistry<CustomTypeStat
             }
         });
 
-        Cobblemon.LOGGER.info("Loaded {} custom elemental statuses", CustomTypeRegistry.customTypes.size());
+        Cobblemon.LOGGER.info("Loaded custom elemental statuses");
         observable.emit(this);
     }
+
 
     public record CustomStatusData(
             String name,

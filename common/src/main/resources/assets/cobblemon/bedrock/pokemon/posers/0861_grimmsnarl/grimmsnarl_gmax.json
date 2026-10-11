@@ -1,0 +1,29 @@
+{
+  "portraitScale": 0.68,
+  "portraitTranslation": [
+    -0.3,
+    4.17,
+    0
+  ],
+  "profileScale": 0.19,
+  "profileTranslation": [
+    0.00,
+    1.5,
+    0
+  ],
+  "rootBone": "grimmsnarl",
+  "poses": {
+    "standing": {
+      "poseTypes": [
+        "STAND",
+        "NONE",
+        "PORTRAIT",
+        "PROFILE"
+      ],
+      "animations": [
+        "q.look('head_ai')",
+        "q.bedrock('grimmsnarl_gmax', 'ground_idle')"
+      ]
+    }
+  }
+}

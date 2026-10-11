@@ -1,0 +1,65 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.melmetal_gmax.ground_idle": {
+			"loop": true,
+			"bones": {
+				"torso": {
+					"rotation": [0, "-0-math.sin(query.anim_time*90*1-120)*5", 0],
+					"position": [0, "0+math.sin(query.anim_time*150*1-120)*0.5", 0]
+				},
+				"leg_right": {
+					"rotation": [0, 0, 17.5]
+				},
+				"leg_right2": {
+					"rotation": [0, 0, -5]
+				},
+				"leg_right4": {
+					"rotation": [0, 0, -7.5]
+				},
+				"leg_left": {
+					"rotation": [0, 0, -20]
+				},
+				"leg_left2": {
+					"rotation": [0, 0, 7.5]
+				},
+				"leg_left4": {
+					"rotation": [0, 0, 10]
+				},
+				"foot_left": {
+					"rotation": [0, 0, 0]
+				},
+				"head": {
+					"rotation": [0, "-0-math.cos(query.anim_time*90*1-120)*5", 0]
+				},
+				"arm_left": {
+					"rotation": [0.2708, -2.2563, 32.4172]
+				},
+				"forearm_left": {
+					"rotation": [5.9815, -5.1752, 22.3934]
+				},
+				"arm_right": {
+					"rotation": [0.2708, 2.2563, -32.4172]
+				},
+				"forearm_right": {
+					"rotation": [5.9815, 5.1752, -22.3934]
+				},
+				"melmetal": {
+					"position": [0, -2, 0]
+				},
+				"shoulder_left": {
+					"rotation": [-3.74, -1.59, 19.53]
+				},
+				"hand_left": {
+					"rotation": [0, 0, 22.5]
+				},
+				"shoulder_right": {
+					"rotation": [-3.74, 1.59, -19.53]
+				},
+				"hand_right": {
+					"rotation": [0, 0, -22.5]
+				}
+			}
+		}
+	}
+}

@@ -1225,6 +1225,28 @@ const Abilities = {
     rating: 3.5,
     num: 88,
   },
+  dragonize: {
+    isNonstandard: "Future",
+    onModifyTypePriority: -1,
+    onModifyType(move, pokemon) {
+    	const noModifyType = [
+    	'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
+    	];
+    	if (move.type === 'Normal' && (!noModifyType.includes(move.id) || this.activeMove?.isMax) &&
+    	!(move.isZ && move.category !== 'Status') && !(move.name === 'Tera Blast' && pokemon.terastallized)) {
+    	move.type = 'Dragon';
+    	move.typeChangerBoosted = this.effect;
+    	}
+    },
+    onBasePowerPriority: 23,
+    onBasePower(basePower, pokemon, target, move) {
+    	if (move.typeChangerBoosted === this.effect) return this.chainModify([4915, 4096]);
+    },
+    flags: {},
+    name: "Dragonize",
+    rating: 4,
+    num: 312
+  },
   dragonsmaw: {
     onModifyAtkPriority: 5,
     onModifyAtk(atk, attacker, defender, move) {
@@ -1331,6 +1353,20 @@ const Abilities = {
     name: "Earth Eater",
     rating: 3.5,
     num: 297,
+  },
+  eelevate: {
+		isNonstandard: "Future",
+		onSourceAfterFaint(length, target, source, effect) {
+			if (effect && effect.effectType === 'Move') {
+				const bestStat = source.getBestStat(true, true);
+				this.boost({ [bestStat]: length }, source);
+			}
+		},
+		flags: { breakable: 1 },
+		name: "Eelevate",
+		rating: 4,
+		num: 313
+    /* airborneness implemented in sim/pokemon.js:isGrounded */
   },
   effectspore: {
     onDamagingHit(damage, target, source, move) {
@@ -1533,6 +1569,27 @@ const Abilities = {
     name: "Filter",
     rating: 3,
     num: 111,
+  },
+  firemane: {
+		isNonstandard: "Future",
+		onModifyAtkPriority: 5,
+		onModifyAtk(atk, attacker, defender, move) {
+			if (move.type === 'Fire') {
+				this.debug('Fire Mane boost');
+				return this.chainModify(1.5);
+			}
+		},
+		onModifySpAPriority: 5,
+		onModifySpA(atk, attacker, defender, move) {
+			if (move.type === 'Fire') {
+				this.debug('Fire Mane boost');
+				return this.chainModify(1.5);
+			}
+		},
+		flags: {},
+		name: "Fire Mane",
+		rating: 3.5,
+		num: 316,
   },
   flamebody: {
     onDamagingHit(damage, target, source, move) {
@@ -3016,6 +3073,19 @@ const Abilities = {
     rating: 3,
     num: 178,
   },
+  megasol: {
+    isNonstandard: 'Future',
+    onWeatherModifyDamagePriority: 1,
+    onWeatherModifyDamage(damage, attacker, defender, move) {
+        if (this.field.isWeather(['sunnyday', 'desolateland'])) return;
+        return this.dex.conditions.getByID('sunnyday').onWeatherModifyDamage.call(this, damage, attacker, defender, move);
+    },
+    flags: {},
+    name: 'Mega Sol',
+    rating: 3,
+    num: 315
+    /* Partially implemented in Pokemon.effectiveWeather() in sim/pokemon.ts */
+  },
   merciless: {
     onModifyCritRatio(critRatio, source, target) {
       if (target && ["psn", "tox"].includes(target.status)) return 5;
@@ -3847,6 +3917,40 @@ const Abilities = {
     name: "Pickup",
     rating: 0.5,
     num: 53,
+  },
+  piercingdrill: {
+    onModifyMove(move) {
+      if (move.flags["contact"]) {
+        delete move.flags["protect"];
+        move.onBasePowerPriority = 10;
+        move.onBasePower = function (basePower, pokemon, target) {
+          const protectVolatiles = [
+            "protect",
+            "kingsshield",
+            "spikyshield",
+            "banefulbunker",
+            "obstruct",
+            "silktrap",
+            "matblock",
+          ];
+          const protectSideConditions = [
+            "quickguard",
+            "wideguard",
+            "craftyshield",
+          ];
+          if (
+            protectVolatiles.some((vol) => target.volatiles[vol]) ||
+            protectSideConditions.some((sc) => target.side.sideConditions[sc])
+          ) {
+            return this.chainModify(0.25);
+          }
+        };
+      }
+    },
+    flags: {},
+    name: "Piercing Drill",
+    rating: 2.5,
+    num: 206,
   },
   pixilate: {
     onModifyTypePriority: -1,
@@ -5221,6 +5325,15 @@ const Abilities = {
     rating: 4.5,
     num: 3,
   },
+  spicyspray: {
+    onDamagingHit(damage, target, source, move) {
+        source.trySetStatus("brn", target);
+    },
+    flags: {},
+    name: "Spicy Spray",
+    rating: 5,
+    num: 211
+  },
   stakeout: {
     onModifyAtkPriority: 5,
     onModifyAtk(atk, attacker, defender) {
@@ -6521,16 +6634,25 @@ const Abilities = {
       ) {
         return;
       }
+
+      const isGalarian = pokemon.baseSpecies.forme === "Galar";
+
       if (
         pokemon.hp <= pokemon.maxhp / 2 &&
         !["Zen", "Galar-Zen"].includes(pokemon.species.forme)
       ) {
+        pokemon.formeChange(
+          isGalarian ? "Darmanitan-Galar-Zen" : "Darmanitan-Zen"
+        );
         pokemon.addVolatile("zenmode");
       } else if (
         pokemon.hp > pokemon.maxhp / 2 &&
         ["Zen", "Galar-Zen"].includes(pokemon.species.forme)
       ) {
         pokemon.addVolatile("zenmode");
+        pokemon.formeChange(
+          isGalarian ? "Darmanitan-Galar" : "Darmanitan"
+        );
         pokemon.removeVolatile("zenmode");
       }
     },

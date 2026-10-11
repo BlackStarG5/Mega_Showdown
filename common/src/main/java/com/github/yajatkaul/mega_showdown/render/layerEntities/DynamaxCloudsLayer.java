@@ -20,7 +20,6 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -35,10 +34,23 @@ public class DynamaxCloudsLayer extends LayerEntity {
     @Override
     public void render(RenderContext context, PokemonClientDelegate clientDelegate, PokemonEntity entity, Pokemon pokemon, float entityYaw, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         super.render(context, clientDelegate, entity, pokemon, entityYaw, poseStack, buffer, packedLight);
+
+        if (entity.getPokemon().getSpecies().getName().equals("Calyrex")) {
+            aspects.add("blue");
+        } else {
+            aspects.remove("blue");
+        }
+
         state.setCurrentAspects(aspects);
 
         Map<String, MatrixWrapper> locatorStates = clientDelegate.getLocatorStates();
-        MatrixWrapper headLocator = locatorStates.get("head");
+
+        MatrixWrapper headLocator;
+        if (locatorStates.containsKey("clouds_loc")) {
+            headLocator = locatorStates.get("clouds_loc");
+        } else {
+            headLocator = locatorStates.get("head");
+        }
 
         if (headLocator == null) return;
 
@@ -68,13 +80,19 @@ public class DynamaxCloudsLayer extends LayerEntity {
         poseStack.translate(0.08, 0.0, 0.0);
 
         if (settings != null) {
-            List<Float> translate = settings.translate();
-            poseStack.translate(translate.get(0), translate.get(1), translate.get(2));
-        }
+            settings.translate().ifPresent((translate) -> {
+                poseStack.translate(translate.get(0), translate.get(1), translate.get(2));
+            });
 
-        if (settings != null) {
-            List<Float> scale = settings.scale();
-            poseStack.scale(scale.get(0), scale.get(1), scale.get(2));
+            settings.rotation().ifPresent((rotation) -> {
+                poseStack.mulPose(Axis.XP.rotationDegrees(rotation.get(0)));
+                poseStack.mulPose(Axis.YP.rotationDegrees(rotation.get(1)));
+                poseStack.mulPose(Axis.ZP.rotationDegrees(rotation.get(2)));
+            });
+
+            settings.scale().ifPresent((scale) -> {
+                poseStack.scale(scale.get(0), scale.get(1), scale.get(2));
+            });
         }
 
         // Apply animations
