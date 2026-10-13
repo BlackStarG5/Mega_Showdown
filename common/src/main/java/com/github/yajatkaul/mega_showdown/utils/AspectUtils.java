@@ -187,35 +187,6 @@ public class AspectUtils {
         PlayerPartyStore playerPartyStore = Cobblemon.INSTANCE.getStorage().getParty(player);
         for (Pokemon pokemon : playerPartyStore) {
             AspectUtils.revertPokemonsIfRequired(pokemon, false);
-
-            if (pokemon.getSpecies().getName().equals("Burmy")) {
-                Holder<Biome> biomeHolder = player.serverLevel().getBiome(player.blockPosition());
-
-                ServerLevel serverLevel = (ServerLevel) player.level();
-                boolean isTrash = serverLevel.structureManager()
-                        .getStructureWithPieceAt(player.blockPosition(), MegaShowdownTags.Biomes.VILLAGE)
-                        .isValid();
-
-
-                boolean isPlant = false;
-                boolean isSandy = false;
-
-                if (!isTrash) {
-                    isSandy = MegaShowdownTags.Biomes.SANDY_BIOMES
-                            .stream().anyMatch(biomeHolder::is);
-
-                    isPlant = MegaShowdownTags.Biomes.PLANT_BIOMES
-                            .stream().anyMatch(biomeHolder::is);
-                }
-
-                if (isTrash) {
-                    new StringSpeciesFeature("bagworm_cloak", "trash").apply(pokemon);
-                } else if (isPlant) {
-                    new StringSpeciesFeature("bagworm_cloak", "plant").apply(pokemon);
-                } else if (isSandy) {
-                    new StringSpeciesFeature("bagworm_cloak", "sandy").apply(pokemon);
-                }
-            }
         }
     }
 

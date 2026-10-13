@@ -15,7 +15,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = MovePartyPokemonToPCHandler.class, remap = false)
 public class MovePartyPokemonToPCHandlerMixin {
     @Inject(
-            method = "handle(Lcom/cobblemon/mod/common/net/messages/server/storage/pc/MovePartyPokemonToPCPacket;Lnet/minecraft/server/MinecraftServer;Lnet/minecraft/server/level/ServerPlayer;)V",
+            method = "handle*",
             at = @At("TAIL")
     )
     private void onMove(MovePartyPokemonToPCPacket packet, MinecraftServer server, ServerPlayer player, CallbackInfo ci) {
